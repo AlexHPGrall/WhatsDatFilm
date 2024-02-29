@@ -1,0 +1,101 @@
+:root {
+    --orange1: #F2CB05;
+    --orange1Hover: #D5B204;
+    --orange1Actif: #B89A04;
+
+    --orange2: #F29F05;
+    --orange2Hover: #D58C04;
+    --orange2Actif: #B87904;
+
+    --orange3: #F28705;
+    --orange3Hover: #D57704;
+    --orange3Actif: #B86704;
+
+    --bleu: #A1DFF5;
+    --bleuHover: #8EC4D8;
+    --bleuActif: #7BAABB;
+
+    --headerBackground : linear-gradient(to bottom, var(--orange3), var(--orange2), var(--orange1));
+
+    --background: #1D594E;
+    --backgroundHover: #143c35;
+    --backgroundActif: #0A1F1B;
+
+    --fieldBackground: #277365;
+    --fieldBackgroundHover: #1D564B;
+    --fieldBackgroundActif: #133832;
+
+    --radiusContainer: 8px;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background);
+}
+
+header {
+    background: var(--headerBackground);
+    height: 110px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 33% 34% 33%;
+}
+
+.centeredMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    height: 80vh;
+    width: 100%;
+}
+
+.userFormContainer {
+    width: 50vh;
+    height: 50vh;
+    background: var(--headerBackground);
+    padding: 3px;
+    border-radius: var(--radiusContainer);
+}
+
+.userForm {
+    background: var(--background);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radiusContainer);
+}
+
+input {
+    background: var(--fieldBackground);
+}
+
+.inputHover {
+    background: var(--fieldBackgroundHover);
+}
+
+.inputActif {
+    background: var(--fieldBackgroundActif);
+}
+
+.headerLeft {
+
+}
+
+.headerRight {
+
+}
+
+.headerCenter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsDatImg {
+
+}

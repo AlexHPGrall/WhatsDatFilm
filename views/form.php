@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<form action="/Admin/Add" method="POST">
+<form action="../controllers/reponse.php" method="POST">
     <div>
     <label>Username: </label>
     </div>
