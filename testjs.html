@@ -5,7 +5,11 @@
 <meta charset="utf-8" />
 </head>
 <body>
-<h2>Affichage de texte avec JS</h2>
-<script src="test.js"> </script>
-</p>
+    <span id="clic">Cliquez sur ce texte</span>
+    <script>
+    var element = document.getElementById('clic');
+    element.addEventListener('click', function() {
+    alert("Vous avez cliqué");
+    });
+    </script>
 </body>

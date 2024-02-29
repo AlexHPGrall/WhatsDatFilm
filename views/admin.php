@@ -43,12 +43,21 @@
         echo('<td>');
         echo $userData['userEmail'];
         echo('</td>');
+        echo('<td>');
+        echo '<form action="/Admin/Delete" method="post">
+              <button type="submit" name="userId" value="';
+        echo $userData["userId"];
+        echo '">Delete</button> </form>';
+        echo('</td>');
         echo('</tr>');
+        
     }
  ?>
        
         <tbody>
     </table>
+    <form action="/Admin/Form" method="post">
+              <button type="submit">Add User</button> </form>
 </div>
 
 </body>

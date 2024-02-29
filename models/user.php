@@ -126,5 +126,13 @@ class User extends Bdd
         return $table;
     }
 
+
+    public function deleteFromId($id)
+    {
+        $req = $this->bdd->prepare('DELETE FROM User WHERE userId = :id');
+        $req->execute(array(
+            'id' => $id
+        ));
+    }
 }
 ?>
