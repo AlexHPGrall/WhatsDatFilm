@@ -11,10 +11,11 @@
 
 <body>
     <?php require "header.php"; ?>
+
     <main>
         <div class="centeredMain">
             <div class="userFormContainer"> 
-                <form action="../controllers/reponse.php" method="POST" class="userForm">
+                <form action="admin/user/add" method="POST" class="userForm">
                     <div class="formContainer">
                         <label>Nom d'utilisateur : </label>
                         <input type="text" name="user" />
@@ -42,5 +43,6 @@
             </div>
         </div>
     </main>
+
     <?php require "footer.php" ?>
 </body>

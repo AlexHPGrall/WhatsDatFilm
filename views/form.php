@@ -3,46 +3,47 @@
  <head>
  <meta charset="utf-8" />
  <title>Formulaire Connexion</title>
- <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="/styles.css">
 </head>
 
 <body>
-<form action="../controllers/reponse.php" method="POST">
-    <div>
-    <label>Username: </label>
+
+<?php require "header.php"; ?>
+
+<main>
+    <div class="centeredMain">
+        <div class="userFormContainer"> 
+            <form action="/admin/user/add" method="POST" class="userForm">
+                <div class="formContainer">
+                    <label>Nom d'utilisateur : </label>
+                    <input type="text" name="user" />
+                </div>
+                <div class="formContainer">   
+                    <label>Mot de passe : </label>
+                    <input type="password" name="pass" />
+                </div>
+                <div class="formContainer">   
+                    <label>Prénom : </label>
+                    <input type="text" name="firstName" />
+                </div>
+                <div class="formContainer">   
+                    <label>Nom : </label>
+                    <input type="text" name="lastName" />
+                </div>
+                <div class="formContainer">   
+                    <label>Adresse mail : </label>
+                    <input type="text" name="email" />
+                </div>
+                <div class="formContainer">
+                    <input class="button" type="submit" value="Soumettre"/>
+                </div>
+            </form>   
+        </div>
     </div>
-    <div>
-    <input type="text" name="user" />
-</div>
-<div>   
-    <label>Password: </label>
-    </div>
-    <div>
-    <input type="password" name="pass" />
-</div>
-</div>
-<div>   
-    <label>FirstName: </label>
-    </div>
-    <div>
-    <input type="text" name="firstName" />
-</div>
-<div>   
-    <label>LastName: </label>
-    </div>
-    <div>
-    <input type="text" name="lastName" />
-</div>
-<div>   
-    <label>E-mail: </label>
-    </div>
-    <div>
-     <input type="text" name="email" />
-    </div>
-</div>
-<div>
-    <input type="submit" />
-</div>
-</form>
+</main>
+
+<?php require "footer.php" ?>
+
 </body>
+
 </html>
