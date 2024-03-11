@@ -5,6 +5,7 @@
        public static function index()
        {
             $uri = $_SERVER['REQUEST_URI'];  
+            $uri = rtrim($uri,"/");
             $list= explode("/", strtolower($uri));  
             $accessMethod = "";
             for($i=2; $i<count($list); $i++)
@@ -19,7 +20,6 @@
             }
             else
             {
-                //echo($accessMethod);
                 admin::{$accessMethod}();
             }
 
@@ -34,8 +34,9 @@
             $user->setUserEmail($_POST['email']);
             $user->addUser();
           
-            $table = $user->getAllUsers();
-            include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
+            header("Location: /Admin/User");
+            die();
+
        } 
 
        public static function userform()
@@ -49,8 +50,8 @@
         
             $user->deleteFromId($_POST['userId']);
         
-            $table = $user->getAllUsers();
-            include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
+            header("Location: /Admin/User");
+            die();
        } 
 
  }  
