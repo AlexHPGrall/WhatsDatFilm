@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Vue Admin</title>
-    <link rel="stylesheet" href="/views/styles.css">
+    <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
 <body>

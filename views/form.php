@@ -3,7 +3,7 @@
  <head>
  <meta charset="utf-8" />
  <title>Formulaire Connexion</title>
- <link rel="stylesheet" href="/views/styles.css">
+ <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
 
 <?php require "footer.php" ?>
 
-<script src="/views/password.js"></script>
+<script src="/views/js/password.js"></script>
 
 </body>
 
