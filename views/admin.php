@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<h2>Responsive Table</h2>
+<h2>Users</h2>
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
@@ -44,7 +44,7 @@
         echo $userData['userEmail'];
         echo('</td>');
         echo('<td>');
-        echo '<form action="/Admin/Delete" method="post">
+        echo '<form action="/Admin/User/Delete" method="post">
               <button type="submit" name="userId" value="';
         echo $userData["userId"];
         echo '">Delete</button> </form>';
@@ -56,8 +56,9 @@
        
         <tbody>
     </table>
-    <form action="/Admin/Form" method="post">
-              <button type="submit">Add User</button> </form>
+    <form action="/Admin/User/Form" method="post">
+              <button type="submit">Add User Not Delete User</button> 
+            </form>
 </div>
 
 </body>
