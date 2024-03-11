@@ -26,6 +26,8 @@
     --fieldBackgroundActif: #133832;
 
     --radiusContainer: 8px;
+    --fieldRadius: 7px;
+    --paddingFields: 5px;
 }
 
 body {
@@ -68,10 +70,27 @@ header {
     align-items: center;
     justify-content: center;
     border-radius: var(--radiusContainer);
+    color: var(--bleu);
 }
 
 input {
     background: var(--fieldBackground);
+    color: var(--bleu);
+    font-style: italic;
+    border-radius: var(--fieldRadius);
+    border: none;
+    text-align: center;
+    width 80%;
+    height: 28px;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: var(--paddingFields);
+    padding-bottom: var(--paddingFields);
+    width: 100%;
 }
 
 .inputHover {
@@ -98,4 +117,26 @@ input {
 
 .whatsDatImg {
 
+}
+
+footer {
+    color: black;
+    font-weight: bold;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+}
+
+.footerCenter {
+    background: var(--headerBackground);
+    width: 784px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button {
+    width: fit-content;
 }

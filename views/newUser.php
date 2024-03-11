@@ -15,41 +15,32 @@
         <div class="centeredMain">
             <div class="userFormContainer"> 
                 <form action="../controllers/reponse.php" method="POST" class="userForm">
-                    <div>
-                        <label>Username: </label>
-                    </div>
-                    <div>
+                    <div class="formContainer">
+                        <label>Nom d'utilisateur : </label>
                         <input type="text" name="user" />
                     </div>
-                    <div>   
-                        <label>Password: </label>
-                    </div>
-                    <div>
+                    <div class="formContainer">   
+                        <label>Mot de passe : </label>
                         <input type="password" name="pass" />
                     </div>
-                    <div>   
-                        <label>FirstName: </label>
-                    </div>
-                    <div>
+                    <div class="formContainer">   
+                        <label>Prénom : </label>
                         <input type="text" name="firstName" />
                     </div>
-                    <div>   
-                        <label>LastName: </label>
-                    </div>
-                    <div>
+                    <div class="formContainer">   
+                        <label>Nom : </label>
                         <input type="text" name="lastName" />
                     </div>
-                    <div>   
-                        <label>E-mail: </label>
-                    </div>
-                    <div>
+                    <div class="formContainer">   
+                        <label>Adresse mail : </label>
                         <input type="text" name="email" />
                     </div>
-                    <div>
-                        <input type="submit" />
+                    <div class="formContainer">
+                        <input class="button" type="submit" value="Soumettre"/>
                     </div>
                 </form>   
             </div>
         </div>
     </main>
+    <?php require "footer.php" ?>
 </body>

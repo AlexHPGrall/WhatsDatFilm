@@ -24,6 +24,34 @@
                 <th>Nom</th>
                 <th>email</th>
             </tr>
+            <?php 
+                foreach($table as $userData)
+                {
+                    echo('<tr>');
+                    echo('<td>');
+                    echo $userData['userId'];
+                    echo('</td>');
+                    echo('<td>');
+                    echo $userData['userLogin'];
+                    echo('</td>');
+                    echo('<td>');
+                    echo $userData['userPassword'];
+                    echo('</td>');
+                    echo('<td>');
+                    echo $userData['userFirstName'];
+                    echo('</td>');
+                    echo('<td>');
+                    echo $userData['userLastName'];
+                    echo('</td>');
+                    echo('<td>');
+                    echo $userData['userEmail'];
+                    echo('</td>');
+                    echo('</tr>');
+                }
+            ?>
         </table>
     </main>
+
+    <?php require "footer.php" ?>
+
 </body>
