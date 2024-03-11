@@ -2,7 +2,7 @@
 RewriteEngine On
 
 # Set the base directory
-RewriteBase /WhatsDatFilm/
+RewriteBase /
 
 # Redirect all requests to index.php
 RewriteCond %{REQUEST_FILENAME} !-f

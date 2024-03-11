@@ -1,25 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+ <meta charset="utf-8" />
+ <title>What's Dat Film</title>
+ <link rel="stylesheet" href="/style.css">
+</head>
+
 <?php
-
-$requestUri = $_SERVER['REQUEST_URI'];
-$segments = explode('/', trim($requestUri, '/'));
-
-$action = isset($segments[0]) ? $segments[0] : 'home';
-
-$method = isset($segments[1]) ? $segments[1] : 'index';
-
-$actionFile = 'controllers/' . $action . '.php';
-
-if (file_exists($actionFile)) {
-    include $actionFile;
-
-    $controller = new $action();
-    
-    if (method_exists($controller, $method)) {
-        $controller->$method();
-    } else {
-        $controller->index();
+    include("models/user.php");
+    include("controllers/admin.php");
+    $uri = $_SERVER['REQUEST_URI'];
+try
+{
+    $list= explode("/", strtolower($uri));
+    if(count($list)<3)
+    {
+        $list[1]::index();
     }
-} else {
-    include 'views/404.php';
+    else
+    {
+        $list[1]::{$list[2]}();
+    }
 }
+catch(Exception $e)
+{ 
+    echo 'Error 404';
+}
+
+
 ?>
