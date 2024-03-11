@@ -1,4 +1,6 @@
 :root {
+    -noir: #000000;
+
     --orange1: #F2CB05;
     --orange1Hover: #D5B204;
     --orange1Actif: #B89A04;
@@ -25,14 +27,15 @@
     --fieldBackgroundHover: #1D564B;
     --fieldBackgroundActif: #133832;
 
-    --radiusContainer: 8px;
-    --fieldRadius: 7px;
+    --radiusContainer: 10px;
+    --fieldRadius: 1px;
     --paddingFields: 5px;
 }
 
 body {
+    font-family: sans-serif;
     margin: 0;
-    background-color: var(--background);
+    background: linear-gradient(#141e30, #243b55)
 }
 
 header {
@@ -41,6 +44,11 @@ header {
     width: 100%;
     display: grid;
     grid-template-columns: 33% 34% 33%;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+}
+
+main {
+    color: #fff;
 }
 
 .centeredMain {
@@ -51,6 +59,7 @@ header {
     display: flex;
     height: 80vh;
     width: 100%;
+    flex-direction: column;
 }
 
 .userFormContainer {
@@ -59,10 +68,11 @@ header {
     background: var(--headerBackground);
     padding: 3px;
     border-radius: var(--radiusContainer);
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }
 
 .userForm {
-    background: var(--background);
+    background: linear-gradient(#141e30, #243b55);
     height: 100%;
     width: 100%;
     display: flex;
@@ -70,17 +80,21 @@ header {
     align-items: center;
     justify-content: center;
     border-radius: var(--radiusContainer);
-    color: var(--bleu);
+    color: #fff;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }
 
 input {
-    background: var(--fieldBackground);
-    color: var(--bleu);
+    background: none;
+    color: #fff;
     border-radius: var(--fieldRadius);
-    border: none;
     text-align: center;
     width: 80%;
     height: 28px;
+    border-bottom: #fff, solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 .formContainer {
@@ -122,21 +136,53 @@ footer {
     align-items: center;
     justify-content: center;
     height: auto;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
 }
 
 .footerCenter {
     background: var(--headerBackground);
-    width: 784px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .button {
-    width: fit-content;
-    background: var(--fieldBackground);
-    color: var(--bleu);
-    border-radius: var(--fieldRadius);
+    background: none!important;
     border: none;
+    padding: 0!important;
+    font-family: arial, sans-serif;
+    color: #069;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.tableWrapper {
+    table-layout: fixed;
+    width: 80%;
+    border-collapse: collapse;
+    border: 2px solid #fff;
+    height: 80%;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+}
+
+tbody td {
     text-align: center;
+}
+
+th,
+td {
+  padding: 20px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #141e30;
+}
+  
+tbody tr:nth-child(even) {
+    background-color: #243b55;
 }

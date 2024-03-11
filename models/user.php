@@ -14,12 +14,16 @@ class User extends Bdd
     {   
         Bdd::__construct();
         $this->userLogin    =    $loginInput;
-        $this->userPassword = $passInput;
+        $this->userPassword =    $passInput;
     }
 
     public function getUserFirstName()
     {
         return $this->userFirstName;
+    }
+    public function getUserId()
+    {
+        return $this->userId;
     }
     public function getUserLastName()
     {
