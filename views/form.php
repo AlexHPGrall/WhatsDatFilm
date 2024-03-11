@@ -3,7 +3,7 @@
  <head>
  <meta charset="utf-8" />
  <title>Formulaire Connexion</title>
- <link rel="stylesheet" href="/styles.css">
+ <link rel="stylesheet" href="/views/styles.css">
 </head>
 
 <body>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="formContainer">   
                     <label>Mot de passe : </label>
-                    <input type="password" name="pass" />
+                    <input type="password" name="pass" id="passwordInput"/>
                 </div>
                 <div class="formContainer">   
                     <label>Prénom : </label>
@@ -35,7 +35,7 @@
                     <input type="text" name="email" />
                 </div>
                 <div class="formContainer">
-                    <input class="button" type="submit" value="Soumettre"/>
+                    <button class="button" type="submit" value="Soumettre">Soumettre</button>
                 </div>
             </form>   
         </div>
@@ -43,6 +43,8 @@
 </main>
 
 <?php require "footer.php" ?>
+
+<script src="/views/password.js"></script>
 
 </body>
 

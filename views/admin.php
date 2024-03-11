@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
+<head>
     <meta charset="utf-8" />
     <title>Vue Admin</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/views/styles.css">
 </head>
 
 <body>
@@ -47,18 +47,18 @@
                         echo('</td>');
                         echo('<td>');
                         echo '<form action="/Admin/Delete" method="post">
-                            <button type="submit" name="userId" value="';
+                            <button class="button" type="submit" name="userId" value="';
                         echo $userData["userId"];
-                        echo '">Delete</button> </form>';
+                        echo '">Supprimer</button> </form>';
                         echo('</td>');
                         echo('</tr>');        
                     }
                 ?>
             <tbody>
-        </table>$
+        </table>
 
         <form action="/admin/user/form" method="post">
-            <button type="submit">Add User</button> 
+            <button class="button" type="submit">Ajout utilisateur</button> 
         </form>
     </div>
 

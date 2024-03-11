@@ -76,11 +76,10 @@ header {
 input {
     background: var(--fieldBackground);
     color: var(--bleu);
-    font-style: italic;
     border-radius: var(--fieldRadius);
     border: none;
     text-align: center;
-    width 80%;
+    width: 80%;
     height: 28px;
 }
 
@@ -102,21 +101,17 @@ input {
 }
 
 .headerLeft {
-
+    width: 100%
 }
 
 .headerRight {
-
+    width: 100%
 }
 
 .headerCenter {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.whatsDatImg {
-
 }
 
 footer {
@@ -139,4 +134,9 @@ footer {
 
 .button {
     width: fit-content;
+    background: var(--fieldBackground);
+    color: var(--bleu);
+    border-radius: var(--fieldRadius);
+    border: none;
+    text-align: center;
 }
