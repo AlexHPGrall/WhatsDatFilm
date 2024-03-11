@@ -50,7 +50,6 @@
         echo '">Delete</button> </form>';
         echo('</td>');
         echo('</tr>');
-        
     }
  ?>
        
