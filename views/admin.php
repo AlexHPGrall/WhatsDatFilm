@@ -3,11 +3,14 @@
  <head>
  <meta charset="utf-8" />
  <title>Vue Admin</title>
- <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 <h2>Users</h2>
+<form action="/logout" method="post">
+              <button type="submit">Logout</button> 
+            </form>
 <div class="table-wrapper">
     <table class="fl-table">
         <thead>
@@ -57,7 +60,7 @@
         <tbody>
     </table>
     <form action="/Admin/User/Form" method="post">
-              <button type="submit">Add User Not Delete User</button> 
+              <button type="submit">Add User</button> 
             </form>
 </div>
 
