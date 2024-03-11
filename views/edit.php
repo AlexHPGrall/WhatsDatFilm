@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<form action="/Admin/User/Add" method="POST">
+<form action="/Admin/User/Update" method="POST">
     <div>
     <label>Username: </label>
     </div>

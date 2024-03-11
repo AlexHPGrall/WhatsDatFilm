@@ -13,13 +13,29 @@ html {
     border: none;
     padding: 0!important;
     /*optional*/
-    font-family: arial, sans-serif;
+    font-family: sans-serif;
     /*input has OS specific font-family*/
-    color: #069;
-    text-decoration: underline;
+    color: #03e9f4;
     cursor: pointer;
+    text-align:right;
+
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    letter-spacing: 4px
   }
   
+.signup{
+    margin-top:-20px;
+    text-align:right;
+}
+
   .login-box {
     position: absolute;
     top: 50%;
@@ -74,7 +90,7 @@ html {
     font-size: 12px;
   }
   
-  .login-box form a {
+  .login-box form a{
     position: relative;
     display: inline-block;
     padding: 10px 20px;

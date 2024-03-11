@@ -24,5 +24,8 @@
       <span></span>
       <button type="submit" class="button">Log In</button> 
     </a>
+    <a href="/signup" class="signup">
+        Sign Up
+    </a>
   </form>
 </div>

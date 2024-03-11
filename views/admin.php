@@ -51,6 +51,10 @@
               <button type="submit" name="userId" value="';
         echo $userData["userId"];
         echo '">Delete</button> </form>';
+        echo '<form action="/Admin/User/Edit" method="post">
+        <button type="submit" name="userId" value="';
+        echo $userData["userId"];
+        echo '">Edit</button> </form>';
         echo('</td>');
         echo('</tr>');
         
