@@ -1,6 +1,6 @@
 <?php 
 
-include("bdd.php");
+include("Bdd.php");
 class User extends Bdd
 {
     private $userId;
@@ -15,6 +15,16 @@ class User extends Bdd
         Bdd::__construct();
         $this->userLogin    =    $loginInput;
         $this->userPassword = $passInput;
+    }
+
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    public function getUserLogin()
+    {
+        return $this->userLogin;
     }
 
     public function getUserFirstName()
