@@ -7,6 +7,8 @@
 </head>
 
 <body>
+
+<?php require 'header.php' ?>
 <h2>Users</h2>
 <form action="/logout" method="post">
               <button type="submit">Logout</button> 
@@ -67,5 +69,6 @@
               <button type="submit">Add User</button> 
             </form>
 </div>
+<?php require 'footer.php' ?>
 
 </body>

@@ -3,46 +3,49 @@
  <head>
  <meta charset="utf-8" />
  <title>Formulaire Connexion</title>
- <link rel="stylesheet" href="style.css">
+ <link rel="stylesheet" href="/views/styles.css">
 </head>
 
 <body>
-<form action="/Admin/User/Add" method="POST">
-    <div>
-    <label>Username: </label>
+
+<?php require "header.php"; ?>
+
+<main>
+    <div class="centeredMain">
+        <div class="userFormContainer"> 
+            <form action="/admin/user/add" method="POST" class="userForm">
+                <div class="formContainer">
+                    <label>Nom d'utilisateur : </label>
+                    <input type="text" name="user"  value="<?php  echo $user->getUserLogin()?>"/>
+                </div>
+                <div class="formContainer">   
+                    <label>Mot de passe : </label>
+                    <input type="password" name="pass" id="passwordInput" value="<?php  echo $user->getUserPassword()?>"/>
+                </div>
+                <div class="formContainer">   
+                    <label>Prénom : </label>
+                    <input type="text" name="firstName" value="<?php echo $user->getUserFirstName()?>"/>
+                </div>
+                <div class="formContainer">   
+                    <label>Nom : </label>
+                    <input type="text" name="lastName" value="<?php echo $user->getUserLastName()?>"/>
+                </div>
+                <div class="formContainer">   
+                    <label>Adresse mail : </label>
+                    <input type="text" name="email" value="<?php  echo $user->getUserEmail()?>"/>
+                </div>
+                <div class="formContainer">
+                    <button class="button" type="submit" value="Soumettre">Soumettre</button>
+                </div>
+            </form>   
+        </div>
     </div>
-    <div>
-    <input type="text" name="user" value="<?php  echo $user->getUserLogin()?>"/>
-</div>
-<div>   
-    <label>Password: </label>
-    </div>
-    <div>
-    <input type="password" name="pass" value="<?php  echo $user->getUserPassword()?>"/>
-</div>
-</div>
-<div>   
-    <label>FirstName: </label>
-    </div>
-    <div>
-    <input type="text" name="firstName" value="<?php echo $user->getUserFirstName()?>"/>
-</div>
-<div>   
-    <label>LastName: </label>
-    </div>
-    <div>
-    <input type="text" name="lastName" value="<?php  echo $user->getUserLastName()?>"/>
-</div>
-<div>   
-    <label>E-mail: </label>
-    </div>
-    <div>
-     <input type="text" name="email" value="<?php  echo $user->getUserEmail()?>"/>
-    </div>
-</div>
-<div>
-    <input type="submit" />
-</div>
-</form>
+</main>
+
+<?php require "footer.php" ?>
+
+<script src="/views/password.js"></script>
+
 </body>
+
 </html>

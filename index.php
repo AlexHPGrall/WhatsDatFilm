@@ -25,5 +25,4 @@ catch(Exception $e)
     echo 'Error 404';
 }
 
-
 ?>
