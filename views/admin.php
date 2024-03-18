@@ -17,7 +17,7 @@
 
         <?php require 'user.php' ?>
 
-        <form action="/admin/user/form" method="post">
+        <form action="/admin/user/form" method="post" name="add">
             <button type="submit">Ajout utilisateur</button>
         </form>
 
@@ -31,5 +31,6 @@
 
     <script src="/jquery.js"></script>
     <script src="/views/js/table.js"></script>
+    <script src="/views/js/confirmationButton.js"></script>
 
 </body>

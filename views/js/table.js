@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    //Selectionne les élément HTML string (élément à rechercher) et search (buton pour lancer la fonction)
+    //Selectionne les élément HTML string (élément à rechercher) et search (bouton pour lancer la fonction)
     var stringToSearch = $('#string'); 
     var search = $('#search');
 
