@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 include("Bdd.php");
 class User extends Bdd
@@ -11,15 +11,28 @@ class User extends Bdd
     private $userEmail;
 
     public function __construct($loginInput, $passInput)
-    {   
+    {
         Bdd::__construct();
         $this->userLogin    =    $loginInput;
-        $this->userPassword = $passInput;
+        $this->userPassword =    $passInput;
     }
 
+    public function getUserFirstName()
+    {
+        return $this->userFirstName;
+    }
     public function getUserId()
     {
         return $this->userId;
+    }
+    public function getUserLastName()
+    {
+        return $this->userLastName;
+    }
+
+    public function getUserEmail()
+    {
+        return $this->userEmail;
     }
 
     public function getUserLogin()
@@ -27,20 +40,10 @@ class User extends Bdd
         return $this->userLogin;
     }
 
-    public function getUserFirstName()
+    public function getUserPassword()
     {
-        return $this->userFirstName;
+        return $this->userPassword;
     }
-    public function getUserLastName()
-    {
-        return $this->userLastName;
-    }
-    public function getUserEmail()
-    {
-        return $this->userEmail;
-    }
-
-
 
     public function getLoginCredentials($loginInput)
     {
@@ -53,25 +56,29 @@ class User extends Bdd
     {
         $this->userId = $idInput;
     }
-
-    public function setUserPassword($passInput)
+    public function setUserLogin($loginInput)
     {
-            $this->userPassword = $passInput;
+        $this->userLogin = $loginInput;
+    }
+
+    public function setUserPassword($passwordInput)
+    {
+        $this->userPassword = $passwordInput;
     }
 
     public function setUserEmail($emailInput)
     {
-            $this->userEmail = $emailInput;
+        $this->userEmail = $emailInput;
     }
-    
+
     public function setUserFirstName($firstNameInput)
     {
-            $this->userFirstName = $firstNameInput;
+        $this->userFirstName = $firstNameInput;
     }
 
     public function setUserLastName($lastNameInput)
     {
-            $this->userLastName = $lastNameInput;
+        $this->userLastName = $lastNameInput;
     }
 
 
@@ -82,20 +89,18 @@ class User extends Bdd
         $req = $this->bdd->prepare('SELECT * FROM USER WHERE userLogin =:login  AND userPassword =:pass');
         $req->execute(array('login' => $this->userLogin, 'pass' => $this->userPassword));
         $donnees = $req->fetch();
-        if($donnees)
-        {
+        if ($donnees) {
             $this->setUserId($donnees['userId']);
             $this->setUserFirstName($donnees['userFirstName']);
             $this->setUserLastName($donnees['userLastName']);
             $this->setUserEmail($donnees['userEmail']);
         }
-
     }
 
     public function addUser()
     {
         $req = $this->bdd->prepare('INSERT INTO User (userLogin, userPassword, userFirstName, userLastName, userEmail) VALUES (:login, :password, :firstName, :lastName, :email)');
-        $req->execute(array(
+        return $req->execute(array(
             'login' => $this->userLogin,
             'password' => $this->userPassword,
             'firstName' => $this->userFirstName,
@@ -128,21 +133,37 @@ class User extends Bdd
     public function getAllUsers()
     {
         $reponse = $this->bdd->query('SELECT * FROM USER');
-        $table=array();
-        while($donnees = $reponse->fetch())
-        {
-            $table[]=$donnees;
+        $table = array();
+        while ($donnees = $reponse->fetch()) {
+            $table[] = $donnees;
         }
         return $table;
     }
 
 
-    public function deleteFromId($id)
+    public function deleteUserFromId($id)
     {
         $req = $this->bdd->prepare('DELETE FROM User WHERE userId = :id');
         $req->execute(array(
             'id' => $id
         ));
     }
+    public function getUserFromId($id)
+    {
+        $req = $this->bdd->prepare('SELECT * FROM User WHERE userId = :id');
+        $req->execute(array(
+            'id' => $id
+        ));
+
+        $donnees = $req->fetch();
+        if ($donnees) {
+
+            $this->setUserId($donnees['userId']);
+            $this->setUserLogin($donnees['userLogin']);
+            $this->setUserPassword($donnees['userPassword']);
+            $this->setUserFirstName($donnees['userFirstName']);
+            $this->setUserLastName($donnees['userLastName']);
+            $this->setUserEmail($donnees['userEmail']);
+        }
+    }
 }
-?>
