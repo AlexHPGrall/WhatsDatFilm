@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="utf-8" />
-    <title>Tableau utilisateur</title>
-    <link rel="stylesheet" href="/views/style/styles.css">
-</head>
-
-
 <div class="tableWrapper">
     <table>
         <thead>
@@ -18,6 +11,7 @@
                 <th>first name</th>
                 <th>last name</th>
                 <th>e-mail</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -32,11 +26,11 @@
                         '<td>'.$userData['userLastName'].'</td>',
                         '<td>'.$userData['userEmail'].'</td>',
                         '<td>',
-                        '<form action="/Admin/User/Delete" method="post">
+                        '<form action="/Admin/User/Delete" method="post" name="delete">
                             <button type="submit" name="userId" value="'.$userData["userId"].'">Supprimer</button> 
                         </form>',
-                        '<form action="/Admin/User/Edit" method="post">
-                            <button type="submit" name="userId" value="'.$userData["userId"].'">Edit</button> 
+                        '<form action="/Admin/User/Edit" method="post" name="edit">
+                            <button type="submit" name="userId" value="'.$userData["userId"].'">Modifier</button> 
                         </form>',
                         '</td>',
                     '</tr>';      
