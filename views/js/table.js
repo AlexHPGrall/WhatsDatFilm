@@ -4,10 +4,8 @@ $(document).ready(function() {
     var stringToSearch = $('#string'); 
     var search = $('#search');
     var reset = $('#reset');
-
-    //lance la fonction quand on clique sur le bouton)
-    search.on('click', function() {
-
+    
+    function searchFunction() {
         $("td").css("background", "transparent");
         $("tr").show();
 
@@ -43,7 +41,7 @@ $(document).ready(function() {
                 }
             });
         }
-    });
+    }
 
     function resetFunction() {
         $("td").css("background", "transparent");
@@ -51,6 +49,7 @@ $(document).ready(function() {
         stringToSearch.val('');
     }
 
+    search.on('click', searchFunction);
     reset.on('click',resetFunction);
            
 });
