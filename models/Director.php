@@ -1,9 +1,10 @@
 <?php
 
-class Director extends Bdd{
+class Director extends Bdd
+{
     private $directorId;
     private $directorName;
-    
+
     // Constructor
     public function __construct($id, $name)
     {

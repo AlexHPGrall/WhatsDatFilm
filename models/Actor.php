@@ -1,6 +1,7 @@
 <?php
 
-class Actor extends Bdd{
+class Actor extends Bdd
+{
 
     private $actorId;
     private $actorName;

@@ -26,10 +26,6 @@ try
         $list[1] = "Admin";
         */
     $list[1]::index();
-}
-catch(Exception $e)
-{ 
+} catch (Exception $e) {
     echo 'Error 404';
 }
-
-?>

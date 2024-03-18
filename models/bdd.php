@@ -16,7 +16,4 @@ class Bdd
             exit(); // Arrêter l'exécution du script en cas d'erreur
         }
     }
-
 }
-
-?>

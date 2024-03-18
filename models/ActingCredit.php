@@ -1,7 +1,8 @@
 <?php
 
-class ActingCredit extends Bdd{
-    
+class ActingCredit extends Bdd
+{
+
     private $creditId;
     private $characterName;
     private $actorId;
