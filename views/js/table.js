@@ -27,8 +27,11 @@ $(document).ready(function() {
                 $(this).find("td").each(function() {
                     if ($(this).text().includes(searchString)) {
                         rowContainsSearchString = true;
-                        return false; // Sort de la boucle each
+                        return false;
                     }
+                });
+                $(this).find("th").each(function() {
+                    rowContainsSearchString = true;
                 });
 
                 // Masque la ligne si elle ne contient pas la chaîne de caractères recherchée

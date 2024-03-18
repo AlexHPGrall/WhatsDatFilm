@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head>
-    <meta charset="utf-8" />
-    <title>Tableau utilisateur</title>
-    <link rel="stylesheet" href="/views/style/styles.css">
-</head>
-
-
 <div class="tableWrapper">
     <table>
         <thead>
@@ -18,6 +11,7 @@
                 <th>first name</th>
                 <th>last name</th>
                 <th>e-mail</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
