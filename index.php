@@ -9,9 +9,9 @@ if(!isset($_SESSION['userId']) && $uri != '/register')
     header("Location: login.php");
     exit;
 }
-else if($uri == '/register')
+else if($uri == '/signup')
 {
-    header("Location: register.php");
+    header("Location: signup.php");
     exit;
 }
 
@@ -24,6 +24,5 @@ catch(Exception $e)
 { 
     echo 'Error 404';
 }
-
 
 ?>

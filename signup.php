@@ -1,27 +1,26 @@
 <?php
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['userName'];
-    $password = $_POST['userPassword'];
-
     include("models/user.php");
-
-    $user = new User($username, $password);
-    
-    $cred = $user->getLoginCredentials($username);
-
-    if($cred && $cred['userPassword'] == $password)
-     {
+    $user=new User($_POST['user'] , $_POST['pass']);
+            
+    $user->setUserFirstName($_POST['firstName']);
+    $user->setUserLastName($_POST['lastName']);
+    $user->setUserEmail($_POST['email']);
+    if($user->addUser())
+    {
         $user->readUser();
+
         $_SESSION['userId'] = $user->getUserId();
         header("Location: /Admin/user"); 
         exit;
-     }
+    }
+
      header("Location: login.php");
      exit;
 }
 else
 { 
-    include('views/login.php');
+    include('views/signup.php');
 } 
 ?>

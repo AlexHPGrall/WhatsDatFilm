@@ -1,0 +1,96 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS webdb;
+
+-- Use the database
+USE webdb;
+
+-- Create the movie table
+CREATE TABLE IF NOT EXISTS movie (
+    movieId INT PRIMARY KEY AUTO_INCREMENT,
+    movieTitle VARCHAR(255) NOT NULL,
+    frenchTitle VARCHAR(255) NOT NULL,
+    runtime INT NOT NULL,
+    releaseDate DATE NOT NULL,
+    movieImageUrl VARCHAR(255),
+    movieRating FLOAT NOT NULL
+);
+
+-- Create the user table
+CREATE TABLE IF NOT EXISTS user (
+    userId INT PRIMARY KEY AUTO_INCREMENT,
+    userLogin VARCHAR(255) NOT NULL,
+    userPassword VARCHAR(255) NOT NULL,
+    userFirstName VARCHAR(255) NOT NULL,
+    userLastName VARCHAR(255) NOT NULL,
+    userEmail VARCHAR(255) NOT NULL
+);
+
+-- Create the genre table
+CREATE TABLE IF NOT EXISTS genre (
+    genreId INT PRIMARY KEY AUTO_INCREMENT,
+    genreName VARCHAR(255) NOT NULL
+);
+
+-- Create the movie_genre table
+CREATE TABLE IF NOT EXISTS movie_genre (
+    movieId INT,
+    genreId INT,
+    FOREIGN KEY (movieId) REFERENCES movie(movieId),
+    FOREIGN KEY (genreId) REFERENCES genre(genreId),
+    PRIMARY KEY (movieId, genreId)
+);
+
+-- Create the production_company table
+CREATE TABLE IF NOT EXISTS production_company (
+    productionCompanyId INT PRIMARY KEY AUTO_INCREMENT,
+    productionCompanyName VARCHAR(255) NOT NULL,
+    productionCompanyCountry VARCHAR(255) NOT NULL,
+    productionCompanyLogoUrl VARCHAR(255) NOT NULL
+);
+
+-- Create the movie_production table
+CREATE TABLE IF NOT EXISTS movie_production (
+    movieId INT,
+    productionCompanyId INT,
+    FOREIGN KEY (movieId) REFERENCES movie(movieId),
+    FOREIGN KEY (productionCompanyId) REFERENCES production_company(productionCompanyId),
+    PRIMARY KEY (movieId, productionCompanyId)
+);
+
+-- Create the director table
+CREATE TABLE IF NOT EXISTS director (
+    directorId INT PRIMARY KEY AUTO_INCREMENT,
+    directorName VARCHAR(255) NOT NULL
+);
+
+-- Create the movie_director table
+CREATE TABLE IF NOT EXISTS movie_director (
+    movieId INT,
+    directorId INT,
+    FOREIGN KEY (movieId) REFERENCES movie(movieId),
+    FOREIGN KEY (directorId) REFERENCES director(directorId),
+    PRIMARY KEY (movieId, directorId)
+);
+
+-- Create the actor table
+CREATE TABLE IF NOT EXISTS actor (
+    actorId INT PRIMARY KEY AUTO_INCREMENT,
+    actorName VARCHAR(255) NOT NULL
+);
+
+-- Create the acting_credit table
+CREATE TABLE IF NOT EXISTS acting_credit (
+    creditId INT PRIMARY KEY AUTO_INCREMENT,
+    movieId INT,
+    actorId INT,
+    characterName VARCHAR(255) NOT NULL,
+    FOREIGN KEY (movieId) REFERENCES movie(movieId),
+    FOREIGN KEY (actorId) REFERENCES actor(actorId)
+);
+
+-- Create the admin table
+CREATE TABLE IF NOT EXISTS admin (
+    adminId INT PRIMARY KEY AUTO_INCREMENT,
+    userId INT,
+    FOREIGN KEY (userId) REFERENCES user(userId)
+);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="utf-8" />
     <title>Formulaire de Connexion</title>
@@ -10,7 +11,7 @@
 
     <div class="login-box">
         <form action="/loginh.php" method="POST">
-            <div class="user-box">  
+            <div class="user-box">
                 <input type="text" name="userName" required="">
                 <label>Username</label>
             </div>
@@ -23,7 +24,7 @@
                 <span></span>
                 <span></span>
                 <span></span>
-                <button type="submit" class="button">Connexion</button> 
+                <button type="submit" class="button">Connexion</button>
             </a>
         </form>
     </div>
