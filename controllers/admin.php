@@ -7,10 +7,10 @@
  class admin
  {
 
-       public static function index()
-       {
-            $uri = $_SERVER['REQUEST_URI'];  
-            $uri = rtrim($uri,"/");
+          public static function index()
+          {  
+               $uri = $_SERVER['REQUEST_URI'];  
+               $uri = rtrim($uri,"/");
             
             $list= explode("/", strtolower($uri));  
             $accessMethod = "";
@@ -21,7 +21,7 @@
 
                 admin::{$accessMethod}();
 
-       } 
+          } 
 
        public static function user()
        {
@@ -34,13 +34,13 @@
        {
             $user=new User($_POST['user'] , $_POST['pass']);
             
-            $user->setUserFirstName($_POST['firstName']);
-            $user->setUserLastName($_POST['lastName']);
-            $user->setUserEmail($_POST['email']);
-            $user->updateUser();
+               $user->setUserFirstName($_POST['firstName']);
+               $user->setUserLastName($_POST['lastName']);
+               $user->setUserEmail($_POST['email']);
+               $user->updateUser();
           
-            header("Location: /Admin/User");
-            die();
+               header("Location: /Admin/User");
+               die();
 
        } 
 
@@ -68,16 +68,16 @@
 
             include($_SERVER['DOCUMENT_ROOT'].'/views/edit.php');
 
-       } 
+          } 
 
-       public static function useradd()
-       {
-            $user=new User($_POST['user'] , $_POST['pass']);
+          public static function useradd()
+          {
+               $user=new User($_POST['user'] , $_POST['pass']);
             
-            $user->setUserFirstName($_POST['firstName']);
-            $user->setUserLastName($_POST['lastName']);
-            $user->setUserEmail($_POST['email']);
-            $user->addUser();
+               $user->setUserFirstName($_POST['firstName']);
+               $user->setUserLastName($_POST['lastName']);
+               $user->setUserEmail($_POST['email']);
+               $user->addUser();
           
             header("Location: /Admin/User");
             die();
@@ -101,6 +101,6 @@
 
 
 
- }  
+     }  
 
 ?>
