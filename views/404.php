@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <title>404 Not Found</title>
@@ -12,4 +13,5 @@
         <p>The page you are looking for could not be found.</p>
     </div>
 </body>
+
 </html>

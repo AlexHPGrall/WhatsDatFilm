@@ -1,6 +1,7 @@
 <?php
 
-class Admin extends Bdd{
+class Admin extends Bdd
+{
     private $adminId;
     private $userId;
 
@@ -56,5 +57,3 @@ class Admin extends Bdd{
         return $req->fetchAll();
     }
 }
-
-?>

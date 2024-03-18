@@ -1,6 +1,7 @@
 <?php
 
-class MovieGenre extends Bdd{
+class MovieGenre extends Bdd
+{
 
     private $genreId;
     private $movieId;

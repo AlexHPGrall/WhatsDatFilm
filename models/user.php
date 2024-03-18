@@ -11,41 +11,22 @@ class User extends Bdd
     private $userEmail;
 
     public function __construct($loginInput, $passInput)
-    {   
+    {
         Bdd::__construct();
         $this->userLogin    =    $loginInput;
         $this->userPassword =    $passInput;
-<<<<<<< HEAD
-=======
-    }
-
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    public function getUserLogin()
-    {
-        return $this->userLogin;
->>>>>>> origin/main
     }
 
     public function getUserFirstName()
     {
         return $this->userFirstName;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/main
     public function getUserId()
     {
         return $this->userId;
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/main
+    
     public function getUserLastName()
     {
         return $this->userLastName;
@@ -77,6 +58,7 @@ class User extends Bdd
     {
         $this->userId = $idInput;
     }
+
     public function setUserLogin($loginInput)
     {
         $this->userLogin = $loginInput;
@@ -89,35 +71,30 @@ class User extends Bdd
 
     public function setUserEmail($emailInput)
     {
-            $this->userEmail = $emailInput;
+        $this->userEmail = $emailInput;
     }
-    
+
     public function setUserFirstName($firstNameInput)
     {
-            $this->userFirstName = $firstNameInput;
+        $this->userFirstName = $firstNameInput;
     }
 
     public function setUserLastName($lastNameInput)
     {
-            $this->userLastName = $lastNameInput;
+        $this->userLastName = $lastNameInput;
     }
-
-
-
 
     public function readUser()
     {
         $req = $this->bdd->prepare('SELECT * FROM USER WHERE userLogin =:login  AND userPassword =:pass');
         $req->execute(array('login' => $this->userLogin, 'pass' => $this->userPassword));
         $donnees = $req->fetch();
-        if($donnees)
-        {
+        if ($donnees) {
             $this->setUserId($donnees['userId']);
             $this->setUserFirstName($donnees['userFirstName']);
             $this->setUserLastName($donnees['userLastName']);
             $this->setUserEmail($donnees['userEmail']);
         }
-
     }
 
     public function addUser()
@@ -156,10 +133,9 @@ class User extends Bdd
     public function getAllUsers()
     {
         $reponse = $this->bdd->query('SELECT * FROM USER');
-        $table=array();
-        while($donnees = $reponse->fetch())
-        {
-            $table[]=$donnees;
+        $table = array();
+        while ($donnees = $reponse->fetch()) {
+            $table[] = $donnees;
         }
         return $table;
     }
@@ -178,11 +154,10 @@ class User extends Bdd
         $req->execute(array(
             'id' => $id
         ));
-       
+
         $donnees = $req->fetch();
-        if($donnees)
-        {
-            
+        if ($donnees) {
+
             $this->setUserId($donnees['userId']);
             $this->setUserLogin($donnees['userLogin']);
             $this->setUserPassword($donnees['userPassword']);
@@ -190,7 +165,5 @@ class User extends Bdd
             $this->setUserLastName($donnees['userLastName']);
             $this->setUserEmail($donnees['userEmail']);
         }
-        
     }
 }
-?>

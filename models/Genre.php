@@ -1,6 +1,7 @@
 <?php
 
-class Genre extends Bdd{
+class Genre extends Bdd
+{
     private $genreId;
     private $genreName;
 
@@ -70,5 +71,4 @@ class Genre extends Bdd{
         $req = $this->bdd->prepare('INSERT INTO GENRE (genreName) VALUES (:name)');
         $req->execute(array('name' => $this->genreName));
     }
-
 }

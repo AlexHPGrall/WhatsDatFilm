@@ -23,36 +23,22 @@
             <?php 
                 foreach($table as $userData)
                 {
-                    echo('<tr>');
-                    echo('<td>');
-                    echo $userData['userId'];
-                    echo('</td>');
-                    echo('<td>');
-                    echo $userData['userLogin'];
-                    echo('</td>');
-                    echo('<td>');
-                    echo $userData['userPassword'];
-                    echo('</td>');
-                    echo('<td>');
-                    echo $userData['userFirstName'];
-                    echo('</td>');
-                    echo('<td>');
-                    echo $userData['userLastName'];
-                    echo('</td>');
-                    echo('<td>');
-                    echo $userData['userEmail'];
-                    echo('</td>');
-                    echo('<td>');
-                    echo '<form action="/Admin/Delete" method="post">
-                    <button class="button" type="submit" name="userId" value="';
-                    echo $userData["userId"];
-                    echo '">Supprimer</button> </form>';
-                    echo '<form action="/Admin/User/Edit" method="post">
-                    <button type="submit" name="userId" value="';
-                    echo $userData["userId"];
-                    echo '">Edit</button> </form>';
-                    echo('</td>');
-                    echo('</tr>');        
+                    echo '<tr>',
+                        '<td>'.$userData['userId'].'</td>',
+                        '<td>'.$userData['userLogin'].'</td>',
+                        '<td>'.$userData['userPassword'].'</td>',
+                        '<td>'.$userData['userFirstName'].'</td>',
+                        '<td>'.$userData['userLastName'].'</td>',
+                        '<td>'.$userData['userEmail'].'</td>',
+                        '<td>',
+                        '<form action="/Admin/User/Delete" method="post">
+                            <button type="submit" name="userId" value="'.$userData["userId"].'">Supprimer</button> 
+                        </form>',
+                        '<form action="/Admin/User/Edit" method="post">
+                            <button type="submit" name="userId" value="'.$userData["userId"].'">Edit</button> 
+                        </form>',
+                        '</td>',
+                    '</tr>';      
                 }
             ?>
         <tbody>
