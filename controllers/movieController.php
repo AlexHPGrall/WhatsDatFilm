@@ -23,7 +23,6 @@
        }
 
        public static function add ($movieData) {
-         include($_SERVER['DOCUMENT_ROOT'].'/models/Movie.php');
          $movie = new Movie();
 
          $movie->setTitle($movieData['title']);

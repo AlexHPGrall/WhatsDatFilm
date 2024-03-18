@@ -1,5 +1,8 @@
 <?php
+    include $_SERVER['DOCUMENT_ROOT'].'/models/bdd.php';
     include $_SERVER['DOCUMENT_ROOT'].'/controllers/movieController.php';
+    include($_SERVER['DOCUMENT_ROOT'].'/models/Movie.php');
+
     header('Content-Type: application/json');
 
     $aResult = array();
