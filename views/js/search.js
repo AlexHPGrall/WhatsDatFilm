@@ -26,12 +26,16 @@ $(document).ready(function () {
     function displayResults(data) {
         var resultsContainer = $('#results');
         resultsContainer.empty();
-        console.log(data);
-        if (data && data.results && data.results.length > 0) {
+        data = JSON.parse(data);
+        if (data && data["results"] && data["results"].length > 0) {
             
             $.each(data.results, function (index, movie) {
-                resultsContainer.append('<li><p><strong>' + movie.title + '</strong> (' + (movie.release_date ? movie.release_date.substring(0, 4) : 'Date inconnue') + ')</p></li>');
-            });
+                var imageUrl = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
+                var title = movie.title;
+                var releaseYear = movie.release_date ? movie.release_date.substring(0, 4) : 'Date inconnue';
+                var listItem = '<li><img src="' + imageUrl + '" alt="' + title + '"><p><strong>' + title + '</strong> (' + releaseYear + ')</p></li>';
+                resultsContainer.append(listItem);
+                });
         } else {
             resultsContainer.append('<li>Aucun résultat trouvé.</li>');
         }

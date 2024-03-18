@@ -1,5 +1,5 @@
 <?php
-    class testapi
+    class movie
     {
         public static function index()
        {
@@ -20,7 +20,7 @@
           else
           {
                //echo $accessMethod;
-               testapi::{$accessMethod}();
+               movie::{$accessMethod}();
           }
 
        } 
