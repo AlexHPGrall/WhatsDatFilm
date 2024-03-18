@@ -26,10 +26,10 @@
                         '<td>'.$userData['userLastName'].'</td>',
                         '<td>'.$userData['userEmail'].'</td>',
                         '<td>',
-                        '<form action="/Admin/User/Delete" method="post" name="delete">
+                        '<form action="/admin/user/delete" method="post" name="delete">
                             <button type="submit" name="userId" value="'.$userData["userId"].'">Supprimer</button> 
                         </form>',
-                        '<form action="/Admin/User/Edit" method="post" name="edit">
+                        '<form action="/admin/user/edit" method="post" name="edit">
                             <button type="submit" name="userId" value="'.$userData["userId"].'">Modifier</button> 
                         </form>',
                         '</td>',

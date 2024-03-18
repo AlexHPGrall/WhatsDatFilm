@@ -3,16 +3,33 @@ $(document).ready(function() {
     var button = $("form :submit");
 
     button.on('click',function(event) {
-        event.preventDefault();
+        console.log('scripte js');
+        
 
         var form = $(this).closest('form');
         var post = form.attr('name');
 
-        var confirmation = confirm("Êtes-vous sûr de vouloir continuer ?");
-        if (confirmation) {
-            form.submit();
+        if (post === 'delete') {
+            console.log('delete');
+            var confirmation = confirm("Êtes-vous sûr de vouloir supprimer cette ligne ?");
+            if (confirmation) {
+                
+            } else {
+                alert("Action annulée !");
+                event.preventDefault();
+            }
+        } else if (post === 'add') {
+            console.log('add');
+            var confirmation = confirm("Êtes-vous sûr de vouloir ajouter des données ?");
+            if (confirmation) {
+                
+            } else {
+                alert("Action annulée !");
+                event.preventDefault();
+            }
         } else {
-            alert("Action annulée !");
+            console.log('else');
+            
         }
     });
 });
