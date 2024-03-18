@@ -22,6 +22,7 @@ $(document).ready(function() {
                 border: "",
                 color: ""
             });
+            return true;
         } else {
             console.log("Le mot de passe ne répond pas aux critères.");
             $('#passwordErrorTooltip').css('display', 'block');
@@ -29,6 +30,7 @@ $(document).ready(function() {
                 border: "1px solid red",
                 color: "red"
             });
+            return false;
         }
     }
 
@@ -44,6 +46,10 @@ $(document).ready(function() {
 
     function passwordMatchCheck(event) {
         if (!passwordMatch()) {
+            event.preventDefault();
+        } else if ((!$('#username').val()) || (!$('#firstName').val()) || (!$('#lastName').val()) || (!$('#mail').val())) {
+            event.preventDefault();
+        } else if (!passwordInputTest()) {
             event.preventDefault();
         }
     }

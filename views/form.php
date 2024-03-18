@@ -17,7 +17,7 @@
                 <form action="/admin/user/add" method="POST" class="userForm" id="userCreation">
                     <div class="formContainer">
                         <label>Nom d'utilisateur : </label>
-                        <input type="text" name="user" value="<?php echo $user->getUserLogin() ?>" />
+                        <input type="text" name="user" value="<?php echo $user->getUserLogin() ?>" id="username" />
                     </div>
                     <div class="formContainer">
                         <label>Mot de passe : </label>
@@ -32,15 +32,15 @@
                     </div>
                     <div class="formContainer">
                         <label>Prénom : </label>
-                        <input type="text" name="firstName" value="<?php echo $user->getUserFirstName() ?>" />
+                        <input type="text" name="firstName" value="<?php echo $user->getUserFirstName() ?>" id="firstName" />
                     </div>
                     <div class="formContainer">
                         <label>Nom : </label>
-                        <input type="text" name="lastName" value="<?php echo $user->getUserLastName() ?>" />
+                        <input type="text" name="lastName" value="<?php echo $user->getUserLastName() ?>" id="lastName" />
                     </div>
                     <div class="formContainer">
                         <label>Adresse mail : </label>
-                        <input type="text" name="email" value="<?php echo $user->getUserEmail() ?>" />
+                        <input type="text" name="email" value="<?php echo $user->getUserEmail() ?>" id="mail"/>
                     </div>
                     <div class="formContainer">
                         <button type="submit" value="Soumettre">Soumettre</button>
