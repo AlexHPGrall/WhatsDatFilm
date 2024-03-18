@@ -21,10 +21,18 @@ class User extends Bdd
     {
         return $this->userFirstName;
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/main
     public function getUserId()
     {
         return $this->userId;
     }
+<<<<<<< HEAD
+    
+=======
+>>>>>>> origin/main
     public function getUserLastName()
     {
         return $this->userLastName;
@@ -56,6 +64,7 @@ class User extends Bdd
     {
         $this->userId = $idInput;
     }
+
     public function setUserLogin($loginInput)
     {
         $this->userLogin = $loginInput;
@@ -80,9 +89,6 @@ class User extends Bdd
     {
         $this->userLastName = $lastNameInput;
     }
-
-
-
 
     public function readUser()
     {
@@ -166,4 +172,8 @@ class User extends Bdd
             $this->setUserEmail($donnees['userEmail']);
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

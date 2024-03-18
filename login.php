@@ -7,21 +7,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include("models/user.php");
 
     $user = new User($username, $password);
-    
+
     $cred = $user->getLoginCredentials($username);
 
-    if($cred && $cred['userPassword'] == $password)
-     {
+    if ($cred && $cred['userPassword'] == $password) {
         $user->readUser();
         $_SESSION['userId'] = $user->getUserId();
-        header("Location: /Admin/user"); 
+        header("Location: /Admin/user");
         exit;
-     }
-     header("Location: login.php");
-     exit;
-}
-else
-{ 
+    }
+    header("Location: login.php");
+    exit;
+} else {
     include('views/login.php');
-} 
-?>
+}

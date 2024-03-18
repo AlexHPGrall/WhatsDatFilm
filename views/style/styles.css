@@ -17,7 +17,7 @@
     --bleuHover: #8EC4D8;
     --bleuActif: #7BAABB;
 
-    --headerBackground : linear-gradient(to bottom, var(--orange3), var(--orange2), var(--orange1));
+    --headerBackground: linear-gradient(to bottom, var(--orange3), var(--orange2), var(--orange1));
 
     --background: #1D594E;
     --backgroundHover: #143c35;
@@ -44,7 +44,7 @@ header {
     width: 100%;
     display: grid;
     grid-template-columns: 33% 34% 33%;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
 }
 
 main {
@@ -68,7 +68,7 @@ main {
     background: var(--headerBackground);
     padding: 3px;
     border-radius: var(--radiusContainer);
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
 }
 
 .userForm {
@@ -81,7 +81,7 @@ main {
     justify-content: center;
     border-radius: var(--radiusContainer);
     color: #fff;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
 }
 
 input {
@@ -136,7 +136,7 @@ footer {
     align-items: center;
     justify-content: center;
     height: auto;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
 }
 
 .footerCenter {
@@ -148,9 +148,9 @@ footer {
 }
 
 .button {
-    background: none!important;
+    background: none !important;
     border: none;
-    padding: 0!important;
+    padding: 0 !important;
     font-family: arial, sans-serif;
     color: #069;
     text-decoration: underline;
@@ -176,13 +176,13 @@ tbody td {
 
 th,
 td {
-  padding: 20px;
+    padding: 20px;
 }
 
 tbody tr:nth-child(odd) {
     background-color: #141e30;
 }
-  
+
 tbody tr:nth-child(even) {
     background-color: #243b55;
 }

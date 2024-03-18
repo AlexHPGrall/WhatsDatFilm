@@ -1,6 +1,7 @@
 <?php
 
-class ProductionCompany extends Bdd{
+class ProductionCompany extends Bdd
+{
 
     private $productionCompanyId;
     private $productionCompanyName;
