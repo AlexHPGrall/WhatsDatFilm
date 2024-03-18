@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>Formulaire Connexion</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
 <body>

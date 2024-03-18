@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="utf-8" />
     <title>Tableau utilisateur</title>
-    <link rel="stylesheet" href="/views/styles.css">
+    <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
 
@@ -15,7 +16,7 @@
                 <th>login</th>
                 <th>password</th>
                 <th>first name</th>
-                <th>last name</th> 
+                <th>last name</th>
                 <th>e-mail</th>
             </tr>
         </thead>
