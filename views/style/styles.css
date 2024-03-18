@@ -160,14 +160,20 @@ footer {
 .tableWrapper {
     table-layout: fixed;
     width: 80%;
-    border-collapse: collapse;
     border: 2px solid #fff;
     height: 80%;
-    overflow: auto;
+    overflow-y: auto;
+}
+
+.tableWrapper thead th {
+    position: sticky;
+    top: 0;
+    background: linear-gradient(#141e30, #243b55)
 }
 
 table {
     width: 100%;
+    border-collapse: collapse;
 }
 
 tbody td {
@@ -185,4 +191,8 @@ tbody tr:nth-child(odd) {
 
 tbody tr:nth-child(even) {
     background-color: #243b55;
+}
+
+th {
+    position: absolute;
 }
