@@ -3,6 +3,7 @@ $(document).ready(function() {
     //Selectionne les élément HTML string (élément à rechercher) et search (bouton pour lancer la fonction)
     var stringToSearch = $('#string'); 
     var search = $('#search');
+    var reset = $('#reset');
 
     //lance la fonction quand on clique sur le bouton)
     search.on('click', function() {
@@ -43,5 +44,13 @@ $(document).ready(function() {
             });
         }
     });
+
+    function resetFunction() {
+        $("td").css("background", "transparent");
+        $("tr").show();
+        stringToSearch.val('');
+    }
+
+    reset.on('click',resetFunction);
            
 });
