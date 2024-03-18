@@ -3,6 +3,8 @@ session_start();
 
 include("models/user.php");
 include("controllers/admin.php");
+include("controllers/movieController.php");
+
 $uri = $_SERVER['REQUEST_URI'];
 if (!isset($_SESSION['userId']) && $uri != '/register') {
     header("Location: login.php");

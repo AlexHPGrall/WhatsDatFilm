@@ -19,7 +19,7 @@ class Movie extends Bdd
 
     // Getters and setters for the properties
 
-    public function getId()
+    public function getMovieId()
     {
         return $this->movieId;
     }
@@ -86,6 +86,21 @@ class Movie extends Bdd
 
     // Other methods for database operations (e.g., save, delete, etc.)
 
+    public function readMovie()
+    {
+        $req = $this->bdd->prepare('SELECT * FROM movie WHERE movieId = :id');
+        $req->execute(array('id' => $this->movieId));
+        $donnees = $req->fetch();
+        if ($donnees) {
+            $this->movieTitle = $donnees['movieTitle'];
+            $this->frenchTitle = $donnees['frenchTitle'];
+            $this->runtime = $donnees['runtime'];
+            $this->releaseDate = $donnees['releaseDate'];
+            $this->movieImageUrl = $donnees['movieImageUrl'];
+            $this->movieRating = $donnees['movieRating'];
+        }
+    }
+
     public function getAllMovies()
     {
         $req = $this->bdd->prepare('SELECT * FROM movie');
@@ -103,7 +118,7 @@ class Movie extends Bdd
     public function addMovie()
     {
         $req = $this->bdd->prepare('INSERT INTO movie (movieTitle, frenchTitle, runtime, releaseDate, movieImageUrl, movieRating) VALUES (:title, :frenchTitle, :runtime, :releaseDate, :imageUrl, :rating)');
-        $req->execute(array('title' => $this->movieTitle, 'frenchTitle' => $this->frenchTitle, 'runtime' => $this->runtime, 'releaseDate' => $this->releaseDate, 'imageUrl' => $this->movieImageUrl, 'rating' => $this->movieRating));
+        return $req->execute(array('title' => $this->movieTitle, 'frenchTitle' => $this->frenchTitle, 'runtime' => $this->runtime, 'releaseDate' => $this->releaseDate, 'imageUrl' => $this->movieImageUrl, 'rating' => $this->movieRating));
     }
 
     public function updateMovie()
