@@ -1,6 +1,7 @@
 <?php
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    include("models/bdd.php");
     include("models/user.php");
     $user=new User($_POST['user'] , $_POST['pass']);
             

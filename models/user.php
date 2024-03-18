@@ -1,6 +1,5 @@
 <?php 
 
-include("Bdd.php");
 class User extends Bdd
 {
     private $userId;
@@ -17,15 +16,7 @@ class User extends Bdd
         $this->userPassword =    $passInput;
     }
 
-    public function getUserId()
-    {
-        return $this->userId;
-    }
-
-    public function getUserLogin()
-    {
-        return $this->userLogin;
-    }
+   
 
     public function getUserFirstName()
     {
@@ -163,6 +154,7 @@ class User extends Bdd
             'id' => $id
         ));
     }
+
     public function getUserFromId($id)
     {
         $req = $this->bdd->prepare('SELECT * FROM User WHERE userId = :id');

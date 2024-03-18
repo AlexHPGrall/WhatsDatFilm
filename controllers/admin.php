@@ -1,4 +1,9 @@
 <?php
+ include("models/bdd.php");
+ include("models/user.php");
+ include("models/Movie.php");
+
+ 
  class admin
  {
 
@@ -13,18 +18,17 @@
             {
                 $accessMethod = $accessMethod.$list[$i];
             }
-            if(count($list)<4)
-            {
-                $user = new User("", "");
-                $table = $user->getAllUsers();
-                include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
-            }
-            else
-            {
+
                 admin::{$accessMethod}();
-            }
 
        } 
+
+       public static function user()
+       {
+          $user = new User("", "");
+          $table = $user->getAllUsers();
+          include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
+       }
 
        public static function userupdate()
        {
@@ -78,6 +82,24 @@
             header("Location: /Admin/User");
             die();
        } 
+       public static function movie()
+       {
+          $movie = new Movie("", "");
+          $table = $movie->getAllMovies();
+          include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
+       }
+
+       public static function movieDelete()
+       {
+            $movie = new Movie("", "");
+        
+            $movie->deleteMovieFromId($_POST['movieId']);
+        
+            header("Location: /Admin/Movie");
+            die();
+       } 
+
+
 
  }  
 

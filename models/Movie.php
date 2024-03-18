@@ -1,7 +1,5 @@
 <?php
 
-include("Bdd.php");
-
 class Movie extends Bdd{
     private $movieId;
     private $movieTitle;
@@ -96,6 +94,14 @@ class Movie extends Bdd{
     public function deleteMovie() {
         $req = $this->bdd->prepare('DELETE FROM movie WHERE movieId = :id');
         $req->execute(array('id' => $this->movieId));
+    }
+
+    public function deleteMovieFromId($id)
+    {
+        $req = $this->bdd->prepare('DELETE FROM Movie WHERE movieId = :id');
+        $req->execute(array(
+            'id' => $id
+        ));
     }
 }
 
