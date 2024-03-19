@@ -196,3 +196,15 @@ tbody tr:nth-child(even) {
 th {
     position: absolute;
 }
+
+.tooltip {
+    display: none;
+    background-color: var(--orange3);
+    position: absolute;
+    border-radius: var(--radiusContainer);
+}
+
+.tooltipText {
+    color: #fff;
+    margin: 3px;
+}
