@@ -33,7 +33,7 @@ $(document).ready(function () {
         var results = "";
         data = JSON.parse(data);
         if (data && data["results"] && data["results"].length > 0) {
-            
+            searchInput.parentElement.classList.add("active");
             $.each(data.results, function (index, movie) {
                 var imageUrl = movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : 'no-image.jpg';
                 var title = movie.title;
@@ -79,3 +79,7 @@ $(document).ready(function () {
         });
     }
 });
+   
+  
+
+  

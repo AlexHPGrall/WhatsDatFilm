@@ -14,6 +14,7 @@
             
             $list= explode("/", strtolower($uri));  
             $accessMethod = "";
+            //concatenation des token pour appeler la bonne methode
             for($i=2; $i<count($list); $i++)
             {
                 $accessMethod = $accessMethod.$list[$i];
@@ -23,10 +24,17 @@
 
           } 
 
+
+          public static function api()
+          {
+             include($_SERVER['DOCUMENT_ROOT'].'/views/testapiview.php');
+          }
+
        public static function user()
        {
           $user = new User("", "");
           $table = $user->getAllUsers();
+          $adminView= "user.php";
           include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
        }
 
@@ -86,6 +94,7 @@
        {
           $movie = new Movie("", "");
           $table = $movie->getAllMovies();
+          $adminView = "movies.php";
           include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
        }
 
@@ -99,6 +108,7 @@
             die();
        } 
 
+       
 
 
      }  
