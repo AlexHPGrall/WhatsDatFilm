@@ -138,4 +138,17 @@ class Movie extends Bdd{
             'id' => $id
         ));
     }
+    public function getMovieActors($id)
+    {
+        $req = $this->bdd->prepare('SELECT * FROM Actor A JOIN ActingCredit AC ON A.actorId = AC.actorId WHERE AC.movieId = :id');
+        $req->execute(array(
+            'id' => $id
+        ));
+        return $req->fetchAll();
+    }
+
+    public function getMatchingMovies($movieTitle)
+    {
+        
+    }
 }
