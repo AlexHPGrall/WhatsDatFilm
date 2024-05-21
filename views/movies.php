@@ -15,22 +15,20 @@
         </thead>
         <tbody>
             <?php 
-                foreach($table as $movieData)
-                {
-                    echo '<tr>',
-                        '<td><img src="'.$movieData['movieImageUrl'].'" class="filmPoster" /></td>',
-                        '<td>'.$movieData['movieTitle'].'</td>',
-                        '<td>'.$movieData['runtime'].'</td>',
-                        '<td>'.$movieData['releaseDate'].'</td>',
-                        '<td>'.$movieData['movieRating'].'</td>',
-                        '<td>',
-                        '<form action="/Admin/Movie/Delete" method="post">
+                foreach($table as $movieData): ?>
+                <tr>
+                    <td><img src="<?= $movieData['movieImageUrl'] ?>" class="filmPoster" /></td>
+                    <td><?= $movieData['movieTitle'] ?></td>
+                    <td><?= $movieData['runtime'] ?></td>
+                    <td><?= $movieData['releaseDate'] ?></td>
+                    <td><?= $movieData['movieRating'] ?></td>
+                    <td>
+                        <form action="/Admin/Movie/Delete" method="post">
                             <button type="submit" name="movieId" value="'.$movieData["movieId"].'">Supprimer</button> 
-                        </form>',
-                        '</td>',
-                    '</tr>';      
-                }
-            ?>
+                        </form>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         <tbody>
     </table>
 
