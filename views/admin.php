@@ -18,7 +18,7 @@
         <?php require $adminView ?>
 
         <form action="/admin/user/form" method="post" name="add">
-            <button type="submit">Ajouter</button>
+            <button type="submit">Ajout utilisateur</button>
         </form>
 
         <input id="string" type="text">

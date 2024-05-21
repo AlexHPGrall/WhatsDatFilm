@@ -3,9 +3,9 @@
 include("models/user.php");
 include("models/Movie.php");
 
-
-class admin
-{
+ 
+ class admin
+ {
 
           public static function index()
           {  
@@ -30,66 +30,68 @@ class admin
              include($_SERVER['DOCUMENT_ROOT'].'/views/testapiview.php');
           }
 
-     public static function user()
-     {
+       public static function user()
+       {
           $user = new User("", "");
           $table = $user->getAllUsers();
           $adminView= "user.php";
           include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
        }
 
-     public static function userupdate()
-     {
-          $user = new User($_POST['user'], $_POST['pass']);
+       public static function userupdate()
+       {
+            $user=new User($_POST['user'] , $_POST['pass']);
+            
+               $user->setUserFirstName($_POST['firstName']);
+               $user->setUserLastName($_POST['lastName']);
+               $user->setUserEmail($_POST['email']);
+               $user->updateUser();
+          
+               header("Location: /Admin/User");
+               die();
 
-          $user->setUserFirstName($_POST['firstName']);
-          $user->setUserLastName($_POST['lastName']);
-          $user->setUserEmail($_POST['email']);
-          $user->updateUser();
+       } 
 
-          header("Location: /Admin/User");
-          die();
-     }
+       public static function userform()
+       {
+            $user=new User("" , "");
+            echo $user->getUserLogin();
+            include($_SERVER['DOCUMENT_ROOT'].'/views/form.php');
+       }
 
-     public static function userform()
-     {
-          $user = new User("", "");
-          echo $user->getUserLogin();
-          include($_SERVER['DOCUMENT_ROOT'] . '/views/form.php');
-     }
+       public static function userdelete()
+       {
+            $user = new User("", "");
+        
+            $user->deleteUserFromId($_POST['userId']);
+        
+            header("Location: /Admin/User");
+            die();
+       } 
+       public static function useredit()
+       {
+            $user = new User("", "");
+        
+            $user->getUserFromId($_POST['userId']);
 
-     public static function userdelete()
-     {
-          $user = new User("", "");
+            include($_SERVER['DOCUMENT_ROOT'].'/views/edit.php');
 
-          $user->deleteUserFromId($_POST['userId']);
-          header("Location: /Admin/User");
-          die();
-     }
+          } 
 
-     public static function useredit()
-     {
-          $user = new User("", "");
-
-          $user->getUserFromId($_POST['userId']);
-
-          include($_SERVER['DOCUMENT_ROOT'] . '/views/edit.php');
-     }
-
-     public static function useradd()
-     {
-          $user = new User($_POST['user'], $_POST['pass']);
-
-          $user->setUserFirstName($_POST['firstName']);
-          $user->setUserLastName($_POST['lastName']);
-          $user->setUserEmail($_POST['email']);
-          $user->addUser();
-
-          header("Location: /Admin/User");
-          die();
-     }
-     public static function movie()
-     {
+          public static function useradd()
+          {
+               $user=new User($_POST['user'] , $_POST['pass']);
+            
+               $user->setUserFirstName($_POST['firstName']);
+               $user->setUserLastName($_POST['lastName']);
+               $user->setUserEmail($_POST['email']);
+               $user->addUser();
+          
+            header("Location: /Admin/User");
+            die();
+       } 
+       public static function movie()
+       {
           $movie = new Movie("", "");
           $table = $movie->getAllMovies();
           $adminView = "movies.php";
@@ -110,3 +112,5 @@ class admin
 
 
      }  
+
+?>

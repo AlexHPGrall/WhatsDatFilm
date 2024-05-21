@@ -26,7 +26,7 @@
                         '<td>'.$userData['userLastName'].'</td>',
                         '<td>'.$userData['userEmail'].'</td>',
                         '<td>',
-                        '<form action="/admin/user/delete" method="post" name="delete">
+                        '<form action="/Admin/User/Delete" method="post" name="delete">
                             <button type="submit" name="userId" value="'.$userData["userId"].'">Supprimer</button> 
                         </form>',
                 '<form action="/Admin/User/Edit" method="post">
