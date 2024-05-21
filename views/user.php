@@ -29,14 +29,18 @@
                         '<form action="/Admin/User/Delete" method="post" name="delete">
                             <button type="submit" name="userId" value="'.$userData["userId"].'">Supprimer</button> 
                         </form>',
-                        '<form action="/Admin/User/Edit" method="post" name="edit">
-                            <button type="submit" name="userId" value="'.$userData["userId"].'">Modifier</button> 
+                '<form action="/Admin/User/Edit" method="post">
+                            <button type="submit" name="userId" value="' . $userData["userId"] . '">Edit</button> 
                         </form>',
-                        '</td>',
-                    '</tr>';      
-                }
+                '</td>',
+                '</tr>';
+            }
             ?>
         <tbody>
     </table>
 
 </div>
+
+<form action="/admin/user/form" method="post" name="add">
+    <button type="submit">Ajout utilisateur</button>
+</form>

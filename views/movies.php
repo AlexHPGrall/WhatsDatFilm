@@ -1,74 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
- <head>
- <meta charset="utf-8" />
- <title>Vue Admin</title>
- <link rel="stylesheet" href="/style.css">
-</head>
 
-<body>
-
-<?php require 'header.php' ?>
-<h2>Users</h2>
-<form action="/logout" method="post">
-              <button type="submit">Logout</button> 
-            </form>
-<div class="table-wrapper">
-    <table class="fl-table">
+<div class="tableWrapper">
+    <table>
         <thead>
-        <tr>
-            <th>id</th>
-            <th>login</th>
-            <th>password</th>
-            <th>first name</th>
-            <th>last name</th> 
-            <th>e-mail</th>
-        </tr>
+            <tr>
+                <th>id</th>
+                <th>Titre</th>
+                <th>Runtime</th>
+                <th>Release date</th>
+                <th>Movie rating</th>
+                <th></th>
+            </tr>
         </thead>
         <tbody>
-<?php 
-    foreach($table as $userData)
-    {
-        echo('<tr>');
-        echo('<td>');
-        echo $userData['userId'];
-        echo('</td>');
-        echo('<td>');
-        echo $userData['userLogin'];
-        echo('</td>');
-        echo('<td>');
-        echo $userData['userPassword'];
-        echo('</td>');
-        echo('<td>');
-        echo $userData['userFirstName'];
-        echo('</td>');
-        echo('<td>');
-        echo $userData['userLastName'];
-        echo('</td>');
-        echo('<td>');
-        echo $userData['userEmail'];
-        echo('</td>');
-        echo('<td>');
-        echo '<form action="/Admin/User/Delete" method="post">
-              <button type="submit" name="userId" value="';
-        echo $userData["userId"];
-        echo '">Delete</button> </form>';
-        echo '<form action="/Admin/User/Edit" method="post">
-        <button type="submit" name="userId" value="';
-        echo $userData["userId"];
-        echo '">Edit</button> </form>';
-        echo('</td>');
-        echo('</tr>');
-        
-    }
- ?>
-       
+            <?php 
+                foreach($table as $movieData)
+                {
+                    echo '<tr>',
+                        '<td>'.$movieData['movieId'].'<img src="https://image.tmdb.org/t/p/w500'.$movieData['movieImageUrl'].'" height =300 width = 100 /></td>',
+                        '<td>'.$movieData['movieTitle'].'</td>',
+                        '<td>'.$movieData['runtime'].'</td>',
+                        '<td>'.$movieData['releaseDate'].'</td>',
+                        '<td>'.$movieData['movieRating'].'</td>',
+                        '<td>',
+                        '<form action="/Admin/Movie/Delete" method="post">
+                            <button type="submit" name="movieId" value="'.$movieData["movieId"].'">Supprimer</button> 
+                        </form>',
+                        '</td>',
+                    '</tr>';      
+                }
+            ?>
         <tbody>
     </table>
-    <form action="/Admin/User/Form" method="post">
-              <button type="submit">Add User</button> 
-            </form>
-</div>
-<?php require 'footer.php' ?>
 
-</body>
+</div>
+
+<form action="/admin/api" method="post">
+    <button type="submit">Ajout film</button>
+</form>

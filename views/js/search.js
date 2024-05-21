@@ -1,17 +1,18 @@
 $(document).ready(function () {
+
     var movies = [];
-    let list_group = document.querySelector(".list-group");
+    let filmList = document.querySelector(".filmList");
 
     $('#searchInput').on('input', function () {
         var query = $(this).val();
         
         if (query.length >= 2) {
             searchInput.parentElement.classList.add("active");
-            list_group.style.display = "block";
+            filmList.style.display = "block";
             searchMovies(query); // Correction ici, passer 'query' directement
         } else {
             searchInput.parentElement.classList.remove("active");
-            list_group.style.display = "none";
+            filmList.style.display = "none";
         }
     });
     
@@ -21,7 +22,7 @@ $(document).ready(function () {
             type: 'GET',
             data: { query: query },
             success: function (data) {
-                list_group.innerHTML = displayResults(data);
+                filmList.innerHTML = displayResults(data);
             },
             error: function () {
                 console.log('Erreur lors de la requête AJAX.');
@@ -31,6 +32,8 @@ $(document).ready(function () {
 
     function displayResults(data) {
         var results = "";
+        var tableHeader = '<table><thead></thead><tbody>';
+        var tableFooter = '</tbody></table>';
         data = JSON.parse(data);
         if (data && data["results"] && data["results"].length > 0) {
             
@@ -38,8 +41,10 @@ $(document).ready(function () {
                 var imageUrl = movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : 'no-image.jpg';
                 var title = movie.title;
                 var releaseYear = movie.release_date ? '(' + movie.release_date.substring(0, 4) + ')' : '(Date inconnue)';
-                var listItem = '<li><p><strong>' + title + '</strong> ' + releaseYear + '</p><img src="' + imageUrl + '" alt="' + title + '"><div>' + movie.overview + '</div><button class="add-btn" data-id="' + movie.id + '">Ajouter à la base de données</button></li>';
-                results += listItem;
+                var table = '<tr>' + '<td><strong>' + title + '</strong></td>' + '<td>' + releaseYear + '</td>' +
+                '<td><img src="' + imageUrl + '" alt="' + title + '" class="filmPoster"></td>' + '<td>' + movie.overview + '</td>' +
+                '<td><button class="add-btn" data-id="' + movie.id + '">Add to database</button></td>' + '</tr>';
+                results += table;
                 var movieData = {
                     id: movie.id,
                     title: movie.title,
@@ -51,9 +56,9 @@ $(document).ready(function () {
                 };
                 movies[movie.id] = movieData;
             });
-            return results;
+            return tableHeader + results + tableFooter;
         } else {
-            return '<li>Aucun résultat trouvé.</li>';
+            return '<p>No result found.</p>';
         }
     }
 

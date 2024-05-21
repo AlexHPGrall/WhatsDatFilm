@@ -15,19 +15,15 @@
 
     <main class="centeredMain">
 
-        <?php require 'user.php' ?>
-
-        <form action="/admin/user/form" method="post" name="add">
-            <button type="submit">Ajout utilisateur</button>
-        </form>
+        <?php require $adminView ?>
 
         <input id="string" type="text">
         <button type="button" id="search">Rechercher</button>
         <button type="button" id="reset">Réinitialiser</button>
-
     </main>
 
     <?php require 'footer.php' ?>
+
 
     <script src="/jquery.js"></script>
     <script src="/views/js/table.js"></script>
