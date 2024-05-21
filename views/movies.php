@@ -5,7 +5,7 @@
     <table>
         <thead>
             <tr>
-                <th>id</th>
+                <th>Poster</th>
                 <th>Titre</th>
                 <th>Runtime</th>
                 <th>Release date</th>
@@ -18,7 +18,7 @@
                 foreach($table as $movieData)
                 {
                     echo '<tr>',
-                        '<td>'.$movieData['movieId'].'<img src="https://image.tmdb.org/t/p/w500'.$movieData['movieImageUrl'].'" height =300 width = 100 /></td>',
+                        '<td><img src="'.$movieData['movieImageUrl'].'" class="filmPoster" /></td>',
                         '<td>'.$movieData['movieTitle'].'</td>',
                         '<td>'.$movieData['runtime'].'</td>',
                         '<td>'.$movieData['releaseDate'].'</td>',
