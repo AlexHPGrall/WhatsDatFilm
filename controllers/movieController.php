@@ -25,7 +25,8 @@
        public static function add ($movieData) {
          include($_SERVER['DOCUMENT_ROOT'].'/models/Movie.php');
          $movie = new Movie();
-
+         
+         $movie->setMovieId($movieData['id']);
          $movie->setTitle($movieData['title']);
          $movie->setFrenchTitle($movieData['frenchTitle']);
          $movie->setRuntime($movieData['runtime']);

@@ -16,33 +16,28 @@
         </thead>
         <tbody>
             <?php 
-                foreach($table as $userData)
-                {
-                    echo '<tr>',
-                        '<td>'.$userData['userId'].'</td>',
-                        '<td>'.$userData['userLogin'].'</td>',
-                        '<td>'.$userData['userPassword'].'</td>',
-                        '<td>'.$userData['userFirstName'].'</td>',
-                        '<td>'.$userData['userLastName'].'</td>',
-                        '<td>'.$userData['userEmail'].'</td>',
-                        '<td>',
-                        '<form action="/admin/user/delete/" method="post" name="delete">
-                            <input type="hidden" name="userId" value="'.$userData["userId"].'"/>
-                            <button type="submit">Supprimer</button> 
-                        </form>',
-                        '<form action="/Admin/User/Edit" method="post" name="edit">
-                            <input type="hidden" name="userId" value="'.$userData["userId"].'"/>
-                            <button type="submit">Modifier</button>
-                        </form>',
-                '</td>',
-                '</tr>';
-            }
-            ?>
+
+                foreach($table as $userData): ?>
+                        <tr>
+                        <td><?= $userData['userId'] ?></td>
+                        <td><?= $userData['userLogin'] ?></td>
+                        <td><?= $userData['userPassword'] ?></td>
+                        <td><?= $userData['userFirstName'] ?></td>
+                        <td><?= $userData['userLastName'] ?></td>
+                        <td><?= $userData['userEmail'] ?></td>
+                        <td>
+                        <form action="/Admin/User/Delete" method="post" name="delete">
+                            <input type="hidden" name="userId" value="<?= $userData["userId"] ?>"/>
+                            <button type="submit" name="userId">Supprimer</button> 
+                        </form>
+                <form action="/Admin/User/Edit" method="post">
+                            <input type="hidden" name="userId" value="<?= $userData["userId"] ?>"/>
+                            <button type="submit">Edit</button> 
+                        </form>
+                </td>
+                </tr>
+            <?php endforeach; ?>
         <tbody>
     </table>
 
 </div>
-
-<form action="/admin/user/form" method="post">
-    <button type="submit">Ajout utilisateur</button>
-</form>

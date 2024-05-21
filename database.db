@@ -6,14 +6,17 @@ USE webdb;
 
 -- Create the movie table
 CREATE TABLE IF NOT EXISTS movie (
-    movieId INT PRIMARY KEY AUTO_INCREMENT,
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    movieId INT NOT NULL,
     movieTitle VARCHAR(255) NOT NULL,
-    frenchTitle VARCHAR(255) NOT NULL,
-    runtime INT NOT NULL,
-    releaseDate DATE NOT NULL,
+    frenchTitle VARCHAR(255),
+    runtime INT,
+    releaseDate DATE,
     movieImageUrl VARCHAR(255),
-    movieRating FLOAT NOT NULL
+    movieRating FLOAT NOT NULL,
+    UNIQUE (movieId)
 );
+
 
 -- Create the user table
 CREATE TABLE IF NOT EXISTS user (
