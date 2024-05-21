@@ -7,9 +7,9 @@
             <tr>
                 <th>Poster</th>
                 <th>Titre</th>
-                <th>Runtime</th>
-                <th>Release date</th>
-                <th>Movie rating</th>
+                <th>Durée</th>
+                <th>Date de sortie</th>
+                <th>Note</th>
                 <th></th>
             </tr>
         </thead>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8" />
@@ -10,32 +10,32 @@
 <body>
     <form action="/signup.php" method="POST">
         <div>
-            <label>Username: </label>
+            <label>Nom d'utilisateur : </label>
         </div>
         <div>
             <input type="text" name="user" />
         </div>
         <div>
-            <label>Password: </label>
+            <label>Mot de passe : </label>
         </div>
         <div>
             <input type="password" name="pass" />
         </div>
         </div>
         <div>
-            <label>FirstName: </label>
+            <label>Prénom : </label>
         </div>
         <div>
             <input type="text" name="firstName" />
         </div>
         <div>
-            <label>LastName: </label>
+            <label>Nom : </label>
         </div>
         <div>
             <input type="text" name="lastName" />
         </div>
         <div>
-            <label>E-mail: </label>
+            <label>Adresse mail : </label>
         </div>
         <div>
             <input type="text" name="email" />
