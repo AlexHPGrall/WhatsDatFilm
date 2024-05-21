@@ -35,7 +35,7 @@
                         <input type="text" name="email" value="<?php echo $user->getUserEmail() ?>" />
                     </div>
                     <div class="formContainer">
-                        <button class="button" type="submit" value="Soumettre">Soumettre</button>
+                        <button class="add-btn" type="submit" value="Soumettre">Soumettre</button>
                     </div>
                 </form>
             </div>
