@@ -18,8 +18,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="/views/js/search.js"></script>
+<script src="/views/js/game.js"></script>
 
 </body>
 </html>
-

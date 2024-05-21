@@ -24,6 +24,12 @@
           }
 
        } 
+       public static function moviesearch()
+       {
+         $movie = new Movie();
+
+         return $movie->getMatchingMovies($_POST['movieTitle']);
+       }
         
     }
 ?>

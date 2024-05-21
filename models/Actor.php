@@ -6,11 +6,9 @@ class Actor extends Bdd
     private $actorId;
     private $actorName;
 
-    public function __construct($actorId, $actorName)
+    public function __construct()
     {
         Bdd::__construct();
-        $this->actorId = $actorId;
-        $this->actorName = $actorName;
     }
 
     // Getters and setters for id and name properties
