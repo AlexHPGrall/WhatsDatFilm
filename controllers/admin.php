@@ -7,26 +7,36 @@ include("models/Movie.php");
 class admin
 {
 
-     public static function index()
-     {
-          $uri = $_SERVER['REQUEST_URI'];
-          $uri = rtrim($uri, "/");
-          
-          $list = explode("/", strtolower($uri));
-          $accessMethod = "";
-          for ($i = 2; $i < count($list); $i++) {
-               $accessMethod = $accessMethod . $list[$i];
-          }
+          public static function index()
+          {  
+               $uri = $_SERVER['REQUEST_URI'];  
+               $uri = rtrim($uri,"/");
+            
+            $list= explode("/", strtolower($uri));  
+            $accessMethod = "";
+            //concatenation des token pour appeler la bonne methode
+            for($i=2; $i<count($list); $i++)
+            {
+                $accessMethod = $accessMethod.$list[$i];
+            }
 
-          admin::{$accessMethod}();
-     }
+                admin::{$accessMethod}();
+
+          } 
+
+
+          public static function api()
+          {
+             include($_SERVER['DOCUMENT_ROOT'].'/views/testapiview.php');
+          }
 
      public static function user()
      {
           $user = new User("", "");
           $table = $user->getAllUsers();
-          include($_SERVER['DOCUMENT_ROOT'] . '/views/admin.php');
-     }
+          $adminView= "user.php";
+          include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
+       }
 
      public static function userupdate()
      {
@@ -82,16 +92,21 @@ class admin
      {
           $movie = new Movie("", "");
           $table = $movie->getAllMovies();
-          include($_SERVER['DOCUMENT_ROOT'] . '/views/admin.php');
-     }
+          $adminView = "movies.php";
+          include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
+       }
 
-     public static function movieDelete()
-     {
-          $movie = new Movie("", "");
+       public static function movieDelete()
+       {
+            $movie = new Movie("", "");
+        
+            $movie->deleteMovieFromId($_POST['movieId']);
+        
+            header("Location: /Admin/Movie");
+            die();
+       } 
 
-          $movie->deleteMovieFromId($_POST['movieId']);
+       
 
-          header("Location: /Admin/Movie");
-          die();
-     }
-}
+
+     }  
