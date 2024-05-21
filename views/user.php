@@ -15,28 +15,31 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
-                foreach($table as $userData)
-                {
-                    echo '<tr>',
-                        '<td>'.$userData['userId'].'</td>',
-                        '<td>'.$userData['userLogin'].'</td>',
-                        '<td>'.$userData['userPassword'].'</td>',
-                        '<td>'.$userData['userFirstName'].'</td>',
-                        '<td>'.$userData['userLastName'].'</td>',
-                        '<td>'.$userData['userEmail'].'</td>',
-                        '<td>',
-                        '<form action="/Admin/User/Delete" method="post">
-                            <button type="submit" name="userId" value="'.$userData["userId"].'">Supprimer</button> 
+            <?php
+            foreach ($table as $userData) {
+                echo '<tr>',
+                '<td>' . $userData['userId'] . '</td>',
+                '<td>' . $userData['userLogin'] . '</td>',
+                '<td>' . $userData['userPassword'] . '</td>',
+                '<td>' . $userData['userFirstName'] . '</td>',
+                '<td>' . $userData['userLastName'] . '</td>',
+                '<td>' . $userData['userEmail'] . '</td>',
+                '<td>',
+                '<form action="/Admin/User/Delete" method="post">
+                            <button type="submit" name="userId" value="' . $userData["userId"] . '">Supprimer</button> 
                         </form>',
-                        '<form action="/Admin/User/Edit" method="post">
-                            <button type="submit" name="userId" value="'.$userData["userId"].'">Edit</button> 
+                '<form action="/Admin/User/Edit" method="post">
+                            <button type="submit" name="userId" value="' . $userData["userId"] . '">Edit</button> 
                         </form>',
-                        '</td>',
-                    '</tr>';      
-                }
+                '</td>',
+                '</tr>';
+            }
             ?>
         <tbody>
     </table>
 
 </div>
+
+<form action="/admin/user/form" method="post">
+    <button type="submit">Ajout utilisateur</button>
+</form>

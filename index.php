@@ -7,12 +7,12 @@ include("controllers/admin.php");
 //Gestionnaire de session (si pas de session redirection vers la page de login/signup)
 if(!isset($_SESSION['userId']) && $uri != '/signup')
 {
-    header("Location: login");
+    header("Location: /login");
     exit;
 }
 else if($uri == '/signup')
 {
-    header("Location: signup");
+    header("Location: /signup");
     exit;
 }
 
