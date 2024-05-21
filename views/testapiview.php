@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
 
 <div class="centeredMain">
   <div class="searchContainer">
-    <input id="searchInput" type="text" placeholder="Search ..." class="searchBar">
+    <input id="searchInput" type="text" placeholder="Rechercher ..." class="searchBar">
     <i class="bi bi-search"></i>
   </div>
   <div class="filmList"></div>

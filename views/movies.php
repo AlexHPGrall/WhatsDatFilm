@@ -35,5 +35,5 @@
 </div>
 
 <form action="/admin/api" method="post">
-    <button type="submit">Ajout film</button>
+    <button type="submit">Ajouter un film</button>
 </form>

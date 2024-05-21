@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="utf-8" />
@@ -10,7 +10,7 @@
 <body>
     <div class="centeredMain">
         <h1>404 Not Found</h1>
-        <p>The page you are looking for could not be found.</p>
+        <p>La page que vous recherchez n'a pas pu être trouvée.</p>
     </div>
 </body>
 
