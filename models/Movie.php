@@ -2,6 +2,7 @@
 
 require_once 'bdd.php';
 class Movie extends Bdd{
+    private $id;
     private $movieId;
     private $movieTitle;
     private $frenchTitle;
@@ -25,6 +26,11 @@ class Movie extends Bdd{
     public function getTitle()
     {
         return $this->movieTitle;
+    }
+
+    public function setMovieId($id)
+    {
+        $this->movieId = $id;
     }
 
     public function setTitle($title)
@@ -115,8 +121,8 @@ class Movie extends Bdd{
 
     public function addMovie()
     {
-        $req = $this->bdd->prepare('INSERT INTO movie (movieTitle, frenchTitle, runtime, releaseDate, movieImageUrl, movieRating) VALUES (:title, :frenchTitle, :runtime, :releaseDate, :imageUrl, :rating)');
-        return $req->execute(array('title' => $this->movieTitle, 'frenchTitle' => $this->frenchTitle, 'runtime' => $this->runtime, 'releaseDate' => $this->releaseDate, 'imageUrl' => $this->movieImageUrl, 'rating' => $this->movieRating));
+        $req = $this->bdd->prepare('INSERT INTO movie (movieId, movieTitle, frenchTitle, runtime, releaseDate, movieImageUrl, movieRating) VALUES (:movieId, :title, :frenchTitle, :runtime, :releaseDate, :imageUrl, :rating)');
+        return $req->execute(array('movieId' => $this->movieId, 'title' => $this->movieTitle, 'frenchTitle' => $this->frenchTitle, 'runtime' => $this->runtime, 'releaseDate' => $this->releaseDate, 'imageUrl' => $this->movieImageUrl, 'rating' => $this->movieRating));
     }
 
     public function updateMovie()
