@@ -3,6 +3,7 @@ session_start();
 
    
 include("controllers/admin.php");
+include("controllers/movieController.php");
     $uri = $_SERVER['REQUEST_URI'];
 //Gestionnaire de session (si pas de session redirection vers la page de login/signup)
 if(!isset($_SESSION['userId']) && $uri != '/signup')
