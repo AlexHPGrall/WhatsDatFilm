@@ -63,14 +63,13 @@ $(document).ready(function () {
     }
 
     $(document).on('click', '.add-btn', function () {
-        console.log("BOUTON CLIQUÉ");
         var movieId = $(this).data('id');
         var movieData = movies[movieId];
         addToDatabase(movieData);
     });
 
     function addToDatabase(movieData) {
-        console.log(movieData);
+        console.log("movieData: ",movieData);
         $.ajax({
             url: '/api/tmdb.php',
             type: 'POST',
