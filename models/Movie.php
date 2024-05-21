@@ -1,5 +1,6 @@
 <?php
 
+require_once 'bdd.php';
 class Movie extends Bdd{
     private $movieId;
     private $movieTitle;
@@ -11,7 +12,7 @@ class Movie extends Bdd{
 
     public function __construct()
     {
-        Bdd::__construct();
+        parent::__construct();
     }
 
     // Getters and setters for the properties
