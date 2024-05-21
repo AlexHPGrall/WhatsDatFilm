@@ -60,6 +60,7 @@ main {
     height: 80vh;
     width: 100%;
     flex-direction: column;
+    color: #fff;
 }
 
 .userFormContainer {
@@ -207,4 +208,27 @@ th {
 .tooltipText {
     color: #fff;
     margin: 3px;
+}
+
+.searchContainer {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBar {
+    width: 80%;
+}
+
+.filmList {
+    overflow-y: auto;
+}
+
+.filmPoster {
+    max-height: 34px;
+}
+
+li {
+    
 }
