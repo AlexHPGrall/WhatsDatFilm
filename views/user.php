@@ -41,6 +41,6 @@
 
 </div>
 
-<form action="/admin/user/form" method="post">
+<form action="/admin/user/form" method="post" name="add">
     <button type="submit">Ajout utilisateur</button>
 </form>

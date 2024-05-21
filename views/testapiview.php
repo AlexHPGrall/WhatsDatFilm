@@ -12,11 +12,10 @@
 
 <div class="centeredMain">
   <div class="searchContainer">
-    <input id="inputTxt" type="text" placeholder="Search ..." class="searchBar">
+    <input id="searchInput" type="text" placeholder="Search ..." class="searchBar">
     <i class="bi bi-search"></i>
   </div>
-  <div class="filmList">
-  </div>
+  <div class="filmList"></div>
 </div>
 
 <?php require 'footer.php' ?>
