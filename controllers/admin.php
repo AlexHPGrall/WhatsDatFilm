@@ -1,5 +1,5 @@
 <?php
-include("models/bdd.php");
+/*include("models/bdd.php");*/
 include("models/user.php");
 include("models/Movie.php");
 
