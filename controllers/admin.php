@@ -61,6 +61,7 @@
 
        public static function userdelete()
        {
+          
             $user = new User("", "");
         
             $user->deleteUserFromId($_POST['userId']);
@@ -98,14 +99,16 @@
           include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
        }
 
-       public static function movieDelete()
+       public static function moviedelete()
        {
+            
+            
             $movie = new Movie("", "");
         
             $movie->deleteMovieFromId($_POST['movieId']);
-        
             header("Location: /Admin/Movie");
             die();
+
        } 
 
        

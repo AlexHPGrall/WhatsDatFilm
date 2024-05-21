@@ -28,7 +28,7 @@
        {
          $movie = new Movie();
 
-         return $movie->getMatchingMovies($_POST['movieTitle']);
+         return $movie->getMatchingMovies($_GET['query']);
        }
         
     }

@@ -149,6 +149,11 @@ class Movie extends Bdd{
 
     public function getMatchingMovies($movieTitle)
     {
-        
+
+        $req = $this->bdd->prepare('SELECT * FROM Movies WHERE title LIKE :title ;');
+        $req->execute(array(
+            'title' => $movieTitle
+        ));
+        return $req->fetchAll();
     }
 }

@@ -39,7 +39,7 @@ $(document).ready(function () {
 
     function searchMovies(query) {
         $.ajax({
-            url: '/api/api_search.php',
+            url: '/Movie/Search',
             type: 'GET',
             data: { query: query },
             success: function (data) {

@@ -24,8 +24,9 @@
                         '<td>'.$movieData['releaseDate'].'</td>',
                         '<td>'.$movieData['movieRating'].'</td>',
                         '<td>',
-                        '<form action="/Admin/Movie/Delete" method="post">
-                            <button type="submit" name="movieId" value="'.$movieData["movieId"].'">Supprimer</button> 
+                        '<form action="/admin/movie/delete" method="post">       
+                            <input type="hidden" name="movieId" value="'.$movieData["movieId"].'"/>
+                            <button type="submit">Supprimer</button> 
                         </form>',
                         '</td>',
                     '</tr>';      
