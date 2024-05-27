@@ -34,13 +34,7 @@
          $movie->setImageUrl($movieData['movieImageUrl']);
          $movie->setRating($movieData['movieRating']);
 
-         if ($movie->addMovie()) {
-            echo '<script>alert("Film ajouté !")</script>'; 
-         }
-         else {
-             echo "Error";
-             exit;
-         }
+         $movie->addMovie();
        }
          
     }

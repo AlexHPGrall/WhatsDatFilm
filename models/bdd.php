@@ -7,7 +7,7 @@ class Bdd
     public function __construct()
     {
         try {
-            $this->bdd = new PDO('mysql:host=localhost;dbname=webdb', "root");
+            $this->bdd = new PDO('mysql:host=localhost;dbname=webdb', "web","web");
             // Activer les erreurs PDO
             $this->bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {

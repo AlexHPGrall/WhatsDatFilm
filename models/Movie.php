@@ -121,7 +121,7 @@ class Movie extends Bdd{
 
     public function addMovie()
     {
-        $req = $this->bdd->prepare('INSERT INTO movie (movieId, movieTitle, frenchTitle, runtime, releaseDate, movieImageUrl, movieRating) VALUES (:movieId, :title, :frenchTitle, :runtime, :releaseDate, :imageUrl, :rating)');
+        $req = $this->bdd->prepare('INSERT IGNORE INTO movie (movieId, movieTitle, frenchTitle, runtime, releaseDate, movieImageUrl, movieRating) VALUES (:movieId, :title, :frenchTitle, :runtime, :releaseDate, :imageUrl, :rating)');
         return $req->execute(array('movieId' => $this->movieId, 'title' => $this->movieTitle, 'frenchTitle' => $this->frenchTitle, 'runtime' => $this->runtime, 'releaseDate' => $this->releaseDate, 'imageUrl' => $this->movieImageUrl, 'rating' => $this->movieRating));
     }
 

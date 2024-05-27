@@ -77,9 +77,10 @@ $(document).ready(function () {
             success: function () {
                 alert('Film ajouté à la base de données avec succès !');
             },
-            error: function () {
-                console.log('Erreur lors de la requête AJAX.');
-            }
+            error: function (reponse, statut, erreur) {
+                console.log(reponse);
+                console.log(erreur);
+              },
         });
     }
 });
