@@ -19,7 +19,6 @@ include("models/Movie.php");
             {
                 $accessMethod = $accessMethod.$list[$i];
             }
-
                 admin::{$accessMethod}();
 
           } 
@@ -68,6 +67,7 @@ include("models/Movie.php");
             header("Location: /Admin/User");
             die();
        } 
+       
        public static function useredit()
        {
             $user = new User("", "");

@@ -4,6 +4,7 @@ session_start();
    
 include("controllers/admin.php");
 include("controllers/movieController.php");
+include("controllers/login.php");
 $uri = $_SERVER['REQUEST_URI'];
 //Gestionnaire de session (si pas de session redirection vers la page de login/signup)
 if(!isset($_SESSION['userId']) && $uri != '/signup')
@@ -22,11 +23,11 @@ try
 {
     //le premier token de l'url determine le controller a utiliser
     //la concatenation des token suivants détermine la méthode du controller à appeler (on passe d'abord par l'index du controller)
-    $list= explode("/", strtolower($uri));
+    $controller= explode("/", strtolower($uri));
     /*if($list[1] == "")
         $list[1] = "Admin";
         */
-    $list[1]::index();
+    $controller[1]::index();
 } catch (Exception $e) {
     echo 'Error 404';
 }
