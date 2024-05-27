@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: /Admin/user");
         exit;
     }
-    header("Location: login.php");
+    header("Location: login");
     exit;
 } else {
     include('views/login.php');

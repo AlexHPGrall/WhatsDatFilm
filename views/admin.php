@@ -9,7 +9,7 @@
 <body>
 
     <?php require 'header.php' ?>
-    <form action="/logout" method="post">
+    <form action="/login/logout" method="post">
         <button type="submit">Déconnexion</button>
     </form>
 

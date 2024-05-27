@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user->readUser();
 
         $_SESSION['userId'] = $user->getUserId();
-        header("Location: /Admin/user");
+        header("Location: /admin/user");
         exit;
     }
 
