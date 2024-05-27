@@ -24,7 +24,7 @@
                 </div>
                 <button type="submit" class="button">Connexion</button>
 
-                <a href="/signup" class="signup">
+                <a href="/login/signin" class="signin">
                     S'inscrire
                 </a>
             </form>

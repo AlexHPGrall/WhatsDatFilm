@@ -5,13 +5,13 @@ include("controllers/movieController.php");
 include("controllers/login.php");
 $uri = $_SERVER['REQUEST_URI'];
 //Gestionnaire de session (si pas de session redirection vers la page de login/signup)
-if(!isset($_SESSION['userId']) && $uri != '/signup')
+if(!isset($_SESSION['userId']) && $uri != '/signin')
 {
     login::index();
 }
-else if($uri == '/signup')
+else if($uri == '/signin')
 {
-    header("Location: /signup");
+    header("Location: /login/signin");
     exit;
 }
 else

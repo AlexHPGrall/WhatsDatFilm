@@ -52,7 +52,7 @@ class login {
             $username = $_POST['userName'];
             $password = $_POST['userPassword'];
             include_once("models/bdd.php");
-            include("models/user.php");
+            include_once("models/user.php");
 
             $user = new User($username, $password);
 
@@ -83,7 +83,7 @@ class login {
         header("Location: login");
     }
 
-    public static function signup()
+    public static function signin()
     {
 
         if (session_status() == PHP_SESSION_NONE) {
@@ -91,8 +91,8 @@ class login {
         }        
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        include("models/bdd.php");
-        include("models/user.php");
+        include_once("models/bdd.php");
+        include_once("models/user.php");
         $user = new User($_POST['user'], $_POST['pass']);
 
         $user->setUserFirstName($_POST['firstName']);
@@ -102,14 +102,14 @@ class login {
             $user->readUser();
 
             $_SESSION['userId'] = $user->getUserId();
-            header("Location: /admin/user");
+            header("Location: /admin/user"); //à changer
             exit;
         }
 
         header("Location: login.php");
         exit;
         } else {
-            include('views/signup.php');
+            include('views/signin.php');
         }
     }
 

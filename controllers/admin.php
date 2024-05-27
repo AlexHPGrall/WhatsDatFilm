@@ -46,7 +46,7 @@ include("models/Movie.php");
                $user->setUserEmail($_POST['email']);
                $user->updateUser();
           
-               header("Location: /Admin/User");
+               header("Location: /admin/user");
                die();
 
           } 
@@ -64,7 +64,7 @@ include("models/Movie.php");
         
                $user->deleteUserFromId($_POST['userId']);
         
-               header("Location: /Admin/User");
+               header("Location: /admin/user");
                die();
           } 
        
@@ -87,7 +87,7 @@ include("models/Movie.php");
                $user->setUserEmail($_POST['email']);
                $user->addUser();
           
-               header("Location: /Admin/User");
+               header("Location: /admin/user");
                die();
           } 
 
@@ -105,7 +105,7 @@ include("models/Movie.php");
         
                $movie->deleteMovieFromId($_POST['movieId']);
         
-               header("Location: /Admin/Movie");
+               header("Location: /admin/movie");
                die();
           } 
 
