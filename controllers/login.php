@@ -19,11 +19,12 @@ class login {
         if ($accessMethod != "") {
             login::$accessMethod();
         }
-        if ($accessMethod == "admin") {
+        else if ($accessMethod == "admin") {
+            login::login();
+        } 
+        else {
             login::login();
         }
-
-        login::login();
 
     } 
 
@@ -33,7 +34,7 @@ class login {
             admin::user();
         }
         else {
-            header("Location: login");
+            include($_SERVER['DOCUMENT_ROOT'].'/views/login.php');
         }
     }
 
@@ -63,9 +64,16 @@ class login {
                 header("Location: /admin/user");
                 exit;
             }
+            else {
+                header("Location: /login");
+                exit;
+            }
+
         } else {
+            header("Location: /login");
             exit;
         }
+
     }
 
     public static function logout()
