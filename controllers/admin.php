@@ -98,7 +98,6 @@ include_once("models/Movie.php");
 
           public static function movie()
           {
-               var_dump("je suis dans movie()");
                $movie = new Movie("", "", "", "", "", "", "");
                $table = $movie->getAllMovies();
                $adminView = "movies.php";
