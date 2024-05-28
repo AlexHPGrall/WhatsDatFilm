@@ -177,6 +177,7 @@ footer {
 }
 
 table {
+    color: inherit;
     width: 100%;
     border-collapse: collapse;
 }
@@ -269,4 +270,8 @@ th {
 
 .filmPoster {
     max-height: 320px;
+}
+
+.btn {
+    cursor: pointer;
 }

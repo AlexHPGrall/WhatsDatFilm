@@ -2,8 +2,8 @@
 <html lang="fr">
 
 <input id="string" type="text">
-<button type="button" id="search">Rechercher</button>
-<button type="button" id="reset">Réinitialiser</button>
+<button class="btn" type="button" id="search">Rechercher</button>
+<button class="btn" type="button" id="reset">Réinitialiser</button>
 
 <div class="tableWrapper">
     <table>
@@ -29,11 +29,11 @@
                         <td><?= $userData['userLastName'] ?></td>
                         <td><?= $userData['userEmail'] ?></td>
                         <td>
-                        <form action="/Admin/User/Delete" method="post" name="delete">
-                            <button type="submit" name="userId" value="<?= $userData["userId"] ?>">Supprimer</button> 
+                        <form action="/admin/user/delete" method="post" name="delete">
+                            <button class="btn" type="submit" name="userId" value="<?= $userData["userId"] ?>">Supprimer</button> 
                         </form>
-                <form action="/Admin/User/Edit" method="post">
-                            <button type="submit" name="userId" value="<?= $userData["userId"] ?>">Edit</button> 
+                <form action="/admin/user/edit" method="post">
+                            <button class="btn" type="submit" name="userId" value="<?= $userData["userId"] ?>">Edit</button> 
                         </form>
                 </td>
                 </tr>
@@ -44,5 +44,5 @@
 </div>
 
 <form action="/admin/user/form" method="post" name="add">
-    <button type="submit">Ajouter un utilisateur</button>
+    <button class="btn" type="submit">Ajouter un utilisateur</button>
 </form>
