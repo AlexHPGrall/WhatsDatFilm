@@ -1,5 +1,6 @@
 <?php
 
+require_once 'bdd.php';
 class MovieGenre extends Bdd
 {
 
@@ -36,6 +37,12 @@ class MovieGenre extends Bdd
     }
 
     // Database methods
+
+    public function addMovieGenre()
+    {
+        $req = $this->bdd->prepare('INSERT IGNORE INTO movie_genre (genreId, movieId) VALUES (:genreId, :movieId)');
+        $req->execute(array('genreId' => $this->genreId, 'movieId' => $this->movieId));
+    }
 
     public function getGenresByMovie($movieId)
     {

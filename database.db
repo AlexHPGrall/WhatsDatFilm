@@ -6,15 +6,13 @@ USE webdb;
 
 -- Create the movie table
 CREATE TABLE IF NOT EXISTS movie (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    movieId INT NOT NULL,
+    movieId INT PRIMARY KEY,
     movieTitle VARCHAR(255) NOT NULL,
     frenchTitle VARCHAR(255),
     runtime INT,
     releaseDate DATE,
     movieImageUrl VARCHAR(255),
-    movieRating FLOAT NOT NULL,
-    UNIQUE (movieId)
+    movieRating FLOAT NOT NULL
 );
 
 
@@ -30,7 +28,7 @@ CREATE TABLE IF NOT EXISTS user (
 
 -- Create the genre table
 CREATE TABLE IF NOT EXISTS genre (
-    genreId INT PRIMARY KEY AUTO_INCREMENT,
+    genreId INT PRIMARY KEY,
     genreName VARCHAR(255) NOT NULL
 );
 
@@ -45,7 +43,7 @@ CREATE TABLE IF NOT EXISTS movie_genre (
 
 -- Create the production_company table
 CREATE TABLE IF NOT EXISTS production_company (
-    productionCompanyId INT PRIMARY KEY AUTO_INCREMENT,
+    productionCompanyId INT PRIMARY KEY,
     productionCompanyName VARCHAR(255) NOT NULL,
     productionCompanyCountry VARCHAR(255) NOT NULL,
     productionCompanyLogoUrl VARCHAR(255) NOT NULL
@@ -62,7 +60,7 @@ CREATE TABLE IF NOT EXISTS movie_production (
 
 -- Create the director table
 CREATE TABLE IF NOT EXISTS director (
-    directorId INT PRIMARY KEY AUTO_INCREMENT,
+    directorId INT PRIMARY KEY,
     directorName VARCHAR(255) NOT NULL
 );
 
@@ -77,13 +75,13 @@ CREATE TABLE IF NOT EXISTS movie_director (
 
 -- Create the actor table
 CREATE TABLE IF NOT EXISTS actor (
-    actorId INT PRIMARY KEY AUTO_INCREMENT,
+    actorId INT PRIMARY KEY,
     actorName VARCHAR(255) NOT NULL
 );
 
 -- Create the acting_credit table
 CREATE TABLE IF NOT EXISTS acting_credit (
-    creditId INT PRIMARY KEY AUTO_INCREMENT,
+    creditId INT PRIMARY KEY,
     movieId INT,
     actorId INT,
     characterName VARCHAR(255) NOT NULL,

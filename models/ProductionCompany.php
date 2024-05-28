@@ -1,5 +1,6 @@
 <?php
 
+require_once 'bdd.php';
 class ProductionCompany extends Bdd
 {
 
@@ -55,6 +56,12 @@ class ProductionCompany extends Bdd
     }
 
     // Database methods
+    public function addProductionCompany()
+    {
+        $req = $this->bdd->prepare('INSERT IGNORE INTO production_company (productionCompanyId, productionCompanyName, productionCompanyCountry, productionCompanyLogoUrl) VALUES (:id, :name, :country, :logoUrl)');
+        $req->execute(array('id' => $this->productionCompanyId, 'name' => $this->productionCompanyName, 'country' => $this->productionCompanyCountry, 'logoUrl' => $this->productionCompanyLogoUrl));
+    }
+
 
     public function getProductionCompanyById($id)
     {

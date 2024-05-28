@@ -1,5 +1,6 @@
 <?php
 
+require_once 'bdd.php';
 class MovieDirector extends Bdd
 {
 
@@ -36,6 +37,12 @@ class MovieDirector extends Bdd
     }
 
     // Database methods
+
+    public function addMovieDirector()
+    {
+        $req = $this->bdd->prepare('INSERT IGNORE INTO movie_director (movieId, directorId) VALUES (:movieId, :directorId)');
+        $req->execute(array('movieId' => $this->movieId, 'directorId' => $this->directorId));
+    }
 
     public function getDirectorByMovieId($movieId)
     {

@@ -1,16 +1,17 @@
 <?php
 
+require_once 'bdd.php';
 class Director extends Bdd
 {
     private $directorId;
     private $directorName;
 
     // Constructor
-    public function __construct($id, $name)
+    public function __construct($directorId, $directorName)
     {
         Bdd::__construct();
-        $this->directorId = $id;
-        $this->directorName = $name;
+        $this->directorId = $directorId;
+        $this->directorName = $directorName;
     }
 
     // Getters and Setters
@@ -78,6 +79,12 @@ class Director extends Bdd
     {
         $req = $this->bdd->prepare('INSERT INTO DIRECTOR (directorName) VALUES (:name)');
         $req->execute(array('name' => $this->directorName));
+    }
+
+    public function addDirector()
+    {
+        $req = $this->bdd->prepare('INSERT IGNORE INTO DIRECTOR (directorId, directorName) VALUES (:directorId, :directorName)');
+        return $req->execute(array('directorId' => $this->directorId, 'directorName' => $this->directorName));
     }
 
     public function delete()

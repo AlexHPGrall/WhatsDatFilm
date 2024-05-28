@@ -20,7 +20,7 @@ $(document).ready(function () {
         $.ajax({
             url: '/api/api_search.php',
             type: 'GET',
-            data: { query: query },
+            data: { functionname: 'search', query: query },
             success: function (data) {
                 filmList.innerHTML = displayResults(data);
             },
@@ -65,11 +65,12 @@ $(document).ready(function () {
     $(document).on('click', '.add-btn', function () {
         var movieId = $(this).data('id');
         var movieData = movies[movieId];
+        console.log(movieId);
         addToDatabase(movieData);
+        addMovieDetails(movieId);
     });
 
     function addToDatabase(movieData) {
-        console.log("movieData: ",movieData);
         $.ajax({
             url: '/api/tmdb.php',
             type: 'POST',
@@ -77,10 +78,25 @@ $(document).ready(function () {
             success: function () {
                 alert('Film ajouté à la base de données avec succès !');
             },
-            error: function (reponse, statut, erreur) {
+            error: function (reponse, erreur) {
                 console.log(reponse);
                 console.log(erreur);
-              },
+            },
+        });
+    }
+
+    function addMovieDetails(movieId) {
+        $.ajax({
+            url: '/api/api_search.php',
+            type: 'GET',
+            data: { functionname: 'details', movieId: movieId },
+            success: function () {
+                console.log("Ca passe !");
+            },
+            error: function (reponse, erreur) {
+                console.log(reponse);
+                console.log(erreur);
+            },
         });
     }
 });

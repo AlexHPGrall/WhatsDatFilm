@@ -1,20 +1,21 @@
 <?php
 
+require_once 'bdd.php';
 class ActingCredit extends Bdd
 {
 
     private $creditId;
-    private $characterName;
-    private $actorId;
     private $movieId;
+    private $actorId;
+    private $characterName;
 
-    public function __construct($creditId, $characterName, $actorId, $movieId)
+    public function __construct($creditId, $movieId, $actorId, $characterName)
     {
         Bdd::__construct();
         $this->creditId = $creditId;
-        $this->characterName = $characterName;
-        $this->actorId = $actorId;
         $this->movieId = $movieId;
+        $this->actorId = $actorId;
+        $this->characterName = $characterName;
     }
 
     // Getters and setters for id and name properties
@@ -87,6 +88,12 @@ class ActingCredit extends Bdd
         $req = $this->bdd->prepare('SELECT * FROM acting_credit');
         $req->execute();
         return $req->fetchAll();
+    }
+
+    public function addActingCredit()
+    {
+        $req = $this->bdd->prepare('INSERT IGNORE INTO acting_credit (creditId, movieId, actorId, characterName) VALUES (:creditId, :movieId, :actorId, :characterName)');
+        $req->execute(array('creditId' => $this->creditId, 'movieId' => $this->movieId, 'actorId' => $this->actorId, 'characterName' => $this->characterName));
     }
 
     public function save()

@@ -1,15 +1,16 @@
 <?php
 
+require_once 'bdd.php';
 class Genre extends Bdd
 {
     private $genreId;
     private $genreName;
 
-    public function __construct($id, $name)
+    public function __construct($genreId, $genreName)
     {
         Bdd::__construct();
-        $this->genreId = $id;
-        $this->genreName = $name;
+        $this->genreId = $genreId;
+        $this->genreName = $genreName;
     }
 
     // Getters and Setters
@@ -64,6 +65,12 @@ class Genre extends Bdd
         $req = $this->bdd->prepare('SELECT genreName FROM GENRE WHERE genreId =:id');
         $req->execute(array('id' => $id));
         return $req->fetch();
+    }
+
+    public function addGenre()
+    {
+        $req = $this->bdd->prepare('INSERT IGNORE INTO genre (genreId, genreName) VALUES (:genreId, :genreName)');
+        $req->execute(array('genreId' => $this->genreId, 'genreName' => $this->genreName));
     }
 
     public function save()

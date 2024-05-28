@@ -1,5 +1,6 @@
 <?php
 
+require_once 'bdd.php';
 class Actor extends Bdd
 {
 
@@ -66,4 +67,11 @@ class Actor extends Bdd
         $req->execute(array('actorName' => $actorName));
         return $req->fetch();
     }
+
+    public function addActor()
+    {
+        $req = $this->bdd->prepare('INSERT IGNORE INTO ACTOR (actorId, actorName) VALUES (:actorId, :actorName)');
+        $req->execute(array('actorId' => $this->actorId, 'actorName' => $this->actorName));
+    }
+
 }
