@@ -19,7 +19,12 @@ include_once("models/Movie.php");
                {
                     $accessMethod = $accessMethod.$list[$i];
                }
-               admin::{$accessMethod}();
+               
+               try {
+                    admin::{$accessMethod}();
+               } catch (Error $e){
+                    admin::home();
+               }
 
           } 
 
@@ -93,7 +98,8 @@ include_once("models/Movie.php");
 
           public static function movie()
           {
-               $movie = new Movie("", "");
+               var_dump("je suis dans movie()");
+               $movie = new Movie("", "", "", "", "", "", "");
                $table = $movie->getAllMovies();
                $adminView = "movies.php";
                include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
@@ -101,7 +107,7 @@ include_once("models/Movie.php");
 
           public static function movieDelete()
           {
-               $movie = new Movie("", "");
+               $movie = new Movie("", "", "", "", "", "", "");
         
                $movie->deleteMovieFromId($_POST['movieId']);
         

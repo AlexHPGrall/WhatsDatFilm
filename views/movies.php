@@ -2,8 +2,8 @@
 <html lang="fr">
 
 <input id="string" type="text">
-<button type="button" id="search">Rechercher</button>
-<button type="button" id="reset">Réinitialiser</button>
+<button class="btn" type="button" id="search">Rechercher</button>
+<button class="btn" type="button" id="reset">Réinitialiser</button>
 
 <div class="tableWrapper">
     <table>
@@ -28,7 +28,7 @@
                     <td><?= $movieData['movieRating'] ?></td>
                     <td>
                         <form action="/admin/movie/delete" method="post">
-                            <button type="submit" name="movieId" value="'.$movieData["movieId"].'">Supprimer</button> 
+                            <button class="btn" type="submit" name="movieId" value="'.$movieData["movieId"].'">Supprimer</button> 
                         </form>
                     </td>
                 </tr>
@@ -39,5 +39,5 @@
 </div>
 
 <form action="/admin/api" method="post">
-    <button type="submit">Ajouter un film</button>
+    <button class="btn" type="submit">Ajouter un film</button>
 </form>
