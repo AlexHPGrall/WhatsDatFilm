@@ -13,24 +13,19 @@
 
     <main class="centeredMain">
         <div class="userFormContainer">
-            <form action="/login.php" method="POST" class="userForm">
+            <form action="/loginController/log" method="POST" class="userForm">
                 <div class="formContainer">
                     <input type="text" name="userName" required="">
-                    <label>Username</label>
+                    <label>Nom d'utilisateur</label>
                 </div>
                 <div class="formContainer">
                     <input type="password" name="userPassword" required="">
-                    <label>Password</label>
+                    <label>Mot de passe</label>
                 </div>
-                <a href="/login">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <button type="submit" class="button">Connexion</button>
-                </a>
-                <a href="/signup" class="signup">
-                    Sign Up
+                <button type="submit" class="button">Connexion</button>
+
+                <a href="/loginController/signin" class="signin">
+                    S'inscrire
                 </a>
             </form>
         </div>

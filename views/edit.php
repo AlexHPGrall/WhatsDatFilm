@@ -8,34 +8,34 @@
 </head>
 
 <body>
-    <form action="/Admin/User/Update" method="POST">
+    <form action="/admin/user/update" method="POST">
         <div>
-            <label>Username: </label>
+            <label>Nom d'utlisateur : </label>
         </div>
         <div>
             <input type="text" name="user" value="<?php echo $user->getUserLogin() ?>" />
         </div>
         <div>
-            <label>Password: </label>
+            <label>Mot de passe : </label>
         </div>
         <div>
             <input type="password" name="pass" value="<?php echo $user->getUserPassword() ?>" />
         </div>
         </div>
         <div>
-            <label>FirstName: </label>
+            <label>Prénom : </label>
         </div>
         <div>
             <input type="text" name="firstName" value="<?php echo $user->getUserFirstName() ?>" />
         </div>
         <div>
-            <label>LastName: </label>
+            <label>Nom : </label>
         </div>
         <div>
             <input type="text" name="lastName" value="<?php echo $user->getUserLastName() ?>" />
         </div>
         <div>
-            <label>E-mail: </label>
+            <label>Adresse mail: </label>
         </div>
         <div>
             <input type="text" name="email" value="<?php echo $user->getUserEmail() ?>" />

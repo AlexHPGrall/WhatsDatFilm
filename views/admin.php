@@ -9,17 +9,11 @@
 <body>
 
     <?php require 'header.php' ?>
-    <form action="/logout" method="post">
-        <button type="submit">Déconnexion</button>
-    </form>
 
     <main class="centeredMain">
 
         <?php require $adminView ?>
 
-        <input id="string" type="text">
-        <button type="button" id="search">Rechercher</button>
-        <button type="button" id="reset">Réinitialiser</button>
     </main>
 
     <?php require 'footer.php' ?>

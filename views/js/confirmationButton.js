@@ -11,8 +11,6 @@ $(document).ready(function() {
         var confirmation = confirm("Êtes-vous sûr de vouloir continuer ?");
         if (confirmation) {
             form.submit();
-        } else {
-            alert("Action annulée !");
-        }
+        } 
     });
 });
