@@ -13,7 +13,7 @@
 
     <div class="centeredMain">
         <div class="userFormContainer">
-            <form action="/login/signin" method="POST" class="userForm">
+            <form action="/loginController/signin" method="POST" class="userForm">
                 <div class="formContainer">
                     <label>Nom d'utilisateur : </label>
                     <input type="text" name="user" />

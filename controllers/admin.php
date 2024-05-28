@@ -1,7 +1,7 @@
 <?php
-include("models/bdd.php");
-include("models/user.php");
-include("models/Movie.php");
+include_once("models/bdd.php");
+include_once("models/user.php");
+include_once("models/Movie.php");
 
  
      class admin
@@ -11,7 +11,7 @@ include("models/Movie.php");
           {  
                $uri = $_SERVER['REQUEST_URI'];  
                $uri = rtrim($uri,"/");
-            
+               
                $list= explode("/", strtolower($uri));  
                $accessMethod = "";
                //concatenation des token pour appeler la bonne methode

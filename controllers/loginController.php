@@ -1,6 +1,6 @@
 <?php
 
-class login {
+class loginController {
 
     public static function index()
     {  
@@ -17,13 +17,13 @@ class login {
         }
 
         if ($accessMethod != "") {
-            login::$accessMethod();
+            loginController::$accessMethod();
         }
         else if ($accessMethod == "admin") {
-            login::login();
+            loginController::login();
         } 
         else {
-            login::login();
+            loginController::login();
         }
 
     } 
@@ -80,7 +80,7 @@ class login {
     {
         session_unset();
         session_destroy();
-        header("Location: login");
+        header("Location: /login");
     }
 
     public static function signin()

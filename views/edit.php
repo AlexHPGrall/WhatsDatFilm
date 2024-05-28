@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <form action="/Admin/User/Update" method="POST">
+    <form action="/admin/user/update" method="POST">
         <div>
             <label>Nom d'utlisateur : </label>
         </div>

@@ -149,7 +149,7 @@ class User extends Bdd
         ));
     }
 
-    public function getUserFromId($id)
+    public function getUserFromId($id) 
     {
         $req = $this->bdd->prepare('SELECT * FROM User WHERE userId = :id');
         $req->execute(array(

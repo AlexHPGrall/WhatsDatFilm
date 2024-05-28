@@ -1,17 +1,23 @@
 <?php
-session_start();
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 include("controllers/admin.php");
 include("controllers/movieController.php");
-include("controllers/login.php");
+include("controllers/loginController.php");
+include("controllers/userController.php");
+
 $uri = $_SERVER['REQUEST_URI'];
-//Gestionnaire de session (si pas de session redirection vers la page de login/signup)
+//Gestionnaire de session 
 if(!isset($_SESSION['userId']) && $uri != '/signin')
 {
-    login::index();
+    loginController::index();
 }
 else if($uri == '/signin')
 {
-    header("Location: /login/signin");
+    header("Location: /loginController/signin");
     exit;
 }
 else
