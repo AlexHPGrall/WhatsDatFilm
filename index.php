@@ -30,7 +30,7 @@ else
         $controller = explode("/", strtolower($uri));
         $controller[1]::index();
 
-    } catch (Exception $e) {
+    } catch (Error $e) {
         echo 'Error 404';
     }
 }

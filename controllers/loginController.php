@@ -14,14 +14,18 @@ class loginController {
         for($i=2; $i<count($list); $i++)
         {
             $accessMethod = $accessMethod.$list[$i];
+            if ($accessMethod == "admin" || $accessMethod == "userController") {
+                loginController::login();
+            }
         }
 
         if ($accessMethod != "") {
-            loginController::$accessMethod();
+            try {
+                loginController::$accessMethod();
+            } catch(Error $e) {
+                include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');
+            }
         }
-        else if ($accessMethod == "admin") {
-            loginController::login();
-        } 
         else {
             loginController::login();
         }
