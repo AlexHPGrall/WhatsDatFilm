@@ -14,9 +14,6 @@
 
         <?php require $adminView ?>
 
-        <input id="string" type="text">
-        <button type="button" id="search">Rechercher</button>
-        <button type="button" id="reset">Réinitialiser</button>
     </main>
 
     <?php require 'footer.php' ?>

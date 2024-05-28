@@ -109,7 +109,11 @@ include_once("models/Movie.php");
                die();
           } 
 
-       
+          public static function home()
+          {
+               $adminView = "adminhome.php";
+               include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
+          }
 
 
      }  

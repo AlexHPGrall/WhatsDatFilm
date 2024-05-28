@@ -116,11 +116,15 @@ input {
 }
 
 .headerLeft {
-    width: 100%
+    width: 100%;
+    
 }
 
 .headerRight {
-    width: 100%
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .headerCenter {
@@ -252,6 +256,15 @@ th {
     background-color: buttonface;
     box-sizing: border-box;
     width: -webkit-max-content;
+}
+
+.logBtn {
+    background: none;
+    border: none;
+}
+
+.logBtnContent {
+    width: 24px;
 }
 
 .filmPoster {
