@@ -9,9 +9,6 @@
 <body>
 
     <?php require 'header.php' ?>
-    <form action="/loginController/logout" method="post">
-        <button type="submit">Déconnexion</button>
-    </form>
 
     <?php 
     $userData = new User("", "");
