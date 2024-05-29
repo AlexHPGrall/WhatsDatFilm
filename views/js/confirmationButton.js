@@ -13,4 +13,5 @@ $(document).ready(function() {
             form.submit();
         } 
     });
+    console.log(button);
 });

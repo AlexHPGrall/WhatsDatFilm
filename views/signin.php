@@ -20,7 +20,7 @@
                 </div>
                 <div class="formContainer">
                     <label>Mot de passe : </label>
-                    <input type="password" name="pass" />
+                    <input type="password" name="pass" id="passwordInput" />
                 </div>
                 <div class="formContainer">
                     <label>Prénom : </label>
@@ -42,6 +42,9 @@
     </div>
 
     <?php require "footer.php" ?>
+
+    <script src="/jquery.js"></script>
+    <script src="/views/js/password.js"></script>
 
 </body>
 
