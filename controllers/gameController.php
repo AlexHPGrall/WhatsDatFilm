@@ -17,18 +17,16 @@ class gameController {
         }
 
         if ($accessMethod == "") {
-            var_dump("if");
-            userController::home();
+            gameController::home();
         } else {
-            var_dump("else");
-            var_dump($accessMethod);
-            try {userController::$accessMethod();}
+            try {gameController::$accessMethod();}
             catch(Error $e) {include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');}
         }
 
     } 
 
     public static function home() {
+        $headerView = "headerGame.php";
         include($_SERVER['DOCUMENT_ROOT'].'/views/game.php');
     }
 
