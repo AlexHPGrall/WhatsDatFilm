@@ -8,6 +8,7 @@ include("controllers/admin.php");
 include("controllers/movieController.php");
 include("controllers/loginController.php");
 include("controllers/userController.php");
+include("controllers/gameController.php");
 
 $uri = $_SERVER['REQUEST_URI'];
 //Gestionnaire de session 

@@ -12,7 +12,6 @@
 
     <main class="centeredMain">
 
-        <?php  ?>
         <div>printf("this is a test")</div>
 
     </main>
