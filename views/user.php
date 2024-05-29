@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<input id="string" type="text">
-<button class="btn" type="button" id="search">Rechercher</button>
-<button class="btn" type="button" id="reset">Réinitialiser</button>
-
 <div class="tableWrapper">
     <table>
         <thead>
