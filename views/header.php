@@ -2,7 +2,9 @@
 <html lang="fr">
 
 <header>
-    <div class="headerLeft"></div>
+    <div class="headerLeft">
+        <?php //require $headerView ?> 
+    </div>
     <div class="headerCenter">
         <img src="/views/Whats Dat Film.png" alt="Whats Dat Film" class="whatsDatImg">
     </div>

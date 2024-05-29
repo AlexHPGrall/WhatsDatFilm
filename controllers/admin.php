@@ -3,7 +3,7 @@ include_once("models/bdd.php");
 include_once("models/user.php");
 include_once("models/Movie.php");
 
- 
+
      class admin
      {
 
