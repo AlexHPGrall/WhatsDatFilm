@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<div class="tableSearch">
+    <input id="string" type="text" placeholder="bar de recherche" class="tableSearchElmt">
+    <button class="btn tableSearchElmt" type="button" id="search">Rechercher</button>
+    <button class="btn tableSearchElmt" type="button" id="reset">Réinitialiser</button>
+</div>
+
 <div class="tableWrapper">
     <table>
         <thead>
