@@ -12,7 +12,7 @@
 
     <main class="centeredMain">
 
-        <div>printf("this is a test")</div>
+        <div>Le jeu sera ici</div>
 
     </main>
 
