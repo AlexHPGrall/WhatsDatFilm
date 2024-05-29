@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var button = $("form :submit");
+    var button = $("form :submit:not(#user, #home, #movie, #game)");
 
     button.on('click',function(event) {
         event.preventDefault();
@@ -13,4 +13,5 @@ $(document).ready(function() {
             form.submit();
         } 
     });
+    console.log(button);
 });

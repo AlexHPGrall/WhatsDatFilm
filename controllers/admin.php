@@ -3,7 +3,7 @@ include_once("models/bdd.php");
 include_once("models/user.php");
 include_once("models/Movie.php");
 
- 
+
      class admin
      {
 
@@ -31,6 +31,7 @@ include_once("models/Movie.php");
 
           public static function api()
           {
+               $headerView = "headerAdminMovie.php";
                include($_SERVER['DOCUMENT_ROOT'].'/views/testapiview.php');
           }
 
@@ -39,6 +40,7 @@ include_once("models/Movie.php");
                $user = new User("", "");
                $table = $user->getAllUsers();
                $adminView= "user.php";
+               $headerView = "headerAdminUser.php";
                include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
           }
 
@@ -60,6 +62,7 @@ include_once("models/Movie.php");
           {
                $user=new User("" , "");
                echo $user->getUserLogin();
+               $headerView = "headerAdminUser.php";
                include($_SERVER['DOCUMENT_ROOT'].'/views/form.php');
           }
 
@@ -78,7 +81,6 @@ include_once("models/Movie.php");
                $user = new User("", "");
         
                $user->getUserFromId($_POST['userId']);
-
                include($_SERVER['DOCUMENT_ROOT'].'/views/edit.php');
 
           } 
@@ -101,6 +103,7 @@ include_once("models/Movie.php");
                $movie = new Movie("", "", "", "", "", "", "");
                $table = $movie->getAllMovies();
                $adminView = "movies.php";
+               $headerView = "headerAdminMovie.php";
                include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
           }
 
@@ -117,6 +120,7 @@ include_once("models/Movie.php");
           public static function home()
           {
                $adminView = "adminhome.php";
+               $headerView = "headerAdminHome.php";
                include($_SERVER['DOCUMENT_ROOT'].'/views/admin.php');
           }
 

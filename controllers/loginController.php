@@ -38,6 +38,7 @@ class loginController {
             admin::user();
         }
         else {
+            $headerView = "headerLogin.php";
             include($_SERVER['DOCUMENT_ROOT'].'/views/login.php');
         }
     }
@@ -89,6 +90,7 @@ class loginController {
 
     public static function signin()
     {
+        $headerView = "headerLogin.php";
 
         if (session_status() == PHP_SESSION_NONE) {
             session_start();

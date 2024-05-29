@@ -25,6 +25,7 @@ class userController {
     } 
 
     public static function home() {
+        $headerView = "headerUser.php";
         include($_SERVER['DOCUMENT_ROOT'].'/views/useredit.php');
     }
 
