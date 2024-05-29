@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<form action="/todefine" method="post">
+<form action="/game/home" method="post">
     <button class="btn" type="submit" id="game">Game</button>
 </form>
 <form action="/admin/home" method="post">
