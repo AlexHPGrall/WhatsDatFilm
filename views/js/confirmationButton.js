@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var button = $("form :submit");
+    var button = $("form :submit:not(#user, #home, #movie)");
 
     button.on('click',function(event) {
         event.preventDefault();

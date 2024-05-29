@@ -2,8 +2,8 @@
 <html lang="fr">
 
 <form action="/admin/home" method="post">
-    <button class="btn" type="button" id="Home">Rechercher</button>
+    <button class="btn" type="submit" id="home">Home</button>
 </form>
 <form action="/admin/user" method="post">
-    <button class="btn" type="button" id="Users">Rechercher</button>
+    <button class="btn" type="submit" id="user">Users</button>
 </form>

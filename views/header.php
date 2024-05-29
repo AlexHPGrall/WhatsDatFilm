@@ -3,7 +3,7 @@
 
 <header>
     <div class="headerLeft">
-        <?php //require $headerView ?> 
+        <?php require $headerView ?> 
     </div>
     <div class="headerCenter">
         <img src="/views/Whats Dat Film.png" alt="Whats Dat Film" class="whatsDatImg">
