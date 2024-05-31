@@ -12,14 +12,14 @@
 
     <?php require "header.php"; ?>
 
-    <form class="returnBtn" action="admin/user" method="post" name="return">
+    <form class="returnBtn" action="adminController/user" method="post" name="return">
         <button class="btn" type="submit" id="return">Retour</button>
     </form>
 
     <main>
         <div class="centeredMain">
             <div class="userFormContainer">
-                <form action="/admin/user/add" method="POST" class="userForm">
+                <form action="/adminController/user/add" method="POST" class="userForm">
                     <div class="formContainer">
                         <label>Nom d'utilisateur : </label>
                         <input type="text" name="user" value="<?php echo $user->getUserLogin() ?>" />

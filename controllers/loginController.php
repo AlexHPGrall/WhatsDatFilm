@@ -14,7 +14,7 @@ class loginController {
         for($i=2; $i<count($list); $i++)
         {
             $accessMethod = $accessMethod.$list[$i];
-            if ($accessMethod == "admin" || $accessMethod == "userController") {
+            if ($accessMethod == "adminController" || $accessMethod == "userController") {
                 loginController::login();
             }
         }
@@ -35,7 +35,7 @@ class loginController {
     public static function login() 
     {
         if (self::isLoggedIn()) {
-            admin::user();
+            adminController::user();
         }
         else {
             $headerView = "headerLogin.php";
@@ -66,7 +66,7 @@ class loginController {
             if ($cred && $cred['userPassword'] == $password) {
                 $user->readUser();
                 $_SESSION['userId'] = $user->getUserId();
-                header("Location: /admin/user");
+                header("Location: /gameController/home");
                 exit;
             }
             else {
@@ -108,7 +108,7 @@ class loginController {
             $user->readUser();
 
             $_SESSION['userId'] = $user->getUserId();
-            header("Location: /admin/user"); //à changer
+            header("Location: /gameController/home"); //à changer
             exit;
         }
 

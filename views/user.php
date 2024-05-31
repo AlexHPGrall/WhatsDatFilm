@@ -33,10 +33,10 @@
                         <td><?= $userData['userLastName'] ?></td>
                         <td><?= $userData['userEmail'] ?></td>
                         <td>
-                        <form action="/admin/user/delete" method="post" name="delete">
+                        <form action="/adminController/user/delete" method="post" name="delete">
                             <button class="btn" type="submit" name="userId" value="<?= $userData["userId"] ?>">Supprimer</button> 
                         </form>
-                <form action="/admin/user/edit" method="post">
+                <form action="/adminController/user/edit" method="post">
                             <button class="btn" type="submit" name="userId" value="<?= $userData["userId"] ?>">Edit</button> 
                         </form>
                 </td>
@@ -47,6 +47,6 @@
 
 </div>
 
-<form action="/admin/user/form" method="post" name="add">
+<form action="/adminController/user/form" method="post" name="add">
     <button class="btn" type="submit">Ajouter un utilisateur</button>
 </form>

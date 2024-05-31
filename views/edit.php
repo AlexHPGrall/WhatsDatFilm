@@ -9,12 +9,12 @@
 
 <!-- Modification d'un utilisateur quand on est admin -->
 
-<form class="returnBtn" action="admin/user" method="post" name="return">
+<form class="returnBtn" action="adminController/user" method="post" name="return">
     <button class="btn" type="submit" id="return">Retour</button>
 </form>
 
 <body>
-    <form action="/admin/user/update" method="POST">
+    <form action="/adminController/user/update" method="POST">
         <div>
             <label>Nom d'utlisateur : </label>
         </div>

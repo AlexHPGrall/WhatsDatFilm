@@ -4,7 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-include("controllers/admin.php");
+include("controllers/adminController.php");
 include("controllers/movieController.php");
 include("controllers/loginController.php");
 include("controllers/userController.php");

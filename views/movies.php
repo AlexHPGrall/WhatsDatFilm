@@ -31,7 +31,7 @@
                     <td><?= $movieData['releaseDate'] ?></td>
                     <td><?= $movieData['movieRating'] ?></td>
                     <td>
-                        <form action="/admin/movie/delete" method="post">
+                        <form action="/adminController/movie/delete" method="post">
                             <button class="btn" type="submit" name="movieId" value="'.$movieData["movieId"].'">Supprimer</button> 
                         </form>
                     </td>
@@ -42,6 +42,6 @@
 
 </div>
 
-<form action="/admin/api" method="post">
+<form action="/adminController/api" method="post">
     <button class="btn" type="submit">Ajouter un film</button>
 </form>
