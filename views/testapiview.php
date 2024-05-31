@@ -13,6 +13,11 @@
 <?php require 'header.php' ?>
 
 <div class="centeredMain">
+
+  <form class="returnBtn" action="admin/movie" method="post" name="return">
+    <button class="btn" type="submit" id="return">Retour</button>
+  </form>
+
   <div class="searchContainer">
     <input id="searchInput" type="text" placeholder="Rechercher ..." class="searchBar">
     <i class="bi bi-search"></i>

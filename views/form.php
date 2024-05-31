@@ -12,6 +12,10 @@
 
     <?php require "header.php"; ?>
 
+    <form class="returnBtn" action="admin/user" method="post" name="return">
+        <button class="btn" type="submit" id="return">Retour</button>
+    </form>
+
     <main>
         <div class="centeredMain">
             <div class="userFormContainer">
