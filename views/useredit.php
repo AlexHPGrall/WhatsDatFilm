@@ -20,14 +20,14 @@
     <div class="centeredMain">
         <div class="userFormContainer">
             <form action="/userController/edit" method="POST" class="userForm">
-                <div class="formContainer">
+                <!-- <div class="formContainer">
                     <label>Nom d'utilisateur : </label>
                     <input type="text" name="user" value="<?php echo $userData->getUserLogin() ?>"/>
                 </div>
                 <div class="formContainer">
                     <label>Mot de passe : </label>
-                    <input type="password" name="pass" value="<?php echo $userData->getUserPassword() ?>"/>
-                </div>
+                    <input type="password" name="pass" value="<?php //echo $userData->getUserPassword() ?>"/>
+                </div> -->
                 <div class="formContainer">
                     <label>Prénom : </label>
                     <input type="text" name="firstName" value="<?php echo $userData->getUserFirstName() ?>"/>

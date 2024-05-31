@@ -23,6 +23,12 @@
                 <div class="formContainer">
                     <label>Mot de passe : </label>
                     <input type="password" name="pass" id="passwordInput" />
+                    <div id="errorMessage1" style="color: red;"></div>
+                </div>
+                <div class="formContainer">
+                    <label>Mot de passe : </label>
+                    <input type="password" name="passBis" id="passwordInputBis" />
+                    <div id="errorMessage2" style="color: red;"></div>
                 </div>
                 <div class="formContainer">
                     <label>Prénom : </label>
@@ -37,7 +43,9 @@
                     <input type="text" name="email" />
                 </div>
                 <div>
-                    <input type="submit" />
+                    <button class="btn" type="submit">
+                        S'inscrire
+                    </button>
                 </div>
             </form>
         </div>

@@ -85,7 +85,12 @@ class loginController {
     {
         session_unset();
         session_destroy();
-        header("Location: /login");
+        header("Location: /loginController");
+    }
+
+    public static function singe() {
+        $headerView = "headerLogin.php";
+        include($_SERVER['DOCUMENT_ROOT'].'/views/signin.php');
     }
 
     public static function signin()
@@ -108,7 +113,7 @@ class loginController {
             $user->readUser();
 
             $_SESSION['userId'] = $user->getUserId();
-            header("Location: /gameController/home"); //à changer
+            header("Location: /gameController/home"); 
             exit;
         }
 
