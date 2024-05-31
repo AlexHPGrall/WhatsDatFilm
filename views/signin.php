@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
+<!-- Vue du formulaire de création d'un compte -->
+
 <body>
 
     <?php require "header.php" ?>

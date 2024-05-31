@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
+<!-- Vue d'édition de mon profil -->
+
 <body>
 
     <?php require 'header.php' ?>

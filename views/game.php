@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
+<!-- Vue du jeu de l'application -->
+
 <body>
 
     <?php require 'header.php' ?>

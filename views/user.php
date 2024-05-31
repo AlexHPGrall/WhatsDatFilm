@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<!-- Vue intégrée à la page admin, c'est le tableau des utilisateurs enregistrés -->
+
 <form class="returnBtn" action="admin/user" method="post" name="return">
     <button class="btn" type="submit" id="return">Retour</button>
 </form>

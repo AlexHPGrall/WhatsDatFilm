@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<!-- Vue intégrée à la page admin, c'est le tableau des films enregistrés dans notre base de donnée -->
+
 <form class="returnBtn" action="admin/movie" method="post" name="return">
     <button class="btn" type="submit" id="return">Retour</button>
 </form>

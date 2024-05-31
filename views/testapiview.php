@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<!-- Vue de la page d'ajout de film depuis tmdb à notre base de donnée -->
+
 <?php require 'header.php' ?>
 
 <div class="centeredMain">

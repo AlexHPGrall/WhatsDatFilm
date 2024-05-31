@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
+<!-- Modification d'un utilisateur quand on est admin -->
+
 <body>
     <form action="/admin/user/update" method="POST">
         <div>

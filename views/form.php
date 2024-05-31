@@ -6,6 +6,8 @@
  <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
+<!-- Vue de l'ajout d'utilisateurs dans la partie administration (peut être doublon avec signin) -->
+
 <body>
 
     <?php require "header.php"; ?>
