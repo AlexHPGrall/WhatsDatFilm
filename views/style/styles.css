@@ -289,3 +289,8 @@ th {
 .btn {
     cursor: pointer;
 }
+
+.returnBtn {
+    width: 80%;
+    margin: 4px;
+}

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<form class="returnBtn" action="admin/movie" method="post" name="return">
+    <button class="btn" type="submit" id="return">Retour</button>
+</form>
+
 <div class="tableSearch">
     <input id="string" type="text" placeholder="bar de recherche" class="tableSearchElmt">
     <button class="btn tableSearchElmt" type="button" id="search">Rechercher</button>
