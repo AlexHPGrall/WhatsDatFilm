@@ -8,9 +8,16 @@
 </head>
 <body>
 
+<!-- Vue de la page d'ajout de film depuis tmdb à notre base de donnée -->
+
 <?php require 'header.php' ?>
 
 <div class="centeredMain">
+
+  <form class="returnBtn" action="adminController/movie" method="post" name="return">
+    <button class="btn" type="submit" id="return">Retour</button>
+  </form>
+
   <div class="searchContainer">
     <input id="searchInput" type="text" placeholder="Rechercher ..." class="searchBar">
     <i class="bi bi-search"></i>

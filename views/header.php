@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<!-- Header général de l'application -->
+
 <header>
     <div class="headerLeft">
         <?php require $headerView ?> 

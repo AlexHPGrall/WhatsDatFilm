@@ -4,7 +4,7 @@ include_once("models/user.php");
 include_once("models/Movie.php");
 
 
-     class admin
+     class adminController
      {
 
           public static function index()
@@ -21,9 +21,9 @@ include_once("models/Movie.php");
                }
                
                try {
-                    admin::{$accessMethod}();
+                    adminController::{$accessMethod}();
                } catch (Error $e){
-                    admin::home();
+                    adminController::home();
                }
 
           } 
@@ -53,7 +53,7 @@ include_once("models/Movie.php");
                $user->setUserEmail($_POST['email']);
                $user->updateUser();
           
-               header("Location: /admin/user");
+               header("Location: /adminController/user");
                die();
 
           } 
@@ -72,7 +72,7 @@ include_once("models/Movie.php");
         
                $user->deleteUserFromId($_POST['userId']);
         
-               header("Location: /admin/user");
+               header("Location: /adminController/user");
                die();
           } 
        
@@ -94,7 +94,7 @@ include_once("models/Movie.php");
                $user->setUserEmail($_POST['email']);
                $user->addUser();
           
-               header("Location: /admin/user");
+               header("Location: /adminController/user");
                die();
           } 
 
@@ -113,7 +113,7 @@ include_once("models/Movie.php");
         
                $movie->deleteMovieFromId($_POST['movieId']);
         
-               header("Location: /admin/movie");
+               header("Location: /Controller/movie");
                die();
           } 
 

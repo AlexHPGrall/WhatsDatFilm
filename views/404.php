@@ -7,6 +7,8 @@
     <link rel="stylesheet" href=".views/style/styles.css">
 </head>
 
+<!-- Page erreur 404 aux couleurs de notre application -->
+
 <body>
     <div class="centeredMain">
         <h1>404 Not Found</h1>

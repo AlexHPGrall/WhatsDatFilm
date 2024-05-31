@@ -276,6 +276,7 @@ th {
 .logBtn {
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 .logBtnContent {
@@ -288,4 +289,9 @@ th {
 
 .btn {
     cursor: pointer;
+}
+
+.returnBtn {
+    width: 80%;
+    margin: 4px;
 }

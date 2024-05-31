@@ -1,9 +1,24 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<form action="/admin/home" method="post">
-    <button class="btn" type="submit" id="home">Backoffice</button>
-</form>
+<!-- Boutons du header quand on est sur la page du jeu -->
+
+<?php 
+    require_once('models/Admin.php');
+    include_once('models/Actor.php');
+    $userId = $_SESSION['userId'];
+    $admin = new Admin("", $userId);
+
+    $isAdmin = $admin->getAdminByUserId($userId);
+
+    if ($isAdmin) {
+        echo '
+        <form action="/adminController/home" method="post">
+            <button class="btn" type="submit" id="home">Backoffice</button>
+        </form>';
+    }
+?>
+
 <form action="/userController/home" method="post">
     <button class="btn" type="submit" id="user">Mon profil</button>
 </form>

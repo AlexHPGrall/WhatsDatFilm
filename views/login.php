@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
+<!-- Vue de la page de connexion -->
+
 <body>
 
     <?php require "header.php" ?>

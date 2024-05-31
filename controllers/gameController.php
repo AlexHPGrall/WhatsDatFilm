@@ -19,8 +19,8 @@ class gameController {
         if ($accessMethod == "") {
             gameController::home();
         } else {
-            try {gameController::$accessMethod();}
-            catch(Error $e) {include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');}
+            /*try {*/gameController::$accessMethod();//}
+            //catch(Error $e) {include($_SERVER['DOCUMENT_ROOT'].'/views/404.php');}
         }
 
     } 

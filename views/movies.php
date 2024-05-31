@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 
+<!-- Vue intégrée à la page admin, c'est le tableau des films enregistrés dans notre base de donnée -->
+
 <div class="tableSearch">
     <input id="string" type="text" placeholder="bar de recherche" class="tableSearchElmt">
     <button class="btn tableSearchElmt" type="button" id="search">Rechercher</button>
@@ -29,7 +31,7 @@
                     <td><?= $movieData['releaseDate'] ?></td>
                     <td><?= $movieData['movieRating'] ?></td>
                     <td>
-                        <form action="/admin/movie/delete" method="post">
+                        <form action="/adminController/movie/delete" method="post">
                             <button class="btn" type="submit" name="movieId" value="'.$movieData["movieId"].'">Supprimer</button> 
                         </form>
                     </td>
@@ -40,6 +42,6 @@
 
 </div>
 
-<form action="/admin/api" method="post">
+<form action="/adminController/api" method="post">
     <button class="btn" type="submit">Ajouter un film</button>
 </form>

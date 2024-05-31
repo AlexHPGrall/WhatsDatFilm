@@ -3,7 +3,6 @@
 require_once 'bdd.php';
 class Actor extends Bdd
 {
-
     private $actorId;
     private $actorName;
 

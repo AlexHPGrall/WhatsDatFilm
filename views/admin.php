@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
+<!-- Vue de la partie administration de l'apllication, $adminView appelle les 
+pages "home", "user" ou "movie" de l'application en fonction du besoin -->
+
 <body>
 
     <?php require 'header.php' ?>
