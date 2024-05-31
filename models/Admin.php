@@ -1,5 +1,6 @@
 <?php
 
+require_once 'bdd.php';
 class Admin extends Bdd
 {
     private $adminId;
