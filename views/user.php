@@ -23,23 +23,22 @@
             </tr>
         </thead>
         <tbody>
-            <?php 
-                foreach($table as $userData): ?>
-                        <tr>
-                        <td><?= $userData['userId'] ?></td>
-                        <td><?= $userData['userLogin'] ?></td>
-                        <td><?= $userData['userPassword'] ?></td>
-                        <td><?= $userData['userFirstName'] ?></td>
-                        <td><?= $userData['userLastName'] ?></td>
-                        <td><?= $userData['userEmail'] ?></td>
-                        <td>
+            <?php foreach($table as $userData): ?>
+                <tr>
+                    <td><?= $userData['userId'] ?></td>
+                    <td><?= $userData['userLogin'] ?></td>
+                    <td><?= $userData['userPassword'] ?></td>
+                    <td><?= $userData['userFirstName'] ?></td>
+                    <td><?= $userData['userLastName'] ?></td>
+                    <td><?= $userData['userEmail'] ?></td>
+                    <td>
                         <form action="/adminController/user/delete" method="post" name="delete">
                             <button class="btn" type="submit" name="userId" value="<?= $userData["userId"] ?>">Supprimer</button> 
                         </form>
-                <form action="/adminController/user/edit" method="post">
+                        <form action="/adminController/user/edit" method="post">
                             <button class="btn" type="submit" name="userId" value="<?= $userData["userId"] ?>">Edit</button> 
                         </form>
-                </td>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         <tbody>
