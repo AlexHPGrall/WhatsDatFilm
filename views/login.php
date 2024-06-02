@@ -15,21 +15,31 @@
 
     <main class="centeredMain">
         <div class="userFormContainer">
-            <form action="/loginController/log" method="POST" class="userForm">
-                <div class="formContainer">
-                    <input type="text" name="userName" required="">
-                    <label>Nom d'utilisateur</label>
-                </div>
-                <div class="formContainer">
-                    <input type="password" name="userPassword" required="">
-                    <label>Mot de passe</label>
-                </div>
-                <button type="submit" class="button">Connexion</button>
+            <div class="userForm">
+                <form action="/loginController/log" method="POST" class="form">
+                    <div class="formContainer">
+                        <label>Nom d'utilisateur : </label>
+                        <input type="text" name="userName" required="">
+                    </div>
+                    <div class="formContainer">
+                        <label>Mot de passe : </label>
+                        <input type="password" name="userPassword" required="">
+                    </div>
 
-                <a href="/loginController/signin" class="signin">
-                    S'inscrire
-                </a>
-            </form>
+                    <button type="submit" class="btn">Connexion</button>
+                </form>
+            
+                <form action="/loginController/singe" method="POST" class="paddingTopBottom">
+                    <button type="submit" class="btn">
+                        S'inscrire
+                    </button>
+                </form>
+                <form action="/error404.php" method="POST" class="paddingTopBottom">
+                    <button type="submit" class="btn">
+                        J'ai oublié mon mot de passe ? (pas encore disponible)
+                    </button>
+                </form>
+            </div>
         </div>
     </main>
 

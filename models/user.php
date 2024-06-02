@@ -66,7 +66,7 @@ class User extends Bdd
 
     public function setUserPassword($passwordInput)
     {
-        $this->userPassword = $passwordInput;
+        $this->userPassword = password_hash($passwordInput, PASSWORD_DEFAULT);
     }
 
     public function setUserEmail($emailInput)
@@ -86,8 +86,8 @@ class User extends Bdd
 
     public function readUser()
     {
-        $req = $this->bdd->prepare('SELECT * FROM USER WHERE userLogin =:login  AND userPassword =:pass');
-        $req->execute(array('login' => $this->userLogin, 'pass' => $this->userPassword));
+        $req = $this->bdd->prepare('SELECT * FROM USER WHERE userLogin =:login');
+        $req->execute(array('login' => $this->userLogin));
         $donnees = $req->fetch();
         if ($donnees) {
             $this->setUserId($donnees['userId']);

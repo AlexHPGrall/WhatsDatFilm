@@ -20,28 +20,28 @@
     <div class="centeredMain">
         <div class="userFormContainer">
             <form action="/userController/edit" method="POST" class="userForm">
-                <div class="formContainer">
+                <!-- <div class="formContainer">
                     <label>Nom d'utilisateur : </label>
                     <input type="text" name="user" value="<?php echo $userData->getUserLogin() ?>"/>
                 </div>
                 <div class="formContainer">
                     <label>Mot de passe : </label>
-                    <input type="password" name="pass" value="<?php echo $userData->getUserPassword() ?>"/>
-                </div>
+                    <input type="password" name="pass" value="<?php //echo $userData->getUserPassword() ?>"/>
+                </div> -->
                 <div class="formContainer">
                     <label>Prénom : </label>
-                    <input type="text" name="firstName" value="<?php echo $userData->getUserFirstName() ?>"/>
+                    <input type="text" name="firstName" value="<?php echo $userData->getUserFirstName() ?>" required/>
                 </div>
                 <div class="formContainer">
                     <label>Nom : </label>
-                    <input type="text" name="lastName" value="<?php echo $userData->getUserLastName() ?>"/>
+                    <input type="text" name="lastName" value="<?php echo $userData->getUserLastName() ?>" required/>
                 </div>
                 <div class="formContainer">
                     <label>Adresse mail : </label>
-                    <input type="text" name="email" value="<?php echo $userData->getUserEmail() ?>"/>
+                    <input type="text" name="email" value="<?php echo $userData->getUserEmail() ?>" required/>
                 </div>
                 <div>
-                    <input type="submit"/>
+                    <button class="btn" type="submit">Modifier</button>
                 </div>
             </form>
         </div>
