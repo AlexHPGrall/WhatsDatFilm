@@ -30,6 +30,17 @@ switch ($_GET['functionname']) {
         }
         break;
     
+    case 'searchLocal':
+        include_once $_SERVER['DOCUMENT_ROOT'].'/controllers/movieController.php';
+        if (isset($_GET['query'])) {
+            $query = $_GET['query'];
+            movieController::searchLocal($query);
+        } else {
+            $aResult['error'] = 'No query parameter!';
+            echo json_encode($aResult);
+        }
+        break;
+        
     case 'details':
         include_once $_SERVER['DOCUMENT_ROOT'].'/controllers/movieController.php';
         if (isset($_GET['movieId'])) {

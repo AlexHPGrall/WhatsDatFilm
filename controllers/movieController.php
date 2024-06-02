@@ -86,5 +86,12 @@
          }
       }
 
+      public static function searchLocal($query) {
+         include_once($_SERVER['DOCUMENT_ROOT'].'/models/Movie.php');
+         $movie = new Movie('', $query, '', '', '', '', '');
+         $movies = $movie->searchMovie();
+         echo json_encode($movies);
+      }
+
     }
 ?>
