@@ -59,11 +59,11 @@ class loginController {
             include_once("models/bdd.php");
             include_once("models/user.php");
 
-            $user = new User($username, $password);
+            $user = new User($username, "");
 
             $cred = $user->getLoginCredentials($username);
 
-            if ($cred && $cred['userPassword'] == $password) {
+            if (password_verify($password, $cred['userPassword'])) {
                 $user->readUser();
                 $_SESSION['userId'] = $user->getUserId();
                 header("Location: /gameController/home");
@@ -104,7 +104,7 @@ class loginController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         include_once("models/bdd.php");
         include_once("models/user.php");
-        $user = new User($_POST['user'], $_POST['pass']);
+        $user = new User($_POST['user'], password_hash($_POST['pass'], PASSWORD_DEFAULT));
 
         $user->setUserFirstName($_POST['firstName']);
         $user->setUserLastName($_POST['lastName']);
