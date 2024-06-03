@@ -74,6 +74,7 @@ switch ($_GET['functionname']) {
                 $data = json_decode($response, true);
                 $resultArray[$key] = $data;
             }
+            
             movieController::movieDetails($resultArray);
 
         } else {

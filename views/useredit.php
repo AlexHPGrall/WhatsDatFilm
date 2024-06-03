@@ -19,7 +19,7 @@
 
     <div class="centeredMain">
         <div class="userFormContainer">
-            <form action="/userController/edit" method="POST" class="userForm">
+            <form action="/user/edit" method="POST" class="userForm">
                 <!-- <div class="formContainer">
                     <label>Nom d'utilisateur : </label>
                     <input type="text" name="user" value="<?php echo $userData->getUserLogin() ?>"/>

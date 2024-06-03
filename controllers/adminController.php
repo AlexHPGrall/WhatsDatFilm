@@ -51,9 +51,10 @@ include_once("models/Movie.php");
                $user->setUserFirstName($_POST['firstName']);
                $user->setUserLastName($_POST['lastName']);
                $user->setUserEmail($_POST['email']);
-               $user->updateUser();
+               $user->updateUserFromId($_POST['userId']);
           
-               header("Location: /adminController/user");
+               
+               header("Location: /admin/user");
                die();
 
           } 
@@ -72,7 +73,7 @@ include_once("models/Movie.php");
         
                $user->deleteUserFromId($_POST['userId']);
         
-               header("Location: /adminController/user");
+               header("Location: /admin/user");
                die();
           } 
        
@@ -94,8 +95,10 @@ include_once("models/Movie.php");
                $user->setUserEmail($_POST['email']);
                $user->addUser();
           
-               header("Location: /adminController/user");
+               
+               header("Location: /Admin/user");
                die();
+               
           } 
 
           public static function movie()
@@ -113,7 +116,7 @@ include_once("models/Movie.php");
         
                $movie->deleteMovieFromId($_POST['movieId']);
         
-               header("Location: /Controller/movie");
+               header("Location: /Admin/movie");
                die();
           } 
 

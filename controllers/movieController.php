@@ -23,6 +23,8 @@
        }
 
        public static function add ($movieData) {
+         
+
          include_once($_SERVER['DOCUMENT_ROOT'].'/models/Movie.php');
          $movie = new Movie(
             $movieData['id'], 
@@ -38,6 +40,8 @@
        }
 
        public static function movieDetails ($movieDetails) {
+
+         
          include_once($_SERVER['DOCUMENT_ROOT'].'/models/Genre.php');
          include_once($_SERVER['DOCUMENT_ROOT'].'/models/Director.php');
          include_once($_SERVER['DOCUMENT_ROOT'].'/models/Actor.php');
@@ -52,6 +56,9 @@
          foreach ($movieDetails['credits']['cast'] as $cast) {
             usleep( 100000 );
             if ($cast['known_for_department'] == 'Acting') {
+
+              
+
                $actor = new Actor($cast['id'], $cast['name']);
                $actor->addActor();
 
@@ -59,6 +66,20 @@
                $actingCredit->addActingCredit();
             }
             elseif ($cast['known_for_department'] == 'Directing') {
+
+
+               $director = new Director($cast['id'], $cast['name']);
+               $director->addDirector();
+
+               $movieDirector = new MovieDirector($movieId, $cast['id']);
+               $movieDirector->addMovieDirector();
+            }
+         }
+
+         foreach ($movieDetails['credits']['crew'] as $cast) {
+            usleep( 100000 );
+            if ($cast['known_for_department'] == 'Directing') {
+
                $director = new Director($cast['id'], $cast['name']);
                $director->addDirector();
 

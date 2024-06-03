@@ -94,6 +94,13 @@ class ActingCredit extends Bdd
     {
         $req = $this->bdd->prepare('INSERT IGNORE INTO acting_credit (creditId, movieId, actorId, characterName) VALUES (:creditId, :movieId, :actorId, :characterName)');
         $req->execute(array('creditId' => $this->creditId, 'movieId' => $this->movieId, 'actorId' => $this->actorId, 'characterName' => $this->characterName));
+        
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        $logmessage = print_r($result).PHP_EOL;
+               file_put_contents("logfile.log", $logmessage, FILE_APPEND);
+        
+
     }
 
     public function save()
