@@ -191,9 +191,9 @@ class Movie extends Bdd{
         $stmt = $this->bdd->query('SELECT movieId FROM movie_of_the_day WHERE date = CURDATE()');
         $film_du_jour_id = $stmt->fetchColumn();
 
-        // if($film_du_jour_id == $selected_film_id){
-        //     return ["Success"];
-        // }
+         if($film_du_jour_id == $selected_film_id){
+             return ["Success"];
+         }
 
         $stmt = $this->bdd->prepare('SELECT * FROM movie WHERE movieId = :selected_film_id');
         $stmt->execute(['selected_film_id' => $selected_film_id]);
