@@ -15,6 +15,10 @@
     <main class="centeredMain">
         <input type="text" id="searchInput" placeholder="Rechercher un film">
         <div class="filmList"></div>
+        <div class="similarities-container">
+            <h3>Similarités avec le film du jour :</h3>
+            <div id="similarities"></div>
+        </div>
     </main>
 
     <?php require 'footer.php' ?>

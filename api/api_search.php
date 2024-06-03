@@ -31,10 +31,10 @@ switch ($_GET['functionname']) {
         break;
     
     case 'searchLocal':
-        include_once $_SERVER['DOCUMENT_ROOT'].'/controllers/movieController.php';
+        include_once $_SERVER['DOCUMENT_ROOT'].'/controllers/gameController.php';
         if (isset($_GET['query'])) {
             $query = $_GET['query'];
-            movieController::searchLocal($query);
+            gameController::searchLocal($query);
         } else {
             $aResult['error'] = 'No query parameter!';
             echo json_encode($aResult);
@@ -42,10 +42,10 @@ switch ($_GET['functionname']) {
         break;
     
     case 'compareMovies':
-        include_once $_SERVER['DOCUMENT_ROOT'].'/controllers/movieController.php';
+        include_once $_SERVER['DOCUMENT_ROOT'].'/controllers/gameController.php';
         if (isset($_GET['movieId'])) {
             $movieId = $_GET['movieId'];
-            movieController::compareMovies($movieId);
+            gameController::compareMovies($movieId);
         } else {
             $aResult['error'] = 'No movieId parameter!';
             echo json_encode($aResult);
