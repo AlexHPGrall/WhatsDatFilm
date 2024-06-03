@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var passwordInputBis = document.getElementById('passwordInputBis');
     var errorMessage1 = document.getElementById('errorMessage1');
     var errorMessage2 = document.getElementById('errorMessage2');
+    var bouton = document.getElementById('inscrire');
 
     function checkPassword() {
         var password = passwordInput.value;
@@ -17,12 +18,14 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Mot de passe OK");
             passwordInput.style = "";
             errorMessage1.textContent = "";
+            bouton.disabled = false;
         } else {
             console.log("Le mot de passe ne répond pas aux critères.");
             passwordInput.style.border = "solid";
             passwordInput.style.borderColor = "red";
             passwordInput.style.color = "red";
             errorMessage1.textContent = "Le mot de passe ne répond pas aux critères.";
+            bouton.disabled = true;
         }
     }
 
@@ -36,12 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Les mots de passe correspondent.");
             passwordInputBis.style = "";
             errorMessage2.textContent = "";
+            bouton.disabled = false;
         } else {
             console.log("Le mot de passe n'est pas le même");
             passwordInputBis.style.border = "solid";
             passwordInputBis.style.borderColor = "red";
             passwordInputBis.style.color = "red";
             errorMessage2.textContent = "Les mots de passe ne correspondent pas.";
+            bouton.disabled = true;
         }
     }
 

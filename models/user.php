@@ -181,4 +181,13 @@ class User extends Bdd
             'id' => $id
         ));
     }
+
+    public function loginExist($login)
+    {
+        $req = $this->bdd->prepare('SELECT COUNT(*) FROM USER WHERE userLogin = :login');
+        $req->execute(['login' => $login]);
+        $count = $req->fetchColumn();
+
+        echo json_encode(['exists' => $count > 0]);
+    }
 }
