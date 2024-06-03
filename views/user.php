@@ -28,7 +28,7 @@
                         <tr>
                         <td><?= $userData['userId'] ?></td>
                         <td><?= $userData['userLogin'] ?></td>
-                        <td><?= $userData['userPassword'] ?></td>
+                        <td>••••</td>
                         <td><?= $userData['userFirstName'] ?></td>
                         <td><?= $userData['userLastName'] ?></td>
                         <td><?= $userData['userEmail'] ?></td>
