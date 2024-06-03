@@ -46,7 +46,7 @@ include_once("models/Movie.php");
 
           public static function userupdate()
           {
-               $user=new User($_POST['user'] , $_POST['pass']);
+               $user=new User($_POST['user'] , password_hash($_POST['pass'], PASSWORD_DEFAULT));
             
                $user->setUserFirstName($_POST['firstName']);
                $user->setUserLastName($_POST['lastName']);
@@ -88,7 +88,7 @@ include_once("models/Movie.php");
 
           public static function useradd()
           {
-               $user=new User($_POST['user'] , $_POST['pass']);
+               $user=new User($_POST['user'] , password_hash($_POST['pass'], PASSWORD_DEFAULT));
             
                $user->setUserFirstName($_POST['firstName']);
                $user->setUserLastName($_POST['lastName']);
