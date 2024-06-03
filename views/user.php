@@ -33,11 +33,11 @@
                         <td><?= $userData['userLastName'] ?></td>
                         <td><?= $userData['userEmail'] ?></td>
                         <td>
-                        <form action="/Admin/User/Delete" method="post" name="delete">
+                        <form action="/admin/user/delete" method="post" name="delete">
                             <input type="hidden" name="userId" value="<?= $userData["userId"] ?>"/>
                             <button type="submit" name="userId">Supprimer</button> 
                         </form>
-                        <form action="/Admin/User/Edit" method="post">
+                        <form action="/admin/user/edit" method="post">
                             <input type="hidden" name="userId" value="<?= $userData["userId"] ?>"/>
                             <button type="submit">Edit</button> 
                         </form>
