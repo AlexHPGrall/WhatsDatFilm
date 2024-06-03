@@ -82,6 +82,7 @@ include_once("models/Movie.php");
                $user = new User("", "");
         
                $user->getUserFromId($_POST['userId']);
+               $headerView = 'headerAdminUser.php';
                include($_SERVER['DOCUMENT_ROOT'].'/views/edit.php');
 
           } 
@@ -96,7 +97,7 @@ include_once("models/Movie.php");
                $user->addUser();
           
                
-               header("Location: /Admin/user");
+               header("Location: /admin/user");
                die();
                
           } 
@@ -116,7 +117,7 @@ include_once("models/Movie.php");
         
                $movie->deleteMovieFromId($_POST['movieId']);
         
-               header("Location: /Admin/movie");
+               header("Location: /admin/movie");
                die();
           } 
 
