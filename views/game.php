@@ -13,15 +13,15 @@
     <?php require 'header.php' ?>
 
     <main class="centeredMain">
-
-        <div>Le jeu sera ici</div>
-
+        <input type="text" id="searchInput" placeholder="Rechercher un film">
+        <div class="filmList"></div>
     </main>
 
     <?php require 'footer.php' ?>
 
 
     <script src="/jquery.js"></script>
+    <script src="/views/js/localSearch.js"></script>
     <script src="/views/js/confirmationButton.js"></script>
 
 </body>

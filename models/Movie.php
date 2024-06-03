@@ -125,6 +125,24 @@ class Movie extends Bdd{
         return $req->fetch();
     }
 
+    public function getMovieReleaseDateByMovieId($movieId)
+    {
+        $req = $this->bdd->prepare('SELECT releaseDate FROM movie WHERE movieId = :movieId');
+        $req->execute(array('movieId' => $movieId));
+        return $req->fetch();
+    }
+
+    public function getMovieReleaseDateYearByMovieId($movieId)
+    {
+        $req = $this->bdd->prepare('SELECT releaseDate FROM movie WHERE movieId = :movieId');
+        $req->execute(array('movieId' => $movieId));
+        $date = $req->fetch();
+        if( strlen($date[0])>3){
+            return substr($date[0], 0, 4);
+        }
+        return null;
+    }
+
     public function addMovie()
     {
         $req = $this->bdd->prepare('INSERT IGNORE INTO movie (movieId, movieTitle, frenchTitle, runtime, releaseDate, movieImageUrl, movieRating) VALUES (:movieId, :title, :frenchTitle, :runtime, :releaseDate, :imageUrl, :rating)');
@@ -149,5 +167,102 @@ class Movie extends Bdd{
         $req->execute(array(
             'id' => $id
         ));
+    }
+
+    public function searchMovie($title)
+    {
+        $req = $this->bdd->prepare('SELECT * FROM movie WHERE movieTitle LIKE :title');
+        $req->execute(array('title' => '%'.$title.'%'));
+        return $req->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function compareMovies($selected_film_id)
+    {
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/ActingCredit.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/Actor.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/MovieProduction.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/ProductionCompany.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/MovieGenre.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/Genre.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/MovieDirector.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/Director.php');
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/Movie.php');
+
+        $stmt = $this->bdd->query('SELECT movieId FROM movie_of_the_day WHERE date = CURDATE()');
+        $film_du_jour_id = $stmt->fetchColumn();
+
+        $stmt = $this->bdd->prepare('SELECT * FROM movie WHERE movieId = :selected_film_id');
+        $stmt->execute(['selected_film_id' => $selected_film_id]);
+
+        $film_to_check = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $stmt = $this->bdd->prepare('SELECT * FROM movie WHERE movieId = :film_du_jour_id');
+        $stmt->execute(['film_du_jour_id' => $film_du_jour_id]);
+
+        $film_to_find = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $actingCredits = new ActingCredit('', '', '', '');
+        $actors_id_film_to_check = $actingCredits->getActorIdByMovieId($film_to_check['movieId']);
+
+        $actors_id_film_to_find = $actingCredits->getActorIdByMovieId($film_to_find['movieId']);
+
+        $common_actors = array_intersect($actors_id_film_to_check, $actors_id_film_to_find);
+        
+        $similarities = [];
+        $similarities['Actors'] = [];
+        foreach ($common_actors as $actor_id) {
+            $actorIdDetails = new Actor('', '');  
+            $similarities['Actors'][] =  $actorIdDetails->getActorById($actor_id);
+        }
+
+        $movieProduction = new MovieProduction('', '');
+
+        $production_film_to_check = $movieProduction->getProductionCompanyByMovieId($film_to_check['movieId']);
+        $production_film_to_find = $movieProduction->getProductionCompanyByMovieId($film_to_find['movieId']);
+
+        $common_production = array_intersect($production_film_to_check, $production_film_to_find);
+
+        $similarities['Production'] = [];
+        foreach ($common_production as $production_id) {
+            $productionDetails = new ProductionCompany('','','', '');
+            $similarities['Production'][] = $productionDetails->getProductionCompanyById($production_id);
+        }
+
+        $movieGenre = new MovieGenre('', '');
+
+        $genre_film_to_check = $movieGenre->getGenreByMovieId($film_to_check['movieId']);
+        $genre_film_to_find = $movieGenre->getGenreByMovieId($film_to_find['movieId']);
+
+        $common_genre = array_intersect($genre_film_to_check, $genre_film_to_find);
+
+        $similarities['Genre'] = [];
+        foreach ($common_genre as $genre_id) {
+            $genreDetails = new Genre('', '');
+            $similarities['Genre'][] = $genreDetails->getGenreById($genre_id);
+        }
+
+        $movieDirector = new MovieDirector('', '');
+
+        $director_film_to_check = $movieDirector->getDirectorsByMovieId($film_to_check['movieId']);
+        $director_film_to_find = $movieDirector->getDirectorsByMovieId($film_to_find['movieId']);
+
+        $common_director = array_intersect($director_film_to_check, $director_film_to_find);
+
+        $similarities['Director'] = [];
+        foreach ($common_director as $director_id) {
+            $directorDetails = new Director('', '');
+            $similarities['Director'][] = $directorDetails->getDirectorById($director_id);
+        }
+
+        $movie = new Movie('', '', '', '', '', '', '');
+
+        $release_date_film_to_check = $movie->getMovieReleaseDateYearByMovieId($film_to_check['movieId']);
+        $release_date_film_to_find = $movie->getMovieReleaseDateYearByMovieId($film_to_find['movieId']);
+
+        if ($release_date_film_to_check == $release_date_film_to_find) {
+            $similarities['Release Date'] = $release_date_film_to_check;
+        }
+
+        return $similarities;
     }
 }
