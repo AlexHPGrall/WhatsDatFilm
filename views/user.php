@@ -23,20 +23,23 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach($table as $userData): ?>
-                <tr>
-                    <td><?= $userData['userId'] ?></td>
-                    <td><?= $userData['userLogin'] ?></td>
-                    <td><?= $userData['userPassword'] ?></td>
-                    <td><?= $userData['userFirstName'] ?></td>
-                    <td><?= $userData['userLastName'] ?></td>
-                    <td><?= $userData['userEmail'] ?></td>
-                    <td>
-                        <form action="/adminController/user/delete" method="post" name="delete">
-                            <button class="btn" type="submit" name="userId" value="<?= $userData["userId"] ?>">Supprimer</button> 
+            <?php 
+                foreach($table as $userData): ?>
+                        <tr>
+                        <td><?= $userData['userId'] ?></td>
+                        <td><?= $userData['userLogin'] ?></td>
+                        <td><?= $userData['userPassword'] ?></td>
+                        <td><?= $userData['userFirstName'] ?></td>
+                        <td><?= $userData['userLastName'] ?></td>
+                        <td><?= $userData['userEmail'] ?></td>
+                        <td>
+                        <form action="/Admin/User/Delete" method="post" name="delete">
+                            <input type="hidden" name="userId" value="<?= $userData["userId"] ?>"/>
+                            <button type="submit" name="userId">Supprimer</button> 
                         </form>
-                        <form action="/adminController/user/edit" method="post">
-                            <button class="btn" type="submit" name="userId" value="<?= $userData["userId"] ?>">Edit</button> 
+                        <form action="/Admin/User/Edit" method="post">
+                            <input type="hidden" name="userId" value="<?= $userData["userId"] ?>"/>
+                            <button type="submit">Edit</button> 
                         </form>
                     </td>
                 </tr>
@@ -46,6 +49,6 @@
 
 </div>
 
-<form action="/adminController/user/form" method="post" name="add">
+<form action="/admin/user/form" method="post" name="add">
     <button class="btn" type="submit">Ajouter un utilisateur</button>
 </form>

@@ -18,6 +18,7 @@
                 else {
                     
                     $movieData = $_POST['arguments'][0];
+                    
                     movieController::add($movieData);
                 }
                 break;

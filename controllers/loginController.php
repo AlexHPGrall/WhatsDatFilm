@@ -66,7 +66,7 @@ class loginController {
             if (password_verify($password, $cred['userPassword'])) {
                 $user->readUser();
                 $_SESSION['userId'] = $user->getUserId();
-                header("Location: /gameController/home");
+                header("Location: /Game/home");
                 exit;
             }
             else {
@@ -113,7 +113,7 @@ class loginController {
             $user->readUser();
 
             $_SESSION['userId'] = $user->getUserId();
-            header("Location: /gameController/home"); 
+            header("Location: /Game/home"); //à changer
             exit;
         }
 

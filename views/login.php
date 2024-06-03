@@ -16,7 +16,7 @@
     <main class="centeredMain">
         <div class="userFormContainer">
             <div class="userForm">
-                <form action="/loginController/log" method="POST" class="form">
+                <form action="/login/log" method="POST" class="form">
                     <div class="formContainer">
                         <label>Nom d'utilisateur : </label>
                         <input type="text" name="userName" required="">
@@ -29,7 +29,7 @@
                     <button type="submit" class="btn">Connexion</button>
                 </form>
             
-                <form action="/loginController/singe" method="POST" class="paddingTopBottom">
+                <form action="/login/singe" method="POST" class="paddingTopBottom">
                     <button type="submit" class="btn">
                         S'inscrire
                     </button>

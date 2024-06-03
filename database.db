@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS actor (
 
 -- Create the acting_credit table
 CREATE TABLE IF NOT EXISTS acting_credit (
-    creditId INT PRIMARY KEY,
+    creditId VARCHAR(255) PRIMARY KEY,
     movieId INT,
     actorId INT,
     characterName VARCHAR(255) NOT NULL,

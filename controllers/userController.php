@@ -40,7 +40,7 @@ class userController {
         $user->setUserEmail($_POST['email']);
         $user->updateUser();
           
-        header("Location: /userController");
+        header("Location: /user");
         die();
 
     }
