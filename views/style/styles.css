@@ -295,3 +295,27 @@ th {
     width: 80%;
     margin: 4px;
 }
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.similarities-container {
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.similarity-item {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+    min-width: 200px;
+}
+
+.similarity-item h4 {
+    margin-bottom: 10px;
+}
+
+.similarity-item ul {
+    padding-left: 20px;
+}
