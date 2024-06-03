@@ -47,7 +47,7 @@ class MovieProduction extends Bdd
     {
         $req = $this->bdd->prepare('SELECT productionCompanyId FROM movie_production WHERE movieId =:movieId');
         $req->execute(array('movieId' => $movieId));
-        return $req->fetch();
+        return $req->fetchAll(PDO::FETCH_COLUMN);
     }
 
     public function getMoviesByProductionCompany($productionCompanyId)

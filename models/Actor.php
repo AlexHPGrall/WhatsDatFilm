@@ -73,4 +73,11 @@ class Actor extends Bdd
         $req->execute(array('actorId' => $this->actorId, 'actorName' => $this->actorName));
     }
 
+    public function getActorNameById($actorId)
+    {
+        $req = $this->bdd->prepare('SELECT actorName FROM ACTOR WHERE actorId =:actorId');
+        $req->execute(array('actorId' => $actorId));
+        return $req->fetch();
+    }
+
 }

@@ -113,4 +113,18 @@ class ActingCredit extends Bdd
         $req = $this->bdd->prepare('DELETE FROM acting_credit WHERE creditId =:creditId');
         $req->execute(array('creditId' => $this->creditId));
     }
+
+    public function getAllActingCreditsFromMovieId($movieId)
+    {
+        $req = $this->bdd->prepare('SELECT * FROM acting_credit INNER JOIN actor ON actor.actorId = acting_credit.actorId WHERE movieId =:movieId');
+        $req->execute(array('movieId' => $movieId));
+        return $req->fetchAll();
+    }
+
+    public function getActorIdByMovieId($movieId)
+    {
+        $req = $this->bdd->prepare('SELECT actorId FROM acting_credit WHERE movieId =:movieId');
+        $req->execute(array('movieId' => $movieId));
+        return $req->fetchAll(PDO::FETCH_COLUMN);
+    }
 }

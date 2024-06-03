@@ -20,7 +20,7 @@ $(document).ready(function () {
         $.ajax({
             url: '/api/api_search.php',
             type: 'GET',
-            data: { functionname: 'localSearch', query: query },
+            data: { functionname: 'searchLocal', query: query },
             success: function (data) {
                 filmList.innerHTML = displayResults(data);
             },
@@ -35,15 +35,17 @@ $(document).ready(function () {
         var tableHeader = '<table><thead></thead><tbody>';
         var tableFooter = '</tbody></table>';
         data = JSON.parse(data);
-        if (data && data["results"] && data["results"].length > 0) {
+        console.log(data);
+        if (data) {
             
-            $.each(data.results, function (index, movie) {
-                var imageUrl = movie.poster_path ? 'https://image.tmdb.org/t/p/w500' + movie.poster_path : 'no-image.jpg';
-                var title = movie.title;
-                var releaseYear = movie.release_date ? '(' + movie.release_date.substring(0, 4) + ')' : '(Date inconnue)';
+            $.each(data, function (index, movie) {
+                var imageUrl = movie.movieImageUrl ? movie.movieImageUrl : 'no-image.jpg';
+                var title = movie.movieTitle;
+                console.log(title);
+                var releaseYear = movie.releaseDate ? '(' + movie.releaseDate.substring(0, 4) + ')' : '(Date inconnue)';
                 var table = '<tr>' + '<td><strong>' + title + '</strong></td>' + '<td>' + releaseYear + '</td>' +
-                '<td><img src="' + imageUrl + '" alt="' + title + '" class="filmPoster"></td>' + '<td>' + movie.overview + '</td>' +
-                '<td><button class="add-btn" data-id="' + movie.id + '">Add to database</button></td>' + '</tr>';
+                '<td><img src="' + imageUrl + '" alt="' + title + '" class="filmPoster"></td>' +
+                '<td><button class="add-btn" data-id="' + movie.movieId + '">select movie</button></td>' + '</tr>';
                 results += table;
                 var movieData = {
                     id: movie.id,
@@ -63,35 +65,18 @@ $(document).ready(function () {
     }
 
     $(document).on('click', '.add-btn', function () {
-        var movieId = $(this).data('id');
-        var movieData = movies[movieId];
-        console.log(movieId);
-        addToDatabase(movieData);
-        addMovieDetails(movieId);
+        var movieId = $(this).attr('data-id');
+        confirmChoice(movieId);
     });
 
-    function addToDatabase(movieData) {
-        $.ajax({
-            url: '/api/tmdb.php',
-            type: 'POST',
-            data: { functionname: 'add', arguments: [movieData] },
-            success: function () {
-                alert('Film ajouté à la base de données avec succès !');
-            },
-            error: function (reponse, erreur) {
-                console.log(reponse);
-                console.log(erreur);
-            },
-        });
-    }
-
-    function addMovieDetails(movieId) {
+    function confirmChoice(movieId) {
+        console.log(movieId);
         $.ajax({
             url: '/api/api_search.php',
             type: 'GET',
-            data: { functionname: 'details', movieId: movieId },
-            success: function () {
-                console.log("Ca passe !");
+            data: { functionname: 'compareMovies', movieId: movieId },
+            success: function (response) {
+                console.log(response);
             },
             error: function (reponse, erreur) {
                 console.log(reponse);

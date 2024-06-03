@@ -40,7 +40,18 @@ switch ($_GET['functionname']) {
             echo json_encode($aResult);
         }
         break;
-        
+    
+    case 'compareMovies':
+        include_once $_SERVER['DOCUMENT_ROOT'].'/controllers/movieController.php';
+        if (isset($_GET['movieId'])) {
+            $movieId = $_GET['movieId'];
+            movieController::compareMovies($movieId);
+        } else {
+            $aResult['error'] = 'No movieId parameter!';
+            echo json_encode($aResult);
+        }
+        break;
+
     case 'details':
         include_once $_SERVER['DOCUMENT_ROOT'].'/controllers/movieController.php';
         if (isset($_GET['movieId'])) {

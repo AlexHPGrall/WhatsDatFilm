@@ -44,11 +44,11 @@ class MovieDirector extends Bdd
         $req->execute(array('movieId' => $this->movieId, 'directorId' => $this->directorId));
     }
 
-    public function getDirectorByMovieId($movieId)
+    public function getDirectorsByMovieId($movieId)
     {
         $req = $this->bdd->prepare('SELECT directorId FROM movie_director WHERE movieId =:movieId');
         $req->execute(array('movieId' => $movieId));
-        return $req->fetch();
+        return $req->fetchAll(PDO::FETCH_COLUMN);
     }
 
     public function getMoviesByDirector($directorId)
