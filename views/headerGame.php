@@ -13,12 +13,12 @@
 
     if ($isAdmin) {
         echo '
-        <form action="/adminController/home" method="post">
+        <form action="/admin/home" method="post">
             <button class="btn" type="submit" id="home">Backoffice</button>
         </form>';
     }
 ?>
 
-<form action="/userController/home" method="post">
+<form action="/user/home" method="post">
     <button class="btn" type="submit" id="user">Mon profil</button>
 </form>

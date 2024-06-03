@@ -167,4 +167,18 @@ class User extends Bdd
             $this->setUserEmail($donnees['userEmail']);
         }
     }
+
+    public function updateUserFromId($id) 
+    {
+        $req = $this->bdd->prepare('UPDATE User SET  userFirstName = :firstName, userLastName = :lastName, userEmail = :email, userLogin = :login, userPassword = :password 
+        WHERE userId = :id');
+        $req->execute(array(
+            'firstName' => $this->userFirstName,
+            'lastName' => $this->userLastName,
+            'email' => $this->userEmail,
+            'login' => $this->userLogin,
+            'password' => $this->userPassword,
+            'id' => $id
+        ));
+    }
 }

@@ -14,7 +14,7 @@
 
 <div class="centeredMain">
 
-  <form class="returnBtn" action="adminController/movie" method="post" name="return">
+  <form class="returnBtn" action="admin/movie" method="post" name="return">
     <button class="btn" type="submit" id="return">Retour</button>
   </form>
 

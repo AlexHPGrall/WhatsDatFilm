@@ -18,20 +18,21 @@ if(!isset($_SESSION['userId']) && $uri != '/signin')
 }
 else if($uri == '/signin')
 {
-    header("Location: /loginController/signin");
+    header("Location: /login/signin");
     exit;
 }
 else
 {
     //Parsing de l'url et redirection apropriée
-    //try
-    //{
+    try
+    {
         //le premier token de l'url determine le controller a utiliser
         //la concatenation des token suivants détermine la méthode du controller à appeler (on passe d'abord par l'index du controller)
         $controller = explode("/", strtolower($uri));
-        $controller[1]::index();
+        $controller = $controller[1].'Controller';
+        $controller::index();
 
-    //} catch (Error $e) {
-    //    echo 'Error 404';
-    //}
+    } catch (Error $e) {
+        echo 'Error 404';
+    }
 }

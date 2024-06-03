@@ -31,9 +31,10 @@
                     <td><?= $movieData['releaseDate'] ?></td>
                     <td><?= $movieData['movieRating'] ?></td>
                     <td>
-                        <form action="/adminController/movie/delete" method="post">
-                            <button class="btn" type="submit" name="movieId" value="'.$movieData["movieId"].'">Supprimer</button> 
-                        </form>
+                    <form action="/admin/movie/delete" method="post">       
+                            <input type="hidden" name="movieId" value="'.$movieData["movieId"].'"/>
+                            <button type="submit">Supprimer</button> 
+                    </form>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -42,6 +43,6 @@
 
 </div>
 
-<form action="/adminController/api" method="post">
+<form action="/admin/api" method="post">
     <button class="btn" type="submit">Ajouter un film</button>
 </form>
