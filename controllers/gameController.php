@@ -30,4 +30,18 @@ class gameController {
         include($_SERVER['DOCUMENT_ROOT'].'/views/game.php');
     }
 
+    public static function searchLocal($query) {
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/Movie.php');
+        $movie = new Movie('', '', '', '', '', '', '');
+        $movies = $movie->searchMovie($query);
+        echo json_encode($movies);
+     }
+
+     public static function compareMovies($selected_film_id) {
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/Movie.php');
+        $movie = new Movie('', '', '', '', '', '', '');
+        $result = $movie->compareMovies($selected_film_id);
+        echo json_encode($result);
+     }
+
 }

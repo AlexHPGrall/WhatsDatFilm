@@ -57,4 +57,11 @@ class MovieGenre extends Bdd
         $req->execute(array('genreId' => $genreId));
         return $req->fetchAll();
     }
+
+    public function getGenreByMovieId($movieId)
+    {
+        $req = $this->bdd->prepare('SELECT genreId FROM movie_genre WHERE movieId =:movieId');
+        $req->execute(array('movieId' => $movieId));
+        return $req->fetchAll(PDO::FETCH_COLUMN);
+    }
 }
