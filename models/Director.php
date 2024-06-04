@@ -5,13 +5,15 @@ class Director extends Bdd
 {
     private $directorId;
     private $directorName;
+    private $directorImageUrl;
 
     // Constructor
-    public function __construct($directorId, $directorName)
+    public function __construct($directorId, $directorName,$directorImageUrl)
     {
         Bdd::__construct();
         $this->directorId = $directorId;
         $this->directorName = $directorName;
+        $this->directorImageUrl = $directorImageUrl;
     }
 
     // Getters and Setters
@@ -83,8 +85,8 @@ class Director extends Bdd
 
     public function addDirector()
     {
-        $req = $this->bdd->prepare('INSERT IGNORE INTO DIRECTOR (directorId, directorName) VALUES (:directorId, :directorName)');
-        return $req->execute(array('directorId' => $this->directorId, 'directorName' => $this->directorName));
+        $req = $this->bdd->prepare('INSERT IGNORE INTO DIRECTOR (directorId, directorName, directorImageUrl) VALUES (:directorId, :directorName, :directorImageUrl)');
+        return $req->execute(array('directorId' => $this->directorId, 'directorName' => $this->directorName, 'directorImageUrl' => $this->directorImageUrl));
     }
 
     public function delete()

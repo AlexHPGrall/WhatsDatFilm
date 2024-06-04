@@ -97,8 +97,7 @@ class ActingCredit extends Bdd
         
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
 
-        $logmessage = print_r($result).PHP_EOL;
-               file_put_contents("logfile.log", $logmessage, FILE_APPEND);
+
         
 
     }

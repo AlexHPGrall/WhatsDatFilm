@@ -19,6 +19,10 @@
             <h3>Similarités avec le film du jour :</h3>
             <div id="similarities"></div>
         </div>
+        <div class="history-container">
+            <h3>Vos réponses :</h3>
+            <div id="history"></div>
+        </div>
     </main>
 
     <?php require 'footer.php' ?>
@@ -29,3 +33,4 @@
     <script src="/views/js/confirmationButton.js"></script>
 
 </body>
+

@@ -69,7 +69,8 @@ CREATE TABLE IF NOT EXISTS movie_production (
 -- Create the director table
 CREATE TABLE IF NOT EXISTS director (
     directorId INT PRIMARY KEY,
-    directorName VARCHAR(255) NOT NULL
+    directorName VARCHAR(255) NOT NULL,
+    directorImageUrl VARCHAR(255)
 );
 
 -- Create the movie_director table
@@ -84,12 +85,13 @@ CREATE TABLE IF NOT EXISTS movie_director (
 -- Create the actor table
 CREATE TABLE IF NOT EXISTS actor (
     actorId INT PRIMARY KEY,
-    actorName VARCHAR(255) NOT NULL
+    actorName VARCHAR(255) NOT NULL,
+    actorImageUrl VARCHAR(255),
 );
 
 -- Create the acting_credit table
 CREATE TABLE IF NOT EXISTS acting_credit (
-    id INT AUTO_INCREMEN PRIMARY KEY,
+    id INT AUTO_INCREMENT PRIMARY KEY,
     creditId VARCHAR(255) ,
     movieId INT,
     actorId INT,

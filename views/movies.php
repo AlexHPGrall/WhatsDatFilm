@@ -32,7 +32,7 @@
                     <td><?= $movieData['movieRating'] ?></td>
                     <td>
                     <form action="/admin/movie/delete" method="post">       
-                            <input type="hidden" name="movieId" value="'.$movieData["movieId"].'"/>
+                            <input type="hidden" name="movieId" value="<?= $movieData["movieId"] ?>"/>
                             <button type="submit">Supprimer</button> 
                     </form>
                     </td>

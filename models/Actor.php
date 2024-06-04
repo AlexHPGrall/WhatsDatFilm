@@ -5,12 +5,14 @@ class Actor extends Bdd
 {
     private $actorId;
     private $actorName;
+    private $actorImageUrl;
 
-    public function __construct($actorId, $actorName)
+    public function __construct($actorId, $actorName, $actorImageUrl)
     {
         Bdd::__construct();
         $this->actorId = $actorId;
         $this->actorName = $actorName;
+        $this->actorImageUrl = $actorImageUrl;
     }
 
     // Getters and setters for id and name properties
@@ -69,8 +71,8 @@ class Actor extends Bdd
 
     public function addActor()
     {
-        $req = $this->bdd->prepare('INSERT IGNORE INTO ACTOR (actorId, actorName) VALUES (:actorId, :actorName)');
-        $req->execute(array('actorId' => $this->actorId, 'actorName' => $this->actorName));
+        $req = $this->bdd->prepare('INSERT IGNORE INTO ACTOR (actorId, actorName, actorImageUrl) VALUES (:actorId, :actorName, :actorImageUrl)');
+        $req->execute(array('actorId' => $this->actorId, 'actorName' => $this->actorName, 'actorImageUrl' => $this->actorImageUrl));
     }
 
     public function getActorNameById($actorId)

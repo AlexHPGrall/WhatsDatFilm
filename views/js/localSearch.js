@@ -2,8 +2,10 @@ $(document).ready(function () {
 
     var movies = [];
     var movieSimilarities = {'Actors': [], 'Production': [], 'Genre': [], 'Director': [], 'Release Date': null};
+    var movieData = {'Actors': [], 'Production': [], 'Genre': [], 'Director': [], 'Release Date': null};
     let filmList = document.querySelector(".filmList");
     let similaritiesContainer = document.getElementById('similarities');
+    let historyContainer = document.getElementById('history');
 
     $('#searchInput').on('input', function () {
         var query = $(this).val();
@@ -86,6 +88,22 @@ $(document).ready(function () {
                 console.log(erreur);
             },
         });
+
+        $.ajax({
+            url: '/api/api_search.php',
+            type: 'GET',
+            data: { functionname: 'getMovieData', movieId: movieId },
+            success: function (response) {
+                movieData = JSON.parse(response);
+                displayAnswer(movieData);
+            },
+            error: function (response, erreur) {
+                console.log(response);
+                console.log(erreur);
+            },
+        });
+
+       
     }
 
     function mergeArray(list1, list2) {
@@ -179,4 +197,50 @@ $(document).ready(function () {
 
         similaritiesContainer.innerHTML = html;
     }
+
+    function displayAnswer(movieData)
+{
+    let html ='<div class="film-container">';
+    html +='<div class="film-box" style="background-image: url(\'';
+    html += 'https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg';
+    html+='\');">';
+    html +='<div class="film-content">';
+    html +='         <div class="film-header">';
+    html +='  <h2>Le Seigneur des anneaux : Le Retour du roi</h2>';
+    html +=' </div>';
+    html +='  <div class="film-genres">';
+    html +='       <button class="genre-btn">Aventure</button>';
+    html +='        <button class="genre-btn">Fantastique</button>';
+    html +='          <button class="genre-btn">Action</button>';
+    html +='     </div>';
+    html +='   <div class="film-details">';
+    html +='  <button class="detail-btn">Before 2003</button>';
+    html +='    <button class="detail-btn">Less than 3h21</button>';
+    html +='   <button class="detail-btn"><img src="https://unpkg.com/language-icons/icons/en.svg" width="16" height="16"></button>';
+    html +=' </div>';
+    html +='  <div class="film-production">';
+    html +=' <img src="https://image.tmdb.org/t/p/w154/iaYpEp3LQmb8AfAtmTvpqd4149c.png" alt="New Line Cinema">';
+    html +=' <img src="https://image.tmdb.org/t/p/w154/6FAuASQHybRkZUk08p9PzSs9ezM.png" alt="WingNut Films">';
+    html +='<img src="https://image.tmdb.org/t/p/w154/mlnr7vsBHvLye8oEb5A76C0t8x9.png" alt="The Saul Zaentz Company">';
+    html +=' </div>';
+    html +=' <div class="film-cast">';
+    html +=' <h5>Actors</h5>';
+    html +='<div class="actors-list">';
+    movieData.Actors.forEach(actor => {
+       html +=` <button class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><p>${actor.actorName}</p></button>`;
 });
+    html +=' </div>';
+    html +='</div>';
+    html +='<div class="film-director">';
+    html +=' <h5>Director</h5>';
+    html +=' <button class="director-btn"><img src="https://image.tmdb.org/t/p/w185/bNc908d59Ba8VDNr4eCcm4G1cR.jpg" alt="Peter Jackson"><p>Peter Jackson</p></button>';
+    html +='</div>';
+    html +=' </div>';
+    html +=' </div>';
+    html +='</div>';
+    //html += similaritiesContainer.innerHTML
+    historyContainer.innerHTML = html + historyContainer.innerHTML;
+}
+
+});
+
