@@ -11,12 +11,13 @@
 
 <body>
 
-    <?php require "header.php" ?>
+    <?php             $headerView = "headerLogin.php"; 
+    require "header.php" ?>
 
 
 
     <main class="centeredMain">
-
+        <p>Votre compte utilisateur est activé. Vous pouvez vous connecter.</p>
         <div class="userFormContainer">
             <div class="userForm">
                 <form action="/login/log" method="POST" class="form">

@@ -56,8 +56,8 @@ class loginController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $username = $_POST['userName'];
             $password = $_POST['userPassword'];
-            include_once("models/bdd.php");
-            include_once("models/user.php");
+            require_once("bdd.php");
+            require_once("models/user.php");
 
             $user = new User($username, "");
 
@@ -65,9 +65,16 @@ class loginController {
 
             if (password_verify($password, $cred['userPassword'])) {
                 $user->readUser();
-                $_SESSION['userId'] = $user->getUserId();
-                header("Location: /Game/home");
-                exit;
+                if($user->isUserVerified())
+                {
+                    $_SESSION['userId'] = $user->getUserId();
+                    header("Location: /Game/home");
+                    exit;
+                }
+                else {
+                    header("Location: /login");
+                    exit;
+                }
             }
             else {
                 header("Location: /login");
@@ -85,7 +92,7 @@ class loginController {
     {
         session_unset();
         session_destroy();
-        header("Location: /loginController");
+        header("Location: /login");
     }
 
     public static function singe() {
@@ -102,26 +109,60 @@ class loginController {
         }        
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        include_once("models/bdd.php");
+        include_once("bdd.php");
         include_once("models/user.php");
         $user = new User($_POST['user'], password_hash($_POST['pass'], PASSWORD_DEFAULT));
 
         $user->setUserFirstName($_POST['firstName']);
         $user->setUserLastName($_POST['lastName']);
         $user->setUserEmail($_POST['email']);
+        
+        $token = bin2hex(random_bytes(32));
+        $user->setUserToken($token);
+        
         if ($user->addUser()) {
+
+
+             ini_set('SMTP', 'smtp-watsdatfilm.alwaysdata.net');
+ini_set('smtp_port', '587');
+ini_set('sendmail_from', 'watsdatfilm@alwaysdata.net');
+
+
             $user->readUser();
+            $email = $user->getUserEmail();
+            $to = $email;
+            $subject = "Verification E-Mail";
+            $message = "Veuillez cliquer sur le lien ci-dessous pour activer votre compte WhatsDatFilm:\n";
+            $message .= "https://watsdatfilm.alwaysdata.net/verify?token=$token";
+            $headers = 'From: watsdatfilm@alwaysdata.net' . "\r\n" .
+                       'Reply-To:watsdatfilm@alwaysdata.net' . "\r\n" .
+                       'X-Mailer: PHP/' . phpversion();
 
-            $_SESSION['userId'] = $user->getUserId();
-            header("Location: /Game/home"); //à changer
-            exit;
+    
+
+            if (mail($to, $subject, $message, $headers))
+            {
+                $_SESSION['userId'] = $user->getUserId();
+                include('views/verify.php');
+            }
+            else
+            {
+                header("Location: login.php");
+                exit;
+            }
         }
-
+        else
+        {
+            
         header("Location: login.php");
         exit;
+        }
+
         } else {
             include('views/signin.php');
         }
     }
+
+
 
 }

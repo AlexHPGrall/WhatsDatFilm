@@ -37,61 +37,61 @@ class Director extends Bdd
 
     public function getMoviesByDirector($directorId)
     {
-        $req = $this->bdd->prepare('SELECT movieId FROM MOVIEDIRECTOR WHERE directorId =:directorId');
+        $req = $this->bdd->prepare('SELECT movieId FROM movie_director WHERE directorId =:directorId');
         $req->execute(array('directorId' => $directorId));
         return $req->fetchAll();
     }
 
     public function getDirectorById($id)
     {
-        $req = $this->bdd->prepare('SELECT * FROM DIRECTOR WHERE directorId =:id');
+        $req = $this->bdd->prepare('SELECT * FROM director WHERE directorId =:id');
         $req->execute(array('id' => $id));
         return $req->fetch();
     }
 
     public function getAllDirectors()
     {
-        $req = $this->bdd->prepare('SELECT * FROM DIRECTOR');
+        $req = $this->bdd->prepare('SELECT * FROM director');
         $req->execute();
         return $req->fetchAll();
     }
 
     public function getDirectorIdByName($name)
     {
-        $req = $this->bdd->prepare('SELECT directorId FROM DIRECTOR WHERE directorName =:name');
+        $req = $this->bdd->prepare('SELECT directorId FROM director WHERE directorName =:name');
         $req->execute(array('name' => $name));
         return $req->fetch();
     }
 
     public function getDirectorNameById($id)
     {
-        $req = $this->bdd->prepare('SELECT directorName FROM DIRECTOR WHERE directorId =:id');
+        $req = $this->bdd->prepare('SELECT directorName FROM director WHERE directorId =:id');
         $req->execute(array('id' => $id));
         return $req->fetch();
     }
 
     public function getDirectorIdByMovieId($movieId)
     {
-        $req = $this->bdd->prepare('SELECT directorId FROM MOVIEDIRECTOR WHERE movieId =:movieId');
+        $req = $this->bdd->prepare('SELECT directorId FROM movie_director WHERE movieId =:movieId');
         $req->execute(array('movieId' => $movieId));
         return $req->fetch();
     }
 
     public function save()
     {
-        $req = $this->bdd->prepare('INSERT INTO DIRECTOR (directorName) VALUES (:name)');
+        $req = $this->bdd->prepare('INSERT INTO director (directorName) VALUES (:name)');
         $req->execute(array('name' => $this->directorName));
     }
 
     public function addDirector()
     {
-        $req = $this->bdd->prepare('INSERT IGNORE INTO DIRECTOR (directorId, directorName, directorImageUrl) VALUES (:directorId, :directorName, :directorImageUrl)');
+        $req = $this->bdd->prepare('INSERT IGNORE INTO director (directorId, directorName, directorImageUrl) VALUES (:directorId, :directorName, :directorImageUrl)');
         return $req->execute(array('directorId' => $this->directorId, 'directorName' => $this->directorName, 'directorImageUrl' => $this->directorImageUrl));
     }
 
     public function delete()
     {
-        $req = $this->bdd->prepare('DELETE FROM DIRECTOR WHERE directorId =:id');
+        $req = $this->bdd->prepare('DELETE FROM director WHERE directorId =:id');
         $req->execute(array('id' => $this->directorId));
     }
 }

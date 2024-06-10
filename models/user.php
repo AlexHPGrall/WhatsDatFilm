@@ -8,6 +8,8 @@ class User extends Bdd
     private $userFirstName;
     private $userLastName;
     private $userEmail;
+    private $userToken;
+    private $is_verified;
 
     public function __construct($loginInput, $passInput)
     {
@@ -47,9 +49,19 @@ class User extends Bdd
         return $this->userPassword;
     }
 
+    public function getUserToken()
+    {
+        return $this->userToken;
+    }
+
+    public function isUserVerified()
+{
+    return $this->is_verified;
+}
+
     public function getLoginCredentials($loginInput)
     {
-        $req = $this->bdd->prepare('SELECT userLogin, userPassword FROM USER WHERE userLogin =:login ');
+        $req = $this->bdd->prepare('SELECT userLogin, userPassword FROM user WHERE userLogin =:login ');
         $req->execute(array('login' => $loginInput));
         return $req->fetch();
     }
@@ -84,9 +96,14 @@ class User extends Bdd
         $this->userLastName = $lastNameInput;
     }
 
+    public function setUserToken($token)
+    {
+        $this->userToken = $token;
+    }
+
     public function readUser()
     {
-        $req = $this->bdd->prepare('SELECT * FROM USER WHERE userLogin =:login');
+        $req = $this->bdd->prepare('SELECT * FROM user WHERE userLogin =:login');
         $req->execute(array('login' => $this->userLogin));
         $donnees = $req->fetch();
         if ($donnees) {
@@ -94,36 +111,40 @@ class User extends Bdd
             $this->setUserFirstName($donnees['userFirstName']);
             $this->setUserLastName($donnees['userLastName']);
             $this->setUserEmail($donnees['userEmail']);
+            $this->setUserToken($donnees['userToken']);
+            $this->is_verified= $donnees['is_verified'];
         }
     }
 
     public function addUser()
     {
-        $req = $this->bdd->prepare('INSERT INTO User (userLogin, userPassword, userFirstName, userLastName, userEmail) VALUES (:login, :password, :firstName, :lastName, :email)');
+        $req = $this->bdd->prepare('INSERT INTO user (userLogin, userPassword, userFirstName, userLastName, userEmail, userToken) VALUES (:login, :password, :firstName, :lastName, :email, :token)');
         return $req->execute(array(
             'login' => $this->userLogin,
             'password' => $this->userPassword,
             'firstName' => $this->userFirstName,
             'lastName' => $this->userLastName,
-            'email' => $this->userEmail
+            'email' => $this->userEmail,
+            'token' =>$this->userToken
         ));
     }
 
     public function updateUser()
     {
-        $req = $this->bdd->prepare('UPDATE User SET  userFirstName = :firstName, userLastName = :lastName, userEmail = :email WHERE userLogin = :login AND userPassword = :password');
+        $req = $this->bdd->prepare('UPDATE user SET  userFirstName = :firstName, userLastName = :lastName, userEmail = :email, userToken = :token WHERE userLogin = :login AND userPassword = :password');
         $req->execute(array(
             'firstName' => $this->userFirstName,
             'lastName' => $this->userLastName,
             'email' => $this->userEmail,
             'login' => $this->userLogin,
-            'password' => $this->userPassword
+            'password' => $this->userPassword,
+            'token' =>$this->userToken
         ));
     }
 
     public function deleteUser()
     {
-        $req = $this->bdd->prepare('DELETE FROM User WHERE userLogin = :login AND userPassword = :password');
+        $req = $this->bdd->prepare('DELETE FROM user WHERE userLogin = :login AND userPassword = :password');
         $req->execute(array(
             'login' => $this->userLogin,
             'password' => $this->userPassword
@@ -132,7 +153,7 @@ class User extends Bdd
 
     public function getAllUsers()
     {
-        $reponse = $this->bdd->query('SELECT * FROM USER');
+        $reponse = $this->bdd->query('SELECT * FROM user');
         $table = array();
         while ($donnees = $reponse->fetch()) {
             $table[] = $donnees;
@@ -143,7 +164,7 @@ class User extends Bdd
 
     public function deleteUserFromId($id)
     {
-        $req = $this->bdd->prepare('DELETE FROM User WHERE userId = :id');
+        $req = $this->bdd->prepare('DELETE FROM user WHERE userId = :id');
         $req->execute(array(
             'id' => $id
         ));
@@ -151,7 +172,7 @@ class User extends Bdd
 
     public function getUserFromId($id) 
     {
-        $req = $this->bdd->prepare('SELECT * FROM User WHERE userId = :id');
+        $req = $this->bdd->prepare('SELECT * FROM user WHERE userId = :id');
         $req->execute(array(
             'id' => $id
         ));
@@ -165,12 +186,14 @@ class User extends Bdd
             $this->setUserFirstName($donnees['userFirstName']);
             $this->setUserLastName($donnees['userLastName']);
             $this->setUserEmail($donnees['userEmail']);
+            $this->setUserToken($donnees['userToken']);
+            $this->is_verified= $donnees['is_verified'];
         }
     }
 
     public function updateUserFromId($id) 
     {
-        $req = $this->bdd->prepare('UPDATE User SET  userFirstName = :firstName, userLastName = :lastName, userEmail = :email, userLogin = :login, userPassword = :password 
+        $req = $this->bdd->prepare('UPDATE user SET  userFirstName = :firstName, userLastName = :lastName, userEmail = :email, userToken = :token, userLogin = :login, userPassword = :password 
         WHERE userId = :id');
         $req->execute(array(
             'firstName' => $this->userFirstName,
@@ -178,7 +201,38 @@ class User extends Bdd
             'email' => $this->userEmail,
             'login' => $this->userLogin,
             'password' => $this->userPassword,
+            'token' =>$this->userToken,
             'id' => $id
         ));
     }
+
+    public function getUserFromToken($token) 
+    {
+        $req = $this->bdd->prepare('SELECT * FROM user WHERE userToken = :token');
+        $req->execute(array(
+            'token' => $token
+        ));
+
+        $donnees = $req->fetch();
+        if ($donnees) {
+            $this->setUserId($donnees['userId']);
+            $this->setUserLogin($donnees['userLogin']);
+            $this->setUserPassword($donnees['userPassword']);
+            $this->setUserFirstName($donnees['userFirstName']);
+            $this->setUserLastName($donnees['userLastName']);
+            $this->setUserEmail($donnees['userEmail']);
+            $this->setUserToken($donnees['userToken']);
+            $this->is_verified= $donnees['is_verified'];
+        }
+    }
+
+    public function verifyUser($id) 
+    {
+        $req = $this->bdd->prepare('UPDATE user SET is_verified = 1 WHERE userId = :id');
+        $req->execute(array(
+            'id' => $id
+        ));
+    }
+
+
 }

@@ -1,5 +1,5 @@
 <?php
-include_once("models/bdd.php");
+require_once 'bdd.php';
 include_once("models/user.php");
 include_once("models/Movie.php");
 
