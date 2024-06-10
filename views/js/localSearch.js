@@ -6,6 +6,7 @@ $(document).ready(function () {
     let filmList = document.querySelector(".filmList");
     let similaritiesContainer = document.getElementById('similarities');
     let historyContainer = document.getElementById('history');
+    let historyHtml = '';
 
     $('#searchInput').on('input', function () {
         var query = $(this).val();
@@ -81,7 +82,7 @@ $(document).ready(function () {
             data: { functionname: 'compareMovies', movieId: movieId },
             success: function (response) {
                 movieSimilarities = JSON.parse(mergeArray(movieSimilarities, JSON.parse(response)));
-                displaySimilarities(movieSimilarities);
+                prepareAnswers(movieId, movieSimilarities);
             },
             error: function (response, erreur) {
                 console.log(response);
@@ -89,21 +90,23 @@ $(document).ready(function () {
             },
         });
 
+    }
+
+    function prepareAnswers(movieId, movieSimilarities)
+    {
         $.ajax({
             url: '/api/api_search.php',
             type: 'GET',
             data: { functionname: 'getMovieData', movieId: movieId },
             success: function (response) {
                 movieData = JSON.parse(response);
-                displayAnswer(movieData);
+                displaySimilarities(movieData, movieSimilarities);
             },
             error: function (response, erreur) {
                 console.log(response);
                 console.log(erreur);
             },
         });
-
-       
     }
 
     function mergeArray(list1, list2) {
@@ -153,7 +156,10 @@ $(document).ready(function () {
         return JSON.stringify(mergedList, null, 4);
     }
 
-    function displaySimilarities(similarities) {
+    function displaySimilarities(movieData, similarities) {
+
+        displayAnswer(movieData);
+
         let html = '';
 
         if(similarities instanceof Array) {
@@ -207,50 +213,51 @@ $(document).ready(function () {
             
         }
 
-        similaritiesContainer.innerHTML = html;
+        historyContainer.innerHTML = html + historyHtml;
     }
 
-    function displayAnswer(movieData) {
-        let html ='<div class="displayAnswerContainer" style="background-image: url(\'';
-        html += movieData.movieImageUrl;
-        html += '\');">';        
-        html +='<div>';
-        html +='         <div class="displayAnswerContainer2">';
-        html +='  <h2>'
-        html += movieData.movieTitle;
-        html +=' </h2>';
-        html +=' </div>';
-        html +='  <div class="displayAnswerContainer2">';
-        movieData.Genre.forEach(genre => {
-            html +=' <div class="genre-btn">${genre.genreName}</div>';
-        });
-        html +='     </div>';
-        html +='   <div class="displayAnswerContainer2">';
-        html +='  <div class="detail-btn">';
-        html += movieData.releaseDate;
-        html += '</div>';
-        html +=' </div>';
-        html +=' <h5>Acteurs :</h5>';
-        html +=' <div class="displayAnswerContainer2">';
-        
-        html +='<div>';
-        movieData.Actors.forEach(actor => {
-            html +=` <div class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></div>`;
-        });
-        html +=' </div>';
-        html +='</div>';
-        html +=' <h5>Réalisateurs :</h5>';
-        html +='<div class="displayAnswerContainer2">';
-        
-        movieData.Director.forEach(director => {
-            html +=` <div class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></div>`;
-        });
-        html +='</div>';
-        html +=' </div>';
-        html +=' </div>';
-        //html += similaritiesContainer.innerHTML
-        historyContainer.innerHTML = html + historyContainer.innerHTML;
-    }
+    function displayAnswer(movieData)
+{
+    let html ='<div class="film-container">';
+    html +='<div class="film-box" style="background-image: url(\'';
+    html += movieData.movieImageUrl;
+    html+='\');">';
+    html +='<div class="film-content">';
+    html +='         <div class="film-header">';
+    html +='  <h2>'
+    html += movieData.movieTitle;
+    html +=' </h2>';
+    html +=' </div>';
+    html +='  <div class="film-genres">';
+    movieData.Genre.forEach(genre => {
+        html +=` <button class="genre-btn">${genre.genreName}</button>`;
+ });
+    html +='     </div>';
+    html +='   <div class="film-details">';
+    html +='  <button class="detail-btn">';
+    html += movieData.releaseDate;
+    html += '</button>';
+    html +=' </div>';
+    html +=' <div class="film-cast">';
+    html +=' <h5>Actors</h5>';
+    html +='<div class="actors-list">';
+    movieData.Actors.forEach(actor => {
+       html +=` <button class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></button>`;
+});
+    html +=' </div>';
+    html +='</div>';
+    html +='<div class="film-director">';
+    html +=' <h5>Director</h5>';
+    movieData.Director.forEach(director => {
+        html +=` <button class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></button>`;
+ });
+    html +='</div>';
+    html +=' </div>';
+    html +=' </div>';
+    html +='</div>';
+    //html += similaritiesContainer.innerHTML
+    historyHtml = html + historyHtml;
+}
 
 });
 

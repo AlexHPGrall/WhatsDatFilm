@@ -36,48 +36,48 @@ class Actor extends Bdd
 
     public function getMoviesByActor($actorId)
     {
-        $req = $this->bdd->prepare('SELECT movieId FROM MOVIEACTOR WHERE actorId =:actorId');
+        $req = $this->bdd->prepare('SELECT movieId FROM acting_credit WHERE actorId =:actorId');
         $req->execute(array('actorId' => $actorId));
         return $req->fetchAll();
     }
 
     public function getActorById($actorId)
     {
-        $req = $this->bdd->prepare('SELECT * FROM ACTOR WHERE actorId =:actorId');
+        $req = $this->bdd->prepare('SELECT * FROM actor WHERE actorId =:actorId');
         $req->execute(array('actorId' => $actorId));
         return $req->fetch();
     }
 
     public function getAllActors()
     {
-        $req = $this->bdd->prepare('SELECT * FROM ACTOR');
+        $req = $this->bdd->prepare('SELECT * FROM actor');
         $req->execute();
         return $req->fetchAll();
     }
 
     public function getActorIdByName($actorName)
     {
-        $req = $this->bdd->prepare('SELECT actorId FROM ACTOR WHERE actorName =:actorName');
+        $req = $this->bdd->prepare('SELECT actorId FROM actor WHERE actorName =:actorName');
         $req->execute(array('actorName' => $actorName));
         return $req->fetch();
     }
 
     public function getActorByName($actorName)
     {
-        $req = $this->bdd->prepare('SELECT * FROM ACTOR WHERE actorName =:actorName');
+        $req = $this->bdd->prepare('SELECT * FROM actor WHERE actorName =:actorName');
         $req->execute(array('actorName' => $actorName));
         return $req->fetch();
     }
 
     public function addActor()
     {
-        $req = $this->bdd->prepare('INSERT IGNORE INTO ACTOR (actorId, actorName, actorImageUrl) VALUES (:actorId, :actorName, :actorImageUrl)');
+        $req = $this->bdd->prepare('INSERT IGNORE INTO actor (actorId, actorName, actorImageUrl) VALUES (:actorId, :actorName, :actorImageUrl)');
         $req->execute(array('actorId' => $this->actorId, 'actorName' => $this->actorName, 'actorImageUrl' => $this->actorImageUrl));
     }
 
     public function getActorNameById($actorId)
     {
-        $req = $this->bdd->prepare('SELECT actorName FROM ACTOR WHERE actorId =:actorId');
+        $req = $this->bdd->prepare('SELECT actorName FROM actor WHERE actorId =:actorId');
         $req->execute(array('actorId' => $actorId));
         return $req->fetch();
     }

@@ -34,35 +34,35 @@ class Genre extends Bdd
 
     public function getMoviesByGenre($genreId)
     {
-        $req = $this->bdd->prepare('SELECT movieId FROM MOVIEGENRE WHERE genreId =:genreId');
+        $req = $this->bdd->prepare('SELECT movieId FROM movie_genre WHERE genreId =:genreId');
         $req->execute(array('genreId' => $genreId));
         return $req->fetchAll();
     }
 
     public function getGenreById($id)
     {
-        $req = $this->bdd->prepare('SELECT * FROM GENRE WHERE genreId =:id');
+        $req = $this->bdd->prepare('SELECT * FROM genre WHERE genreId =:id');
         $req->execute(array('id' => $id));
         return $req->fetch();
     }
 
     public function getAllGenres()
     {
-        $req = $this->bdd->prepare('SELECT * FROM GENRE');
+        $req = $this->bdd->prepare('SELECT * FROM genre');
         $req->execute();
         return $req->fetchAll();
     }
 
     public function getGenreIdByName($name)
     {
-        $req = $this->bdd->prepare('SELECT genreId FROM GENRE WHERE genreName =:name');
+        $req = $this->bdd->prepare('SELECT genreId FROM genre WHERE genreName =:name');
         $req->execute(array('name' => $name));
         return $req->fetch();
     }
 
     public function getGenreNameById($id)
     {
-        $req = $this->bdd->prepare('SELECT genreName FROM GENRE WHERE genreId =:id');
+        $req = $this->bdd->prepare('SELECT genreName FROM genre WHERE genreId =:id');
         $req->execute(array('id' => $id));
         return $req->fetch();
     }
@@ -75,7 +75,7 @@ class Genre extends Bdd
 
     public function save()
     {
-        $req = $this->bdd->prepare('INSERT INTO GENRE (genreName) VALUES (:name)');
+        $req = $this->bdd->prepare('INSERT INTO genre (genreName) VALUES (:name)');
         $req->execute(array('name' => $this->genreName));
     }
 }
