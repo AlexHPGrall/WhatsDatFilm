@@ -15,12 +15,7 @@
     <main class="centeredMain">
         <input type="text" id="searchInput" placeholder="Rechercher un film">
         <div class="filmList"></div>
-        <div class="similarities-container">
-            <h3>Similarités avec le film du jour :</h3>
-            <div id="similarities"></div>
-        </div>
         <div class="history-container">
-            <h3>Vos réponses :</h3>
             <div id="history"></div>
         </div>
     </main>

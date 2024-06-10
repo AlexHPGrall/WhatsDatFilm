@@ -6,6 +6,7 @@ $(document).ready(function () {
     let filmList = document.querySelector(".filmList");
     let similaritiesContainer = document.getElementById('similarities');
     let historyContainer = document.getElementById('history');
+    let historyHtml = '';
 
     $('#searchInput').on('input', function () {
         var query = $(this).val();
@@ -81,7 +82,7 @@ $(document).ready(function () {
             data: { functionname: 'compareMovies', movieId: movieId },
             success: function (response) {
                 movieSimilarities = JSON.parse(mergeArray(movieSimilarities, JSON.parse(response)));
-                displaySimilarities(movieSimilarities);
+                prepareAnswers(movieId, movieSimilarities);
             },
             error: function (response, erreur) {
                 console.log(response);
@@ -89,21 +90,23 @@ $(document).ready(function () {
             },
         });
 
+    }
+
+    function prepareAnswers(movieId, movieSimilarities)
+    {
         $.ajax({
             url: '/api/api_search.php',
             type: 'GET',
             data: { functionname: 'getMovieData', movieId: movieId },
             success: function (response) {
                 movieData = JSON.parse(response);
-                displayAnswer(movieData);
+                displaySimilarities(movieData, movieSimilarities);
             },
             error: function (response, erreur) {
                 console.log(response);
                 console.log(erreur);
             },
         });
-
-       
     }
 
     function mergeArray(list1, list2) {
@@ -153,7 +156,10 @@ $(document).ready(function () {
         return JSON.stringify(mergedList, null, 4);
     }
 
-    function displaySimilarities(similarities) {
+    function displaySimilarities(movieData, similarities) {
+
+        displayAnswer(movieData);
+
         let html = '';
 
         if(similarities instanceof Array) {
@@ -203,7 +209,7 @@ $(document).ready(function () {
     html +='</div>';
         }
 
-        similaritiesContainer.innerHTML = html;
+        historyContainer.innerHTML = html + historyHtml;
     }
 
     function displayAnswer(movieData)
@@ -246,7 +252,7 @@ $(document).ready(function () {
     html +=' </div>';
     html +='</div>';
     //html += similaritiesContainer.innerHTML
-    historyContainer.innerHTML = html + historyContainer.innerHTML;
+    historyHtml = html + historyHtml;
 }
 
 });
