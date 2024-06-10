@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8" />
-    <title>Vue Admin</title>
+    <title>Editer mon profil</title>
     <link rel="stylesheet" href="/views/style/styles.css">
 </head>
 
@@ -38,7 +38,8 @@
                 </div>
                 <div class="formContainer">
                     <label>Adresse mail : </label>
-                    <input type="text" name="email" value="<?php echo $userData->getUserEmail() ?>" required/>
+                    <input type="text" name="email" id="emailInput" value="<?php echo $userData->getUserEmail() ?>" required/>
+                    <div id="errorMessage3" style="color: red;"></div>
                 </div>
                 <div>
                     <button class="btn" type="submit">Modifier</button>
@@ -48,5 +49,7 @@
     </div>
 
     <?php require 'footer.php' ?>
+
+    <script src="/views/js/email.js"></script>  
 
 </body>

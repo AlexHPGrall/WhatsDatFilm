@@ -14,11 +14,11 @@
     if ($isAdmin) {
         echo '
         <form action="/admin/home" method="post">
-            <button class="btn" type="submit" id="home">Backoffice</button>
+            <button class="logBtn" type="submit" id="backoffice" title="Backoffice"><img src="/views/style/settings.png" alt="Backoffice" class="logBtnContent"></button>
         </form>';
     }
 ?>
 
 <form action="/user/home" method="post">
-    <button class="btn" type="submit" id="user">Mon profil</button>
+    <button class="logBtn" type="submit" id="user" title="Mon profil"><img src="/views/style/profil.png" alt="Mon profil" class="logBtnContent"></button>
 </form>
