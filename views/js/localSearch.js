@@ -162,37 +162,45 @@ $(document).ready(function () {
             }
         }
         else {
-            if (similarities.Actors.length > 0) {
-                html += '<div class="similarity-item"><h4>Acteurs en commun :</h4><ul>';
-                similarities.Actors.forEach(actor => {
-                    html += `<li>${actor.actorName}</li>`;
-                });
-                html += '</ul></div>';
-            }
 
-            if (similarities.Production.length > 0) {
-                html += '<div class="similarity-item"><h4>Studios en commun :</h4><ul>';
-                similarities.Production.forEach(studio => {
-                    html += `<li>${studio.productionCompanyName}</li>`;
-                });
-                html += '</ul></div>';
-            }
-
-            if (similarities.Genre.length > 0) {
-                html += '<div class="similarity-item"><h4>Genres en commun :</h4><ul>';
-                similarities.Genre.forEach(genre => {
-                    html += `<li>${genre.genreName}</li>`;
-                });
-                html += '</ul></div>';
-            }
-
-            if (similarities.Director.length > 0) {
-                html += '<div class="similarity-item"><h4>Réalisateurs en commun :</h4><ul>';
-                similarities.Director.forEach(director => {
-                    html += `<li>${director.directorName}</li>`;
-                });
-                html += '</ul></div>';
-            }
+            html ='<div class="film-container">';
+    html +='<div class="film-content">';
+    html +='         <div class="film-header">';
+    html +='  <h2>'
+    html += 'Film du Jour';
+    html +=' </h2>';
+    html +=' </div>';
+    html +='  <div class="film-genres">';
+    similarities.Genre.forEach(genre => {
+        html +=` <button class="genre-btn">${genre.genreName}</button>`;
+ });
+    html +='     </div>';
+    html +='   <div class="film-details">';
+    html +='  <button class="detail-btn">';
+    html += similarities.releaseDate;
+    html += '</button>';
+    html +=' </div>';
+    html +='  <div class="film-production">';
+    similarities.Production.forEach(prod => {
+        html +=` <button class="detail-btn"><div class="production-name"><p>${prod.productionCompanyName}</p></div></button>`;
+ });
+    html +=' <div class="film-cast">';
+    html +=' <h5>Actors</h5>';
+    html +='<div class="actors-list">';
+    similarities.Actors.forEach(actor => {
+       html +=` <button class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></button>`;
+});
+    html +=' </div>';
+    html +='</div>';
+    html +='<div class="film-director">';
+    html +=' <h5>Director</h5>';
+    similarities.Director.forEach(director => {
+        html +=` <button class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></button>`;
+ });
+    html +='</div>';
+    html +=' </div>';
+    html +=' </div>';
+    html +='</div>';
         }
 
         similaritiesContainer.innerHTML = html;
@@ -202,38 +210,37 @@ $(document).ready(function () {
 {
     let html ='<div class="film-container">';
     html +='<div class="film-box" style="background-image: url(\'';
-    html += 'https://image.tmdb.org/t/p/w500/6oom5QYQ2yQTMJIbnvbkBL9cHo6.jpg';
+    html += movieData.movieImageUrl;
     html+='\');">';
     html +='<div class="film-content">';
     html +='         <div class="film-header">';
-    html +='  <h2>Le Seigneur des anneaux : Le Retour du roi</h2>';
+    html +='  <h2>'
+    html += movieData.movieTitle;
+    html +=' </h2>';
     html +=' </div>';
     html +='  <div class="film-genres">';
-    html +='       <button class="genre-btn">Aventure</button>';
-    html +='        <button class="genre-btn">Fantastique</button>';
-    html +='          <button class="genre-btn">Action</button>';
+    movieData.Genre.forEach(genre => {
+        html +=` <button class="genre-btn">${genre.genreName}</button>`;
+ });
     html +='     </div>';
     html +='   <div class="film-details">';
-    html +='  <button class="detail-btn">Before 2003</button>';
-    html +='    <button class="detail-btn">Less than 3h21</button>';
-    html +='   <button class="detail-btn"><img src="https://unpkg.com/language-icons/icons/en.svg" width="16" height="16"></button>';
-    html +=' </div>';
-    html +='  <div class="film-production">';
-    html +=' <img src="https://image.tmdb.org/t/p/w154/iaYpEp3LQmb8AfAtmTvpqd4149c.png" alt="New Line Cinema">';
-    html +=' <img src="https://image.tmdb.org/t/p/w154/6FAuASQHybRkZUk08p9PzSs9ezM.png" alt="WingNut Films">';
-    html +='<img src="https://image.tmdb.org/t/p/w154/mlnr7vsBHvLye8oEb5A76C0t8x9.png" alt="The Saul Zaentz Company">';
+    html +='  <button class="detail-btn">';
+    html += movieData.releaseDate;
+    html += '</button>';
     html +=' </div>';
     html +=' <div class="film-cast">';
     html +=' <h5>Actors</h5>';
     html +='<div class="actors-list">';
     movieData.Actors.forEach(actor => {
-       html +=` <button class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><p>${actor.actorName}</p></button>`;
+       html +=` <button class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></button>`;
 });
     html +=' </div>';
     html +='</div>';
     html +='<div class="film-director">';
     html +=' <h5>Director</h5>';
-    html +=' <button class="director-btn"><img src="https://image.tmdb.org/t/p/w185/bNc908d59Ba8VDNr4eCcm4G1cR.jpg" alt="Peter Jackson"><p>Peter Jackson</p></button>';
+    movieData.Director.forEach(director => {
+        html +=` <button class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></button>`;
+ });
     html +='</div>';
     html +=' </div>';
     html +=' </div>';

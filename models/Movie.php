@@ -260,8 +260,11 @@ class Movie extends Bdd{
 
         $movie = new Movie('', '', '', '', '', '', '');
 
+        
         $release_date_film_to_check = $movie->getMovieReleaseDateYearByMovieId($film_to_check['movieId']);
         $release_date_film_to_find = $movie->getMovieReleaseDateYearByMovieId($film_to_find['movieId']);
+        $similarities['Release Date'] = $release_date_film_to_check;
+
 
         if ($release_date_film_to_check == $release_date_film_to_find) {
             $similarities['Release Date'] = $release_date_film_to_check;
@@ -291,6 +294,8 @@ class Movie extends Bdd{
         $actingCredits = new ActingCredit('', '', '', '');
         $actors_id_film_to_check = $actingCredits->getActorIdByMovieId($film_to_check['movieId']);
 
+       
+
         $movieData = [];
         $movieData['Actors'] = [];
         foreach ($actors_id_film_to_check as $actor_id) {
@@ -313,7 +318,7 @@ class Movie extends Bdd{
 
         $genre_film_to_check = $movieGenre->getGenreByMovieId($film_to_check['movieId']);
 
-
+    
         $movieData['Genre'] = [];
         foreach ($genre_film_to_check as $genre_id) {
             $genreDetails = new Genre('', '');
@@ -331,13 +336,15 @@ class Movie extends Bdd{
             $movieData['Director'][] = $directorDetails->getDirectorById($director_id);
         }
 
-        $movie = new Movie('', '', '', '', '', '', '');
+        //$movie = new Movie('', '', '', '', '', '', '');
 
         //$release_date_film_to_find = $movie->getMovieReleaseDateYearByMovieId($film_to_find['movieId']);
 
            // $movieData['Release Date'] = $release_date_film_to_find;
 
-
+           $movieData['movieTitle']= $film_to_check['movieTitle'];
+           $movieData['movieImageUrl']= $film_to_check['movieImageUrl'];
+           $movieData['releaseDate'] = $film_to_check['releaseDate'];
         return $movieData;
     }
 }

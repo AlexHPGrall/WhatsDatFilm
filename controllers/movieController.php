@@ -95,8 +95,7 @@
             usleep( 100000 );
             $newGenre = new Genre($genre['id'], $genre['name']);
             $newGenre->addGenre();
-
-            $movieGenre = new MovieGenre($movieId, $genre['id']);
+            $movieGenre = new MovieGenre($genre['id'], $movieId);
             $movieGenre->addMovieGenre();
          }
 
