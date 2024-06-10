@@ -46,7 +46,7 @@ include_once("models/Movie.php");
 
           public static function userupdate()
           {
-               $user=new User($_POST['user'] , $_POST['pass']);
+               $user=new User($_POST['user'] , password_hash($_POST['pass'], PASSWORD_DEFAULT));
             
                $user->setUserFirstName($_POST['firstName']);
                $user->setUserLastName($_POST['lastName']);
@@ -82,13 +82,14 @@ include_once("models/Movie.php");
                $user = new User("", "");
         
                $user->getUserFromId($_POST['userId']);
+               $headerView = 'headerAdminUser.php';
                include($_SERVER['DOCUMENT_ROOT'].'/views/edit.php');
 
           } 
 
           public static function useradd()
           {
-               $user=new User($_POST['user'] , $_POST['pass']);
+               $user=new User($_POST['user'] , password_hash($_POST['pass'], PASSWORD_DEFAULT));
             
                $user->setUserFirstName($_POST['firstName']);
                $user->setUserLastName($_POST['lastName']);
@@ -96,7 +97,7 @@ include_once("models/Movie.php");
                $user->addUser();
           
                
-               header("Location: /Admin/user");
+               header("Location: /admin/user");
                die();
                
           } 
@@ -116,7 +117,7 @@ include_once("models/Movie.php");
         
                $movie->deleteMovieFromId($_POST['movieId']);
         
-               header("Location: /Admin/movie");
+               header("Location: /admin/movie");
                die();
           } 
 

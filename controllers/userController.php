@@ -32,13 +32,10 @@ class userController {
     public static function edit() {
         $user = new User("" , "");
 
-        $user->getUserFromId($_SESSION['userId']);
-        $user->getUserLogin();
-        $user->getUserPassword();
         $user->setUserFirstName($_POST['firstName']);
         $user->setUserLastName($_POST['lastName']);
         $user->setUserEmail($_POST['email']);
-        $user->updateUser();
+        $user->updateUserFromId($_SESSION['userId']);
           
         header("Location: /user");
         die();

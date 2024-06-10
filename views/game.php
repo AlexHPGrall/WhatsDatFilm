@@ -13,7 +13,7 @@
     <?php require 'header.php' ?>
 
     <main class="centeredMain">
-        <input type="text" id="searchInput" placeholder="Rechercher un film">
+        <input type="text" id="searchInput" placeholder="Rechercher un film" class="searchFilmInput">
         <div class="filmList"></div>
         <div class="history-container">
             <div id="history"></div>

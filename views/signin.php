@@ -18,7 +18,8 @@
             <form action="/login/signin" method="POST" class="userForm" id="signin">
                 <div class="formContainer">
                     <label>*Nom d'utilisateur : </label>
-                    <input type="text" name="user" required/>
+                    <input type="text" name="user" id="loginInput" required/>
+                    <div id="loginStatus"></div>
                 </div>
                 <div class="formContainer">
                     <label>*Mot de passe : </label>
@@ -26,7 +27,7 @@
                     <div id="errorMessage1" style="color: red;"></div>
                 </div>
                 <div class="formContainer">
-                    <label>*Mot de passe : </label>
+                    <label>*Confirmer le mot de passe: </label>
                     <input type="password" name="passBis" id="passwordInputBis" required/>
                     <div id="errorMessage2" style="color: red;"></div>
                 </div>
@@ -40,10 +41,11 @@
                 </div>
                 <div class="formContainer">
                     <label>*Adresse mail : </label>
-                    <input type="text" name="email" required/>
+                    <input type="text" name="email" id="emailInput" required/>
+                    <div id="errorMessage3" style="color: red;"></div>
                 </div>
                 <div>
-                    <button class="btn" type="submit">
+                    <button class="btn" type="submit" id="inscrire">
                         S'inscrire
                     </button>
                 </div>
@@ -55,6 +57,9 @@
 
     <script src="/jquery.js"></script>
     <script src="/views/js/password.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/views/js/login.js"></script>
+    <script src="/views/js/email.js"></script>    
 
 </body>
 
