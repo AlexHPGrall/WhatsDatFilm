@@ -245,6 +245,9 @@ th {
 .filmList {
     overflow-y: auto;
     width: 80%;
+    max-height: 60%;
+    position: absolute;
+    z-index: 1000;
 }
 
 .add-btn {
@@ -317,6 +320,10 @@ th {
 .similarities-container {
     overflow-x: auto;
     white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .similarity-item {
@@ -337,10 +344,15 @@ th {
 .history-container {
     overflow-x: auto;
     white-space: nowrap;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .film-container {
-    display: flex;
+    /*display: flex;*/
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
@@ -385,13 +397,17 @@ th {
 }
 .film-genres, .film-details, .film-production, .film-cast, .film-director {
     margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 .genre-btn, .detail-btn, .actor-btn, .director-btn {
     display: flex; /* Use flexbox to stack picture and text vertically */
     flex-direction: column; /* Stack items vertically */
     align-items: center; /* Center items horizontally */
     justify-content: flex-start; /* Align items at the top */
-    width: 120px; /* Fixed width for each actor block */
+    width: fit-content; /* Fixed width for each actor block */
     text-align: center; /* Center align text */
     padding: 10px; /* Padding inside each block */
     box-sizing: border-box; /* Include padding in the element's total width and height */
@@ -412,7 +428,7 @@ th {
     white-space: nowrap; /* Prevent line breaks within the container */
     width: 90vw; /* Give it a visible width */
     margin: 20px auto; /* Center on the page */
-    border: 1px solid #ccc; /* Optional: Add border for visibility */
+    /*border: 1px solid #ccc; Optional: Add border for visibility */
 }
 .actor-btn img, .director-btn img {
     width: 50px;
@@ -453,34 +469,26 @@ th {
 }
 
 /* Constrain the height of content containers and handle overflow */
-.filmList, .similarities-container, .history-container {
-    max-height: 30vh; /* Adjust based on design requirements */
+.similarities-container, .history-container {
+    max-height: 80vh; /* Adjust based on design requirements */
     overflow-y: auto; /* Allow scrolling if content overflows */
     margin: 10px 0; /* Add spacing around these containers */
 }
 
 
-/* Constrain filmList to a specific height and allow internal scrolling */
-.filmList {
-    max-height: 30vh; /* Limit height to 30% of the viewport height */
-    overflow-y: auto; /* Enable internal scrolling within the film list */
-    border: 1px solid #ccc; /* Optional: Add border for visibility */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    width: 80%; /* Same width as other sections */
-    margin: 10px auto; /* Center the filmList with auto margins */
-    padding: 10px; /* Add padding for better content spacing */
-    background-color: #141e30; /* Optional: Background color for visibility */
-    color: #fff; /* Ensure text color contrasts with the background */
-}
-
 /* General settings for similarities and history containers */
 .similarities-container, .history-container {
+    display: block;
     overflow: visible; /* Ensure these elements rely on the page for scrolling */
     margin-top: 20px; /* Space between sections */
     padding-bottom: 10px; /* Optional: Add padding for visual separation */
     height: auto; /* Allow natural expansion */
     width: 80%; /* Uniform width */
     margin: 10px auto; /* Center these elements with auto margins */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Ensure the main container handles the overall page layout */
@@ -522,16 +530,51 @@ footer {
 }
 
 /* Ensure the history-container does not overlap the footer */
-.history-container {
+/*.history-container {
+    /*display: block;
     padding-bottom: 60px; /* Add bottom padding to prevent overlap with footer */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
+    /*box-sizing: border-box; /* Include padding and border in the element's total width and height */
+/*}
 
 /* Optional: Add spacing between elements within similarities and history containers */
 .similarities-container div, .history-container div {
     margin-bottom: 10px; /* Add some space between individual items */
 }
 
+.historyContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
+.displayAnswerContainer {
+    /*width: 80%;
+    max-height: 320px;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    padding: 24px;
+    margin: 12px;
+}
 
+h2 {
+    max-width: 100%;
+    overflow-wrap: break-word; 
+}
 
+.displayAnswerContainer2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchFilmInput {
+    position: absolute;
+    z-index: 1200;
+    background-color: #243b55;
+}

@@ -164,90 +164,93 @@ $(document).ready(function () {
         else {
 
             html ='<div class="film-container">';
-    html +='<div class="film-content">';
-    html +='         <div class="film-header">';
-    html +='  <h2>'
-    html += 'Film du Jour';
-    html +=' </h2>';
-    html +=' </div>';
-    html +='  <div class="film-genres">';
-    similarities.Genre.forEach(genre => {
-        html +=` <button class="genre-btn">${genre.genreName}</button>`;
- });
-    html +='     </div>';
-    html +='   <div class="film-details">';
-    html +='  <button class="detail-btn">';
-    html += similarities.releaseDate;
-    html += '</button>';
-    html +=' </div>';
-    html +='  <div class="film-production">';
-    similarities.Production.forEach(prod => {
-        html +=` <button class="detail-btn"><div class="production-name"><p>${prod.productionCompanyName}</p></div></button>`;
- });
-    html +=' <div class="film-cast">';
-    html +=' <h5>Actors</h5>';
-    html +='<div class="actors-list">';
-    similarities.Actors.forEach(actor => {
-       html +=` <button class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></button>`;
-});
-    html +=' </div>';
-    html +='</div>';
-    html +='<div class="film-director">';
-    html +=' <h5>Director</h5>';
-    similarities.Director.forEach(director => {
-        html +=` <button class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></button>`;
- });
-    html +='</div>';
-    html +=' </div>';
-    html +=' </div>';
-    html +='</div>';
+            html +='<div>';
+            html +='         <div>';
+            /*html +='  <h2>'
+            html += 'Film du Jour';
+            html +=' </h2>';*/
+            html +=' </div>';
+            html +='  <div>';
+            similarities.Genre.forEach(genre => {
+                html +=` <div class="genre-btn">${genre.genreName}</div>`;
+            });
+            html +='     </div>';
+            html +='   <div>';
+            html +='  <div class="detail-btn">';
+            html += similarities.releaseDate;
+            html += '</div>';
+            html +=' </div>';
+            html +='  <div class="displayAnswerContainer2">';
+            similarities.Production.forEach(prod => {
+                html +=` <div class="detail-btn"><div class="production-name"><p>${prod.productionCompanyName}</p></div></div>`;
+            });
+            html +='</div>';
+
+            html +=' <h5>Acteurs :</h5>';
+            html +=' <div class="displayAnswerContainer2">';
+            
+            html +='<div>';
+            similarities.Actors.forEach(actor => {
+                html +=` <div class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></div>`;
+            });
+            html +=' </div>';
+            html +='</div>';
+            html +=' <h5>Réalisateurs :</h5>';
+            html +='<div class="displayAnswerContainer2">';
+            
+            similarities.Director.forEach(director => {
+                html +=` <div class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></div>`;
+            });
+            html +='</div>';
+            html +=' </div>';
+            html +=' </div>';
+            
         }
 
         similaritiesContainer.innerHTML = html;
     }
 
-    function displayAnswer(movieData)
-{
-    let html ='<div class="film-container">';
-    html +='<div class="film-box" style="background-image: url(\'';
-    html += movieData.movieImageUrl;
-    html+='\');">';
-    html +='<div class="film-content">';
-    html +='         <div class="film-header">';
-    html +='  <h2>'
-    html += movieData.movieTitle;
-    html +=' </h2>';
-    html +=' </div>';
-    html +='  <div class="film-genres">';
-    movieData.Genre.forEach(genre => {
-        html +=` <button class="genre-btn">${genre.genreName}</button>`;
- });
-    html +='     </div>';
-    html +='   <div class="film-details">';
-    html +='  <button class="detail-btn">';
-    html += movieData.releaseDate;
-    html += '</button>';
-    html +=' </div>';
-    html +=' <div class="film-cast">';
-    html +=' <h5>Actors</h5>';
-    html +='<div class="actors-list">';
-    movieData.Actors.forEach(actor => {
-       html +=` <button class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></button>`;
-});
-    html +=' </div>';
-    html +='</div>';
-    html +='<div class="film-director">';
-    html +=' <h5>Director</h5>';
-    movieData.Director.forEach(director => {
-        html +=` <button class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></button>`;
- });
-    html +='</div>';
-    html +=' </div>';
-    html +=' </div>';
-    html +='</div>';
-    //html += similaritiesContainer.innerHTML
-    historyContainer.innerHTML = html + historyContainer.innerHTML;
-}
+    function displayAnswer(movieData) {
+        let html ='<div class="displayAnswerContainer" style="background-image: url(\'';
+        html += movieData.movieImageUrl;
+        html += '\');">';        
+        html +='<div>';
+        html +='         <div class="displayAnswerContainer2">';
+        html +='  <h2>'
+        html += movieData.movieTitle;
+        html +=' </h2>';
+        html +=' </div>';
+        html +='  <div class="displayAnswerContainer2">';
+        movieData.Genre.forEach(genre => {
+            html +=' <div class="genre-btn">${genre.genreName}</div>';
+        });
+        html +='     </div>';
+        html +='   <div class="displayAnswerContainer2">';
+        html +='  <div class="detail-btn">';
+        html += movieData.releaseDate;
+        html += '</div>';
+        html +=' </div>';
+        html +=' <h5>Acteurs :</h5>';
+        html +=' <div class="displayAnswerContainer2">';
+        
+        html +='<div>';
+        movieData.Actors.forEach(actor => {
+            html +=` <div class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></div>`;
+        });
+        html +=' </div>';
+        html +='</div>';
+        html +=' <h5>Réalisateurs :</h5>';
+        html +='<div class="displayAnswerContainer2">';
+        
+        movieData.Director.forEach(director => {
+            html +=` <div class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></div>`;
+        });
+        html +='</div>';
+        html +=' </div>';
+        html +=' </div>';
+        //html += similaritiesContainer.innerHTML
+        historyContainer.innerHTML = html + historyContainer.innerHTML;
+    }
 
 });
 
