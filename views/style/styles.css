@@ -245,6 +245,9 @@ th {
 .filmList {
     overflow-y: auto;
     width: 80%;
+    max-height: 60%;
+    position: absolute;
+    z-index: 1000;
 }
 
 .add-btn {
@@ -317,6 +320,10 @@ th {
 .similarities-container {
     overflow-x: auto;
     white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .similarity-item {
@@ -332,4 +339,242 @@ th {
 
 .similarity-item ul {
     padding-left: 20px;
+}
+
+.history-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.film-container {
+    /*display: flex;*/
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.film-box {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    max-width: 1000px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.film-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+}
+.film-content {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    z-index: 1;
+}
+.film-header h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+.film-genres, .film-details, .film-production, .film-cast, .film-director {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.genre-btn, .detail-btn, .actor-btn, .director-btn {
+    display: flex; /* Use flexbox to stack picture and text vertically */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: flex-start; /* Align items at the top */
+    width: fit-content; /* Fixed width for each actor block */
+    text-align: center; /* Center align text */
+    padding: 10px; /* Padding inside each block */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+    background: #141e30; /* Background color for better visibility */
+    border-radius: 10px; /* Rounded corners */
+    color: #fff; /* Text color */
+    flex-shrink: 0; /* Prevent shrinking to ensure blocks are wide enough */
+}
+.genre-btn:hover, .detail-btn:hover, .actor-btn:hover, .director-btn:hover {
+    background-color: #33393e;
+}
+.film-cast .actors-list, .film-director {
+    display: flex; /* Use flexbox for horizontal alignment */
+    flex-wrap: nowrap; /* Prevent wrapping to keep items in a single line */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    gap: 20px; /* Space between each actor's info */
+    padding: 10px; /* Padding around the container */
+    white-space: nowrap; /* Prevent line breaks within the container */
+    width: 90vw; /* Give it a visible width */
+    margin: 20px auto; /* Center on the page */
+    /*border: 1px solid #ccc; Optional: Add border for visibility */
+}
+.actor-btn img, .director-btn img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.actor-btn p, .director-btn p {
+    margin: 0;
+    padding: 5px 0;
+}
+
+.actor-name, .director-name {
+    white-space: normal; /* Allow text to wrap */
+    overflow-wrap: break-word; /* Break long words to fit within the container */
+    word-wrap: break-word; /* Fallback for older browsers */
+    hyphens: auto; /* Optional: Hyphenate words when breaking */
+}
+
+.film-production img {
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Ensure the main container does not overflow */
+.centeredMain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 80vh;
+    width: 100%;
+    color: #fff;
+    overflow: hidden; /* Add this to prevent overflow */
+}
+
+/* Constrain the height of content containers and handle overflow */
+.similarities-container, .history-container {
+    max-height: 80vh; /* Adjust based on design requirements */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+    margin: 10px 0; /* Add spacing around these containers */
+}
+
+
+/* General settings for similarities and history containers */
+.similarities-container, .history-container {
+    display: block;
+    overflow: visible; /* Ensure these elements rely on the page for scrolling */
+    margin-top: 20px; /* Space between sections */
+    padding-bottom: 10px; /* Optional: Add padding for visual separation */
+    height: auto; /* Allow natural expansion */
+    width: 80%; /* Uniform width */
+    margin: 10px auto; /* Center these elements with auto margins */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ensure the main container handles the overall page layout */
+.centeredMain {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center elements horizontally */
+    justify-content: flex-start; /* Align elements to the top */
+    width: 100%; /* Full width */
+    padding: 20px 0; /* Optional: Add padding for better spacing */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    overflow-y: visible; /* Allow the main container to expand and scroll naturally */
+}
+
+/* Ensure the body allows scrolling */
+body {
+    overflow-y: auto; /* Allow the entire page to scroll */
+    margin: 0; /* Remove default margin */
+    height: 100%; /* Full height usage */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Ensure main content does not exceed viewport width and handle overflow */
+main {
+    max-width: 100vw; /* Ensure the main content doesn't overflow the viewport width */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Ensure the footer stays fixed at the bottom and content doesn't overlap */
+footer {
+    position: relative; /* Relative positioning */
+    width: 100%; /* Full width */
+    height: auto; /* Automatic height adjustment */
+    background: var(--headerBackground); /* Ensure background consistency */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6); /* Optional: Add shadow for visibility */
+    z-index: 10; /* Ensure it's above other elements */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Ensure the history-container does not overlap the footer */
+/*.history-container {
+    /*display: block;
+    padding-bottom: 60px; /* Add bottom padding to prevent overlap with footer */
+    /*box-sizing: border-box; /* Include padding and border in the element's total width and height */
+/*}
+
+/* Optional: Add spacing between elements within similarities and history containers */
+.similarities-container div, .history-container div {
+    margin-bottom: 10px; /* Add some space between individual items */
+}
+
+.historyContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayAnswerContainer {
+    /*width: 80%;
+    max-height: 320px;*/
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    padding: 24px;
+    margin: 12px;
+}
+
+h2 {
+    max-width: 100%;
+    overflow-wrap: break-word; 
+}
+
+.displayAnswerContainer2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchFilmInput {
+    position: absolute;
+    z-index: 1200;
+    background-color: #243b55;
 }

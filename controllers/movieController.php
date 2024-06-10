@@ -57,9 +57,11 @@
             usleep( 100000 );
             if ($cast['known_for_department'] == 'Acting') {
 
-              
+               $imageUrl = $cast['profile_path'] ? 'https://image.tmdb.org/t/p/w185' . $cast['profile_path'] : 'no-image.jpg';
 
-               $actor = new Actor($cast['id'], $cast['name']);
+               //$logmessage = print_r($imageUrl).PHP_EOL;
+               //file_put_contents("logfile.log", $logmessage, FILE_APPEND);
+               $actor = new Actor($cast['id'], $cast['name'],$imageUrl);
                $actor->addActor();
 
                $actingCredit = new ActingCredit($cast["credit_id"], $movieId, $cast['id'], $cast['character']);
@@ -67,8 +69,8 @@
             }
             elseif ($cast['known_for_department'] == 'Directing') {
 
-
-               $director = new Director($cast['id'], $cast['name']);
+               $imageUrl = $cast['profile_path'] ? 'https://image.tmdb.org/t/p/w185' . $cast['profile_path'] : 'no-image.jpg';
+               $director = new Director($cast['id'], $cast['name'], $imageUrl);
                $director->addDirector();
 
                $movieDirector = new MovieDirector($movieId, $cast['id']);
@@ -80,7 +82,8 @@
             usleep( 100000 );
             if ($cast['known_for_department'] == 'Directing') {
 
-               $director = new Director($cast['id'], $cast['name']);
+               $imageUrl = $cast['profile_path'] ? 'https://image.tmdb.org/t/p/w185' . $cast['profile_path'] : 'no-image.jpg';
+               $director = new Director($cast['id'], $cast['name'],   $imageUrl );
                $director->addDirector();
 
                $movieDirector = new MovieDirector($movieId, $cast['id']);
@@ -92,8 +95,7 @@
             usleep( 100000 );
             $newGenre = new Genre($genre['id'], $genre['name']);
             $newGenre->addGenre();
-
-            $movieGenre = new MovieGenre($movieId, $genre['id']);
+            $movieGenre = new MovieGenre($genre['id'], $movieId);
             $movieGenre->addMovieGenre();
          }
 

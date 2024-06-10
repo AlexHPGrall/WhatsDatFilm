@@ -2,8 +2,10 @@ $(document).ready(function () {
 
     var movies = [];
     var movieSimilarities = {'Actors': [], 'Production': [], 'Genre': [], 'Director': [], 'Release Date': null};
+    var movieData = {'Actors': [], 'Production': [], 'Genre': [], 'Director': [], 'Release Date': null};
     let filmList = document.querySelector(".filmList");
     let similaritiesContainer = document.getElementById('similarities');
+    let historyContainer = document.getElementById('history');
 
     $('#searchInput').on('input', function () {
         var query = $(this).val();
@@ -86,6 +88,22 @@ $(document).ready(function () {
                 console.log(erreur);
             },
         });
+
+        $.ajax({
+            url: '/api/api_search.php',
+            type: 'GET',
+            data: { functionname: 'getMovieData', movieId: movieId },
+            success: function (response) {
+                movieData = JSON.parse(response);
+                displayAnswer(movieData);
+            },
+            error: function (response, erreur) {
+                console.log(response);
+                console.log(erreur);
+            },
+        });
+
+       
     }
 
     function mergeArray(list1, list2) {
@@ -144,39 +162,95 @@ $(document).ready(function () {
             }
         }
         else {
-            if (similarities.Actors.length > 0) {
-                html += '<div class="similarity-item"><h4>Acteurs en commun :</h4><ul>';
-                similarities.Actors.forEach(actor => {
-                    html += `<li>${actor.actorName}</li>`;
-                });
-                html += '</ul></div>';
-            }
 
-            if (similarities.Production.length > 0) {
-                html += '<div class="similarity-item"><h4>Studios en commun :</h4><ul>';
-                similarities.Production.forEach(studio => {
-                    html += `<li>${studio.productionCompanyName}</li>`;
-                });
-                html += '</ul></div>';
-            }
+            html ='<div class="film-container">';
+            html +='<div>';
+            html +='         <div>';
+            /*html +='  <h2>'
+            html += 'Film du Jour';
+            html +=' </h2>';*/
+            html +=' </div>';
+            html +='  <div>';
+            similarities.Genre.forEach(genre => {
+                html +=` <div class="genre-btn">${genre.genreName}</div>`;
+            });
+            html +='     </div>';
+            html +='   <div>';
+            html +='  <div class="detail-btn">';
+            html += similarities.releaseDate;
+            html += '</div>';
+            html +=' </div>';
+            html +='  <div class="displayAnswerContainer2">';
+            similarities.Production.forEach(prod => {
+                html +=` <div class="detail-btn"><div class="production-name"><p>${prod.productionCompanyName}</p></div></div>`;
+            });
+            html +='</div>';
 
-            if (similarities.Genre.length > 0) {
-                html += '<div class="similarity-item"><h4>Genres en commun :</h4><ul>';
-                similarities.Genre.forEach(genre => {
-                    html += `<li>${genre.genreName}</li>`;
-                });
-                html += '</ul></div>';
-            }
-
-            if (similarities.Director.length > 0) {
-                html += '<div class="similarity-item"><h4>Réalisateurs en commun :</h4><ul>';
-                similarities.Director.forEach(director => {
-                    html += `<li>${director.directorName}</li>`;
-                });
-                html += '</ul></div>';
-            }
+            html +=' <h5>Acteurs :</h5>';
+            html +=' <div class="displayAnswerContainer2">';
+            
+            html +='<div>';
+            similarities.Actors.forEach(actor => {
+                html +=` <div class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></div>`;
+            });
+            html +=' </div>';
+            html +='</div>';
+            html +=' <h5>Réalisateurs :</h5>';
+            html +='<div class="displayAnswerContainer2">';
+            
+            similarities.Director.forEach(director => {
+                html +=` <div class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></div>`;
+            });
+            html +='</div>';
+            html +=' </div>';
+            html +=' </div>';
+            
         }
 
         similaritiesContainer.innerHTML = html;
     }
+
+    function displayAnswer(movieData) {
+        let html ='<div class="displayAnswerContainer" style="background-image: url(\'';
+        html += movieData.movieImageUrl;
+        html += '\');">';        
+        html +='<div>';
+        html +='         <div class="displayAnswerContainer2">';
+        html +='  <h2>'
+        html += movieData.movieTitle;
+        html +=' </h2>';
+        html +=' </div>';
+        html +='  <div class="displayAnswerContainer2">';
+        movieData.Genre.forEach(genre => {
+            html +=' <div class="genre-btn">${genre.genreName}</div>';
+        });
+        html +='     </div>';
+        html +='   <div class="displayAnswerContainer2">';
+        html +='  <div class="detail-btn">';
+        html += movieData.releaseDate;
+        html += '</div>';
+        html +=' </div>';
+        html +=' <h5>Acteurs :</h5>';
+        html +=' <div class="displayAnswerContainer2">';
+        
+        html +='<div>';
+        movieData.Actors.forEach(actor => {
+            html +=` <div class="actor-btn"><img src="${actor.actorImageUrl}" alt="${actor.actorName}"><div class="actor-name"><p>${actor.actorName}</p></div></div>`;
+        });
+        html +=' </div>';
+        html +='</div>';
+        html +=' <h5>Réalisateurs :</h5>';
+        html +='<div class="displayAnswerContainer2">';
+        
+        movieData.Director.forEach(director => {
+            html +=` <div class="director-btn"><img src="${director.directorImageUrl}" alt="${director.directorName}"><div class="director-name"><p>${director.directorName}</p></div></div>`;
+        });
+        html +='</div>';
+        html +=' </div>';
+        html +=' </div>';
+        //html += similaritiesContainer.innerHTML
+        historyContainer.innerHTML = html + historyContainer.innerHTML;
+    }
+
 });
+

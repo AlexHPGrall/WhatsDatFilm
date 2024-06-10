@@ -83,6 +83,17 @@ switch ($_GET['functionname']) {
         }
         break;
 
+        case 'getMovieData':
+        include_once $_SERVER['DOCUMENT_ROOT'].'/controllers/gameController.php';
+        if (isset($_GET['movieId'])) {
+            $movieId = $_GET['movieId'];
+            gameController::getMovieData($movieId);
+        } else {
+            $aResult['error'] = 'No movieId parameter!';
+            echo json_encode($aResult);
+        }
+        break;
+
     default:
         $aResult['error'] = 'Not found function ' . $_GET['functionname'] . '!';
         echo json_encode($aResult);

@@ -43,5 +43,10 @@ class gameController {
         $result = $movie->compareMovies($selected_film_id);
         echo json_encode($result);
      }
-
+     public static function getMovieData($selected_film_id) {
+        include_once($_SERVER['DOCUMENT_ROOT'].'/models/Movie.php');
+        $movie = new Movie('', '', '', '', '', '', '');
+        $result = $movie->getMovieData($selected_film_id);
+        echo json_encode($result);
+     }
 }
